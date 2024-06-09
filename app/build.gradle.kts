@@ -2,7 +2,9 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
 }
 
 android {
@@ -35,9 +37,20 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    ksp {
+        arg("room.incremental", "true")
+        arg("room.generateKotlin", "true")
+    }
+    room {
+        schemaDirectory("$projectDir/schemas")
+    }
 }
 
 dependencies {
+    implementation(libs.hilt)
+    ksp(libs.hilt.ksp)
+
+    implementation(libs.liveevent)
     implementation(libs.room.runtime)
     ksp(libs.room.compiler)
     implementation(libs.room.ktx)
@@ -53,6 +66,7 @@ dependencies {
     implementation(libs.androidx.activity.compose)
 
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     testImplementation(libs.junit)

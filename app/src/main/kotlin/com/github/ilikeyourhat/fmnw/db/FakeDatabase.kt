@@ -5,7 +5,7 @@ object FakeDatabase {
     private val values = mutableListOf<String>()
 
     fun loadValues(): List<String> {
-        return values
+        return values.toList()
     }
 
     fun addValue(value: String) {

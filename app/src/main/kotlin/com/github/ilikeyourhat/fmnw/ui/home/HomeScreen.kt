@@ -1,5 +1,6 @@
-package com.github.ilikeyourhat.fmnw
+package com.github.ilikeyourhat.fmnw.ui.home
 
+import android.util.Log
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -20,9 +21,10 @@ import androidx.compose.ui.tooling.preview.Preview
 @OptIn(ExperimentalMaterial3Api::class) // Experimental my ass
 @Composable
 fun HomeScreen(
-    codes: List<String>,
-    onFabClicked: () -> Unit
+    state: HomeScreenState,
+    events: HomeScreenEvents = HomeScreenEvents.DUMMY
 ) {
+    Log.e("Compose", "Recomposition: $state")
     MaterialTheme {
         Scaffold(
             topBar = {
@@ -30,7 +32,7 @@ fun HomeScreen(
             },
             floatingActionButton = {
                 FloatingActionButton(
-                    onClick = onFabClicked,
+                    onClick = events::onAddCodeClicked,
                     content = {
                         Icon(Icons.Filled.Add, "Floating action button.")
                     }
@@ -38,11 +40,7 @@ fun HomeScreen(
             },
             content = { padding ->
                 Surface(modifier = Modifier.padding(padding)) {
-                    LazyColumn {
-                        items(codes) { code ->
-                            Text(code)
-                        }
-                    }
+                    Content(state)
                 }
             }
 
@@ -50,8 +48,18 @@ fun HomeScreen(
     }
 }
 
+@Composable
+private fun Content(state: HomeScreenState) {
+    Log.e("Compose", "Content")
+        LazyColumn {
+            items(state.codes) { code ->
+                Text(code)
+            }
+        }
+}
+
 @Preview
 @Composable
 fun HomeScreen_default() {
-    HomeScreen(emptyList()) {  }
+    HomeScreen(HomeScreenState())
 }

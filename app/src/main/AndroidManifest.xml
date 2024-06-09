@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".ForgetMeNotWalletApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -14,7 +15,7 @@
         tools:targetApi="31">
 
         <activity
-            android:name=".HomeActivity"
+            android:name=".ui.home.HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +23,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".AddCodeActivity" />
+        <activity android:name=".ui.addcode.AddCodeActivity" />
 
     </application>
 
