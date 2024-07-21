@@ -1,4 +1,4 @@
-package com.github.ilikeyourhat.fmnw.ui.home
+package com.github.ilikeyourhat.fmnw.ui.screen.home
 
 data class HomeScreenState(
     val codes: List<String> = emptyList()

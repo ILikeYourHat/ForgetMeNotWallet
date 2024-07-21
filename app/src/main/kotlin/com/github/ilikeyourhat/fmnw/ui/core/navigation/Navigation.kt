@@ -1,8 +1,8 @@
-package com.github.ilikeyourhat.fmnw.ui.navigation
+package com.github.ilikeyourhat.fmnw.ui.core.navigation
 
 import android.app.Activity
 import android.content.Intent
-import com.github.ilikeyourhat.fmnw.ui.addcode.AddCodeActivity
+import com.github.ilikeyourhat.fmnw.ui.screen.addcode.AddCodeActivity
 
 sealed class Navigation {
     abstract fun navigate(activity: Activity)

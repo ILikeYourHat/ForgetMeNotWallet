@@ -1,4 +1,4 @@
-package com.github.ilikeyourhat.fmnw.ui.home
+package com.github.ilikeyourhat.fmnw.ui.screen.addcode
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
@@ -7,22 +7,17 @@ import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeActivity : AppCompatActivity() {
+class AddCodeActivity : AppCompatActivity() {
 
-    private val viewModel: HomeViewModel by viewModels()
+    private val viewModel: AddCodeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.screen.observe(this) { state ->
             setContent {
-                HomeScreen(state, viewModel)
+                AddCodeScreen(state, viewModel)
             }
         }
         viewModel.router.attachTo(this)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.onResume()
     }
 }

@@ -1,4 +1,4 @@
-package com.github.ilikeyourhat.fmnw.ui.addcode
+package com.github.ilikeyourhat.fmnw.ui.screen.addcode
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.ilikeyourhat.fmnw.db.StoredCode
 import com.github.ilikeyourhat.fmnw.db.StoredCodeDao
-import com.github.ilikeyourhat.fmnw.ui.navigation.Navigation
-import com.github.ilikeyourhat.fmnw.ui.navigation.Router
+import com.github.ilikeyourhat.fmnw.ui.core.navigation.Navigation
+import com.github.ilikeyourhat.fmnw.ui.core.navigation.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -32,5 +32,9 @@ class AddCodeViewModel @Inject constructor(
             storedCodeDao.insert(StoredCode(code = _screen.value!!.code))
             router.navigate(Navigation.Close)
         }
+    }
+
+    override fun onCloseClicked() {
+        router.navigate(Navigation.Close)
     }
 }

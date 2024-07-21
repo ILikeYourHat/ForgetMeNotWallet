@@ -1,4 +1,4 @@
-package com.github.ilikeyourhat.fmnw.ui.navigation
+package com.github.ilikeyourhat.fmnw.ui.core.navigation
 
 import androidx.appcompat.app.AppCompatActivity
 import com.hadilq.liveevent.LiveEvent
