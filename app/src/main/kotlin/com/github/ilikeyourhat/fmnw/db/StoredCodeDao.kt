@@ -12,4 +12,7 @@ interface StoredCodeDao {
 
     @Insert
     suspend fun insert(code: StoredCode)
+
+    @Query("DELETE FROM stored_codes WHERE id = :id")
+    suspend fun delete(id: Int)
 }

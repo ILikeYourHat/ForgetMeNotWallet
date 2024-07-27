@@ -48,7 +48,7 @@ fun HomeScreen(
             },
             content = { padding ->
                 Surface(modifier = Modifier.padding(padding)) {
-                    Content(state)
+                    Content(state, events)
                 }
             }
         )
@@ -56,11 +56,11 @@ fun HomeScreen(
 }
 
 @Composable
-private fun Content(state: HomeScreenState) {
+private fun Content(state: HomeScreenState, events: HomeScreenEvents) {
     if (state.codes.isEmpty()) {
         EmptyContent()
     } else {
-        NonEmptyContent(state)
+        NonEmptyContent(state, events)
     }
 }
 
@@ -77,14 +77,16 @@ private fun EmptyContent() {
 }
 
 @Composable
-private fun NonEmptyContent(state: HomeScreenState) {
+private fun NonEmptyContent(state: HomeScreenState, events: HomeScreenEvents) {
     LazyColumn(
         contentPadding = PaddingValues(16.dp),
         modifier = Modifier.fillMaxSize()
     ) {
         items(state.codes) { code ->
             CodeFiche(
-                text = code,
+                headline = code.name,
+                text = code.value,
+                onDeleteClicked = { events.onDeleteCodeClicked(code) },
                 modifier = Modifier
                     .padding(top = 8.dp, bottom = 8.dp)
                     .fillParentMaxWidth()
@@ -105,8 +107,8 @@ fun HomeScreen_full() {
     HomeScreen(
         HomeScreenState(
             codes = listOf(
-                "test",
-                "test2345"
+                CodeState(1, "Supercode", "test"),
+                CodeState(2, "Supercode2345", "test2345")
             )
         )
     )

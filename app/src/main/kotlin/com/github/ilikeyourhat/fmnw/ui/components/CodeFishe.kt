@@ -1,11 +1,9 @@
 package com.github.ilikeyourhat.fmnw.ui.components
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.FlowRowScopeInstance.align
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
@@ -33,8 +31,10 @@ import com.github.ilikeyourhat.fmnw.ui.core.theme.primaryLight
 
 @Composable
 fun CodeFiche(
+    headline: String,
     text: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onDeleteClicked: () -> Unit = {}
 ) {
     Card(
         elevation = CardDefaults.cardElevation(
@@ -43,10 +43,15 @@ fun CodeFiche(
         border = BorderStroke(2.dp, primaryLight),
         modifier = modifier
     ) {
-        Row {
-            Column {
+        Row(
+            horizontalArrangement = Arrangement.Start,
+            verticalAlignment = Alignment.Top
+        ) {
+            Column(
+                modifier = Modifier.weight(1f)
+            ) {
                 Text(
-                    text = "Headline",
+                    text = headline,
                     style = MaterialTheme.typography.headlineSmall,
                     modifier = Modifier
                         .padding(
@@ -65,34 +70,29 @@ fun CodeFiche(
                         )
                 )
             }
+            var expanded by remember { mutableStateOf(false) }
             IconButton(
-                onClick = { /*TODO*/ },
-                modifier = Modifier.run { align(alignment = Alignment.End) }
+                onClick = { expanded = true }
             ) {
                 Icon(imageVector = Icons.Filled.MoreVert, contentDescription = "")
+                DropdownMenu(
+                    expanded = expanded,
+                    onDismissRequest = { expanded = false }
+                ) {
+                    DropdownMenuItem(
+                        trailingIcon = {
+                            Icon(imageVector = Icons.Filled.Delete, contentDescription = "")
+                        },
+                        text = {  Text("Delete") },
+                        onClick = {
+                            onDeleteClicked()
+                            expanded = false
+                        }
+                    )
+                }
             }
         }
 
-    }
-}
-
-@Composable
-private fun CodeFicheDropDownMenu(
-    initialExpanded: Boolean = false
-) {
-    var expanded by remember { mutableStateOf(initialExpanded) }
-
-    DropdownMenu(
-        expanded = expanded,
-        onDismissRequest = { expanded = false }
-    ) {
-        DropdownMenuItem(
-            trailingIcon = {
-                Icons.Filled.Delete
-            },
-            text = {  Text("Delete") },
-            onClick = {  }
-        )
     }
 }
 
@@ -101,6 +101,7 @@ private fun CodeFicheDropDownMenu(
 fun CodeFiche_default() {
     AppTheme {
         CodeFiche(
+            headline = "Headline",
             text = "My secret code"
         )
     }
@@ -111,20 +112,9 @@ fun CodeFiche_default() {
 fun CodeFiche_long() {
     AppTheme {
         CodeFiche(
+            headline = "Headline",
             text = "My secret code",
             modifier = Modifier.width(200.dp)
         )
-    }
-}
-
-@Preview
-@Composable
-fun CodeFicheDropDownMenu_expanded() {
-    AppTheme {
-        Box {
-            CodeFicheDropDownMenu(
-                initialExpanded = true
-            )
-        }
     }
 }
