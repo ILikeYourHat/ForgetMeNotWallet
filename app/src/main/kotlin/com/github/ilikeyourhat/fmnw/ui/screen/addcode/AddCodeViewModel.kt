@@ -23,13 +23,23 @@ class AddCodeViewModel @Inject constructor(
     )
     val screen: LiveData<AddCodeScreenState> = _screen
 
-    override fun onCodeChanged(code: String) {
-        _screen.value = AddCodeScreenState(code)
+    override fun onCodeNameChanged(name: String) {
+        _screen.value = _screen.value!!.copy(name = name)
+    }
+
+    override fun onCodeValueChanged(value: String) {
+        _screen.value = _screen.value!!.copy(value = value)
     }
 
     override fun onDoneClicked() {
         viewModelScope.launch {
-            storedCodeDao.insert(StoredCode(code = _screen.value!!.code))
+            val state = _screen.value!!
+            storedCodeDao.insert(
+                StoredCode(
+                    name = state.name,
+                    value = state.value
+                )
+            )
             router.navigate(Navigation.Close)
         }
     }

@@ -80,7 +80,7 @@ fun CodeFiche(
                     onDismissRequest = { expanded = false }
                 ) {
                     DropdownMenuItem(
-                        trailingIcon = {
+                        leadingIcon = {
                             Icon(imageVector = Icons.Filled.Delete, contentDescription = "")
                         },
                         text = {  Text("Delete") },

@@ -39,8 +39,8 @@ class HomeViewModel @Inject constructor(
     private fun StoredCode.toUiState(): CodeState {
         return CodeState(
             id = id,
-            name = "Test",
-            value = code
+            name = name,
+            value = value
         )
     }
 }

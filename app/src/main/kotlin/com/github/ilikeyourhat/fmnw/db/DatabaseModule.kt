@@ -20,7 +20,9 @@ class DatabaseModule {
             context,
             ForgetMeNotWalletDatabase::class.java,
             name = "fmnw_db"
-        ).build()
+        )
+            .fallbackToDestructiveMigration() // TODO remove before MVP launch
+            .build()
     }
 
     @Provides

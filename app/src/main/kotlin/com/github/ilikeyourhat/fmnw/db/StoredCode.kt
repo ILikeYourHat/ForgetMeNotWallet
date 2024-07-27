@@ -7,5 +7,6 @@ import androidx.room.PrimaryKey
 data class StoredCode(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    val code: String
+    val name: String,
+    val value: String
 )

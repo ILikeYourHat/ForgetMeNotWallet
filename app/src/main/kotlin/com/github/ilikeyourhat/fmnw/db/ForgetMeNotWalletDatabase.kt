@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = [StoredCode::class],
-    version = 1
+    version = 2
 )
 abstract class ForgetMeNotWalletDatabase : RoomDatabase() {
     abstract fun storedCodeDao(): StoredCodeDao

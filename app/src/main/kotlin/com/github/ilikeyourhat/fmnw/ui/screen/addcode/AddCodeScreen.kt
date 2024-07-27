@@ -55,7 +55,17 @@ private fun Content(state: AddCodeScreenState, events: AddCodeEvents) {
     Column(
         modifier = Modifier.padding(start = 16.dp, end = 16.dp)
     ) {
-        OutLineTextField(state.code, events)
+        OutlinedTextField(
+            value = state.name,
+            label = { Text(text = "Enter name of your code") },
+            onValueChange = events::onCodeNameChanged
+        )
+        OutlinedTextField(
+            value = state.value,
+            label = { Text(text = "Enter your code") },
+            onValueChange = events::onCodeValueChanged,
+            modifier = Modifier.padding(top = 8.dp)
+        )
         Button(
             onClick = events::onDoneClicked,
             content = {
@@ -64,15 +74,6 @@ private fun Content(state: AddCodeScreenState, events: AddCodeEvents) {
             modifier = Modifier.padding(top = 8.dp)
         )
     }
-}
-
-@Composable
-fun OutLineTextField(code: String, events: AddCodeEvents) {
-    OutlinedTextField(
-        value = code,
-        label = { Text(text = "Enter your code") },
-        onValueChange = events::onCodeChanged
-    )
 }
 
 @Preview
