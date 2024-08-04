@@ -34,6 +34,7 @@ androidx-material3 = { module = "androidx.compose.material3:material3" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 hilt = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-ksp = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
+gms-scanner = { module = "com.google.android.gms:play-services-code-scanner", version = "16.1.0" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

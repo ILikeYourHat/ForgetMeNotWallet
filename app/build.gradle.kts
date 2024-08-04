@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.room.runtime)
     ksp(libs.room.compiler)
     implementation(libs.room.ktx)
+    implementation(libs.gms.scanner)
 
     val composeBom = platform(libs.compose.bom)
     implementation(composeBom)

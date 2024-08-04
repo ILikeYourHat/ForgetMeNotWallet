@@ -27,7 +27,8 @@ class HomeViewModel @Inject constructor(
         .asLiveData()
 
     override fun onAddCodeClicked() {
-        router.navigate(Navigation.AddCode)
+//        router.navigate(Navigation.AddCode)
+        router.navigate(Navigation.ScanCode)
     }
 
     override fun onDeleteCodeClicked(code: CodeState) {

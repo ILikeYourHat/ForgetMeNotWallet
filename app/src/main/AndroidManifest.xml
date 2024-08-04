@@ -14,6 +14,10 @@
         android:theme="@style/Theme.FogetMeNotWallet"
         tools:targetApi="31">
 
+        <meta-data
+            android:name="com.google.mlkit.vision.DEPENDENCIES"
+            android:value="barcode_ui"/>
+
         <activity
             android:name=".ui.screen.home.HomeActivity"
             android:exported="true">
@@ -24,7 +28,7 @@
         </activity>
 
         <activity android:name=".ui.screen.addcode.AddCodeActivity" />
-
+        <activity android:name=".ui.screen.scancode.ScanCodeActivity" />
     </application>
 
 </manifest>
