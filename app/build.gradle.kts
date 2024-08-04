@@ -51,12 +51,17 @@ android {
 
 dependencies {
     implementation(libs.hilt)
+    implementation(libs.androidx.camera.view)
+    implementation(libs.androidx.camera.camera2)
+    implementation(libs.androidx.camera.lifecycle)
+    implementation("com.simonsickle:composed-barcodes:1.1.1")
     ksp(libs.hilt.ksp)
 
     implementation(libs.liveevent)
     implementation(libs.room.runtime)
     ksp(libs.room.compiler)
     implementation(libs.room.ktx)
+    implementation(libs.compose.camera)
     implementation(libs.gms.scanner)
 
     val composeBom = platform(libs.compose.bom)

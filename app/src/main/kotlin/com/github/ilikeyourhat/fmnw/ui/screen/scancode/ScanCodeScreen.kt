@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.github.ilikeyourhat.fmnw.ui.components.CameraPreview
 import com.github.ilikeyourhat.fmnw.ui.core.theme.AppTheme
 
 @OptIn(ExperimentalMaterial3Api::class) // Experimental my ass
@@ -37,7 +38,11 @@ fun ScanCodeScreen(
             },
             content = { padding ->
                 Surface(modifier = Modifier.padding(padding)) {
-                    Text(text = "Hello world!")
+                    if (state.permissionGranted) {
+                        CameraPreview(events::onBarcodeDetected)
+                    } else {
+                        Text(text = "Hello world!")
+                    }
                 }
             }
 
