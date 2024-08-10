@@ -24,7 +24,8 @@ class ScanCodeViewModel @Inject constructor(
     }
 
     override fun onBarcodeDetected(barcode: Barcode) {
-        barcode.format
+        router.navigate(Navigation.AddCode(barcode))
+        router.navigate(Navigation.Close)
     }
 
     fun onPermissionGranted() {

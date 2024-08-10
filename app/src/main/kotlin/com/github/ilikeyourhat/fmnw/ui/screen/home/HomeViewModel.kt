@@ -26,9 +26,16 @@ class HomeViewModel @Inject constructor(
         .map { HomeScreenState(it) }
         .asLiveData()
 
-    override fun onAddCodeClicked() {
-//        router.navigate(Navigation.AddCode)
+    override fun onAddTextCodeClicked() {
+        router.navigate(Navigation.AddCode())
+    }
+
+    override fun onScanBarcodeFromCameraClicked() {
         router.navigate(Navigation.ScanCode)
+    }
+
+    override fun onScanBarcodeFromImageClicked() {
+        router.navigate(Navigation.PickCode)
     }
 
     override fun onDeleteCodeClicked(code: CodeState) {

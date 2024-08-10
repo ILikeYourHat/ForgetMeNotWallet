@@ -7,9 +7,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Abc
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.CameraAlt
+import androidx.compose.material.icons.filled.Image
+import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -24,6 +27,10 @@ import androidx.compose.ui.unit.dp
 import com.github.ilikeyourhat.fmnw.R
 import com.github.ilikeyourhat.fmnw.ui.components.CodeFiche
 import com.github.ilikeyourhat.fmnw.ui.core.theme.AppTheme
+import de.charlex.compose.BottomAppBarSpeedDialFloatingActionButton
+import de.charlex.compose.FloatingActionButtonItem
+import de.charlex.compose.SubSpeedDialFloatingActionButtons
+import de.charlex.compose.rememberSpeedDialFloatingActionButtonState
 
 @OptIn(ExperimentalMaterial3Api::class) // Experimental my ass
 @Composable
@@ -32,6 +39,9 @@ fun HomeScreen(
     events: HomeScreenEvents = HomeScreenEvents.DUMMY
 ) {
     AppTheme {
+
+        val fabState = rememberSpeedDialFloatingActionButtonState()
+
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -39,17 +49,44 @@ fun HomeScreen(
                 )
             },
             floatingActionButton = {
-                FloatingActionButton(
-                    onClick = events::onAddCodeClicked,
-                    content = {
-                        Icon(Icons.Filled.Add, "Floating action button.")
-                    }
+                SubSpeedDialFloatingActionButtons(
+                    state = fabState,
+                    items = listOf(
+                        FloatingActionButtonItem(
+                            icon = Icons.Default.Abc,
+                            label = "From text...",
+                            onFabItemClicked = events::onAddTextCodeClicked
+                        ),
+                        FloatingActionButtonItem(
+                            icon = Icons.Filled.CameraAlt,
+                            label = "From photo...",
+                            onFabItemClicked = events::onScanBarcodeFromCameraClicked
+                        ),
+                        FloatingActionButtonItem(
+                            icon = Icons.Filled.Image,
+                            label = "From image...",
+                            onFabItemClicked = events::onScanBarcodeFromImageClicked
+                        )
+                    )
                 )
             },
             content = { padding ->
                 Surface(modifier = Modifier.padding(padding)) {
                     Content(state, events)
                 }
+            },
+            bottomBar = {
+                BottomAppBar(
+                    actions = {},
+                    floatingActionButton = {
+                        BottomAppBarSpeedDialFloatingActionButton(
+                            state = fabState,
+                            content = {
+                                Icon(Icons.Filled.Add, "Floating action button.")
+                            }
+                        )
+                    }
+                )
             }
         )
     }

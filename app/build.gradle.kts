@@ -54,8 +54,10 @@ dependencies {
     implementation(libs.androidx.camera.view)
     implementation(libs.androidx.camera.camera2)
     implementation(libs.androidx.camera.lifecycle)
-    implementation("com.simonsickle:composed-barcodes:1.1.1")
+    implementation(libs.composed.barcodes)
     ksp(libs.hilt.ksp)
+    implementation("de.charlex.compose:speeddial-bottomappbar-material3:1.1.1")
+    implementation("androidx.compose.material:material-icons-extended:1.6.8")
 
     implementation(libs.liveevent)
     implementation(libs.room.runtime)
