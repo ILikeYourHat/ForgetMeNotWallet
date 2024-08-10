@@ -1,11 +1,11 @@
 package com.github.ilikeyourhat.fmnw.ui.screen.addcode
 
-import com.github.ilikeyourhat.fmnw.model.BarcodeModel
+import com.github.ilikeyourhat.fmnw.model.CodeModel
 
 data class AddCodeScreenState(
     val name: String = "",
     val value: String = "",
-    val barcode: BarcodeModel? = null
+    val barcode: CodeModel? = null
 )
 
 interface AddCodeEvents {

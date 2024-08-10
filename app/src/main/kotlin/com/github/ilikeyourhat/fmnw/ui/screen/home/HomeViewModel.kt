@@ -52,7 +52,7 @@ class HomeViewModel @Inject constructor(
 
     override fun onDeleteCodeClicked(code: CodeModel) {
         viewModelScope.launch {
-            storedCodeDao.delete(code.id)
+            storedCodeDao.delete(code.id!!)
         }
     }
 

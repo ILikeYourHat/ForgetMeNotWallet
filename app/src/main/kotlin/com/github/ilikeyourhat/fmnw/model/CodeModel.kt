@@ -5,8 +5,8 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class CodeModel (
-    val id: Int,
-    val name: String,
+    val id: Int? = null,
+    val name: String = "",
     val value: String,
     val type: BarcodeModelType?
 ) : Parcelable

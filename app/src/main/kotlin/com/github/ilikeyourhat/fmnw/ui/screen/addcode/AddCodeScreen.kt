@@ -1,6 +1,7 @@
 package com.github.ilikeyourhat.fmnw.ui.screen.addcode
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -19,11 +20,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.github.ilikeyourhat.fmnw.model.BarcodeModel
 import com.github.ilikeyourhat.fmnw.model.BarcodeModelType
+import com.github.ilikeyourhat.fmnw.model.CodeModel
+import com.github.ilikeyourhat.fmnw.ui.components.BarcodePreview
 import com.github.ilikeyourhat.fmnw.ui.core.theme.AppTheme
-import com.simonsickle.compose.barcodes.Barcode
-import com.simonsickle.compose.barcodes.BarcodeType
 
 @OptIn(ExperimentalMaterial3Api::class) // Experimental my ass
 @Composable
@@ -74,10 +74,11 @@ private fun Content(state: AddCodeScreenState, events: AddCodeEvents) {
                 modifier = Modifier.padding(top = 8.dp)
             )
         } else {
-            Barcode(
-                modifier = Modifier.height(100.dp).width(100.dp),
-                type = BarcodeType.QR_CODE,
-                value = state.barcode.value
+            BarcodePreview(
+                barcodeModel = state.barcode,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(200.dp)
             )
         }
         Button(
@@ -101,7 +102,10 @@ fun AddCodeScreen_default() {
 fun AddCodeScreen_withBarcode() {
     AddCodeScreen(
         AddCodeScreenState(
-            barcode = BarcodeModel(type = BarcodeModelType.QR_CODE, "ABCDEF")
+            barcode = CodeModel(
+                type = BarcodeModelType.QR_CODE,
+                value = "ABCDEF"
+            )
         )
     )
 }

@@ -1,14 +1,5 @@
 package com.github.ilikeyourhat.fmnw.model
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
-
-@Parcelize
-data class BarcodeModel(
-    val type: BarcodeModelType?,
-    val value: String
-) : Parcelable
-
 enum class BarcodeModelType {
     EAN_8,
     UPC_E,

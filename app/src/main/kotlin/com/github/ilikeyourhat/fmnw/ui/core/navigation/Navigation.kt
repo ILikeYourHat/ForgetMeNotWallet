@@ -3,7 +3,6 @@ package com.github.ilikeyourhat.fmnw.ui.core.navigation
 import android.app.Activity
 import android.content.Intent
 import android.widget.Toast
-import com.github.ilikeyourhat.fmnw.model.BarcodeModel
 import com.github.ilikeyourhat.fmnw.model.CodeModel
 import com.github.ilikeyourhat.fmnw.ui.screen.addcode.AddCodeActivity
 import com.github.ilikeyourhat.fmnw.ui.screen.scancode.ScanCodeActivity
@@ -19,7 +18,7 @@ sealed class Navigation {
     }
 
     data class AddCode(
-        val barcode: BarcodeModel? = null,
+        val barcode: CodeModel? = null,
         val closeCurrent: Boolean = false
     ): Navigation() {
         override fun navigate(activity: Activity) {

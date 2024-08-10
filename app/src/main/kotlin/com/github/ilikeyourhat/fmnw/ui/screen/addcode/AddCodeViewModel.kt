@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.ilikeyourhat.fmnw.db.StoredCode
 import com.github.ilikeyourhat.fmnw.db.StoredCodeDao
-import com.github.ilikeyourhat.fmnw.model.BarcodeModel
 import com.github.ilikeyourhat.fmnw.model.BarcodeModelType
 import com.github.ilikeyourhat.fmnw.model.CodeModel
 import com.github.ilikeyourhat.fmnw.ui.core.navigation.Navigation
@@ -23,7 +22,7 @@ class AddCodeViewModel @Inject constructor(
     private val storedCodeDao: StoredCodeDao
 ) : ViewModel(), AddCodeEvents {
 
-    private val barcode: BarcodeModel? by lazy { savedStateHandle["barcode"] }
+    private val barcode: CodeModel? by lazy { savedStateHandle["barcode"] }
 
     private val _screen = MutableLiveData(
         AddCodeScreenState(
@@ -60,7 +59,7 @@ class AddCodeViewModel @Inject constructor(
 
     private fun CodeModel.toStoredCode(): StoredCode {
         return StoredCode(
-            id = id,
+            id = id ?: 0,
             name = name,
             value = value,
             type = type.toStoredType()
