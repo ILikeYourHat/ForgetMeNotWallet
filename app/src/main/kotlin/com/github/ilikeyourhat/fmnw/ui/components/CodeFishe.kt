@@ -46,22 +46,16 @@ fun CodeFiche(
     ) {
         Row(
             horizontalArrangement = Arrangement.Start,
-            verticalAlignment = Alignment.Top
+            verticalAlignment = Alignment.Top,
+            modifier = Modifier.padding(8.dp)
         ) {
-            Column(
-                modifier = Modifier.weight(1f)
-            ) {
-                Text(
-                    text = headline,
-                    style = MaterialTheme.typography.headlineSmall,
-                    modifier = Modifier
-                        .padding(
-                            start = 8.dp,
-                            end = 8.dp,
-                            top = 8.dp
-                        )
-                )
-            }
+            Text(
+                text = headline,
+                style = MaterialTheme.typography.headlineSmall,
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(8.dp)
+            )
             var expanded by remember { mutableStateOf(false) }
             IconButton(
                 onClick = { expanded = true }
@@ -75,7 +69,7 @@ fun CodeFiche(
                         leadingIcon = {
                             Icon(imageVector = Icons.Filled.Delete, contentDescription = "")
                         },
-                        text = {  Text("Delete") },
+                        text = { Text("Delete") },
                         onClick = {
                             onDeleteClick()
                             expanded = false
