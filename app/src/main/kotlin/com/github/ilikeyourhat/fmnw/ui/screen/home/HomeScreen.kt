@@ -25,6 +25,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.github.ilikeyourhat.fmnw.R
+import com.github.ilikeyourhat.fmnw.model.BarcodeModelType
 import com.github.ilikeyourhat.fmnw.model.CodeModel
 import com.github.ilikeyourhat.fmnw.ui.components.CodeFiche
 import com.github.ilikeyourhat.fmnw.ui.core.theme.AppTheme
@@ -154,8 +155,8 @@ fun HomeScreen_full() {
     HomeScreen(
         HomeScreenState(
             codes = listOf(
-                CodeModel(1, "Supercode", "test", "qr_code"),
-                CodeModel(2, "Supercode2345", "test2345", "raw_text")
+                CodeModel(1, "Supercode", "test", BarcodeModelType.QR_CODE),
+                CodeModel(2, "Supercode2345", "test2345", null)
             )
         )
     )

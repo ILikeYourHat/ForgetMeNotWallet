@@ -8,5 +8,5 @@ data class CodeModel (
     val id: Int,
     val name: String,
     val value: String,
-    val type: String
+    val type: BarcodeModelType?
 ) : Parcelable

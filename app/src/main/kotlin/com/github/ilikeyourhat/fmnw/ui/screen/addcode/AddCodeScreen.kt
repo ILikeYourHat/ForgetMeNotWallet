@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.github.ilikeyourhat.fmnw.model.BarcodeModel
+import com.github.ilikeyourhat.fmnw.model.BarcodeModelType
 import com.github.ilikeyourhat.fmnw.ui.core.theme.AppTheme
 import com.simonsickle.compose.barcodes.Barcode
 import com.simonsickle.compose.barcodes.BarcodeType
@@ -100,7 +101,7 @@ fun AddCodeScreen_default() {
 fun AddCodeScreen_withBarcode() {
     AddCodeScreen(
         AddCodeScreenState(
-            barcode = BarcodeModel("qr_code", "ABCDEF")
+            barcode = BarcodeModel(type = BarcodeModelType.QR_CODE, "ABCDEF")
         )
     )
 }
