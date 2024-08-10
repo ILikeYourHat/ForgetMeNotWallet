@@ -1,6 +1,7 @@
 package com.github.ilikeyourhat.fmnw.ui.screen.showcode
 
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
@@ -14,6 +15,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.github.ilikeyourhat.fmnw.model.BarcodeModelType
 import com.github.ilikeyourhat.fmnw.model.CodeModel
 import com.github.ilikeyourhat.fmnw.ui.components.BarcodePreview
@@ -44,7 +46,8 @@ fun ShowCodeScreen(
                 Surface(modifier = Modifier.padding(padding)) {
                     BarcodePreview(
                         barcodeModel = state.code,
-                        modifier = Modifier.fillMaxSize()
+                        modifier = Modifier.fillMaxWidth()
+                            .padding(16.dp)
                     )
                 }
             }

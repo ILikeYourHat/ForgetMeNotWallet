@@ -1,17 +1,19 @@
 package com.github.ilikeyourhat.fmnw.model
 
-enum class BarcodeModelType {
-    EAN_8,
-    UPC_E,
-    EAN_13,
-    UPC_A,
-    QR_CODE,
-    CODE_39,
-    CODE_93,
-    CODE_128,
-    ITF,
-    PDF_417,
-    CODABAR,
-    DATA_MATRIX,
-    AZTEC
+enum class BarcodeModelType(
+    val isSquare: Boolean
+) {
+    EAN_8(false),
+    UPC_E(false),
+    EAN_13(false),
+    UPC_A(false),
+    QR_CODE(true),
+    CODE_39(false),
+    CODE_93(false),
+    CODE_128(false),
+    ITF(false),
+    PDF_417(false),
+    CODABAR(false),
+    DATA_MATRIX(true),
+    AZTEC(true)
 }
