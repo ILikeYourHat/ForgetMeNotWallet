@@ -5,9 +5,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -19,7 +19,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.VerticalAlignmentLine
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
@@ -44,16 +43,15 @@ fun BarcodePreview(
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
-                .clip(RoundedCornerShape(16.dp))
                 .shadow(4.dp)
+                .clip(RoundedCornerShape(16.dp))
                 .background(Color.White)
                 .padding(16.dp)
         ) {
             if (barcodeModel.type != null) {
                 BarcodeWrapper(
                     type = barcodeModel.type,
-                    value = barcodeModel.value,
-                    modifier = Modifier.fillMaxWidth()
+                    value = barcodeModel.value
                 )
             }
             Text(
@@ -70,10 +68,13 @@ fun BarcodePreview(
 @Composable
 private fun BarcodeWrapper(
     type: BarcodeModelType,
-    value: String,
-    modifier: Modifier = Modifier
+    value: String
 ) {
-    Box(modifier = modifier) {
+    Box(
+        modifier = Modifier
+            .aspectRatio(1f)
+            .defaultMinSize(100.dp, 100.dp)
+    ) {
         if (LocalInspectionMode.current) {
             val placeholder = if (type.isSquare) {
                 R.drawable.placeholder_2d_barcode
@@ -84,27 +85,17 @@ private fun BarcodeWrapper(
                 painter = painterResource(placeholder),
                 contentDescription = value,
                 contentScale = ContentScale.FillBounds,
-                modifier = Modifier
-                    .matchBarcodeType(type)
+                modifier = Modifier.fillMaxSize()
             )
         } else {
             Barcode(
                 type = type.toUiType(),
                 value = value,
                 showProgress = true,
-                modifier = Modifier
-                    .matchBarcodeType(type)
+                resolutionFactor = 10,
+                modifier = Modifier.fillMaxSize()
             )
         }
-    }
-}
-
-private fun Modifier.matchBarcodeType(type: BarcodeModelType): Modifier {
-    return if (type.isSquare) {
-        aspectRatio(1f)
-    } else {
-        fillMaxWidth()
-            .height(200.dp)
     }
 }
 
