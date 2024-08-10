@@ -25,11 +25,13 @@ class ScanCodeViewModel @Inject constructor(
     }
 
     override fun onBarcodeDetected(barcode: Barcode) {
+        if (_uiState.value!!.barcodeDetected) return
+        _uiState.value = _uiState.value!!.copy(barcodeDetected = true)
+
         val type = "qr_code"
         val value = barcode.rawValue ?: return
         val model = BarcodeModel(type, value)
-        router.navigate(Navigation.AddCode(model))
-        router.navigate(Navigation.Close)
+        router.navigate(Navigation.AddCode(model, closeCurrent = true))
     }
 
     fun onPermissionGranted() {

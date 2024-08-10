@@ -32,11 +32,11 @@ class HomeViewModel @Inject constructor(
     }
 
     override fun onScanBarcodeFromCameraClicked() {
-        router.navigate(Navigation.ScanCode)
+        router.navigate(Navigation.ScanCodeFromCamera)
     }
 
     override fun onScanBarcodeFromImageClicked() {
-        router.navigate(Navigation.PickCode)
+        router.navigate(Navigation.ScanCodeFromImage)
     }
 
     override fun onShowCodeClicked(code: CodeModel) {

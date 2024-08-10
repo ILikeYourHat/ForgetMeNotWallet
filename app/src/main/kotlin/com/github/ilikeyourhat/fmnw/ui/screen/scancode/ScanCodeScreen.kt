@@ -3,6 +3,7 @@ package com.github.ilikeyourhat.fmnw.ui.screen.scancode
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -38,10 +39,10 @@ fun ScanCodeScreen(
             },
             content = { padding ->
                 Surface(modifier = Modifier.padding(padding)) {
-                    if (state.permissionGranted) {
+                    if (state.permissionGranted && !state.barcodeDetected) {
                         CameraPreview(events::onBarcodeDetected)
                     } else {
-                        Text(text = "Hello world!")
+                        CircularProgressIndicator()
                     }
                 }
             }
