@@ -3,6 +3,7 @@ package com.github.ilikeyourhat.fmnw.ui.screen.scancode
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.github.ilikeyourhat.fmnw.model.BarcodeModel
 import com.github.ilikeyourhat.fmnw.ui.core.navigation.Navigation
 import com.github.ilikeyourhat.fmnw.ui.core.navigation.Router
 import com.google.mlkit.vision.barcode.common.Barcode
@@ -24,7 +25,10 @@ class ScanCodeViewModel @Inject constructor(
     }
 
     override fun onBarcodeDetected(barcode: Barcode) {
-        router.navigate(Navigation.AddCode(barcode))
+        val type = "qr_code"
+        val value = barcode.rawValue ?: return
+        val model = BarcodeModel(type, value)
+        router.navigate(Navigation.AddCode(model))
         router.navigate(Navigation.Close)
     }
 

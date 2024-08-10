@@ -25,6 +25,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.github.ilikeyourhat.fmnw.R
+import com.github.ilikeyourhat.fmnw.model.CodeModel
 import com.github.ilikeyourhat.fmnw.ui.components.CodeFiche
 import com.github.ilikeyourhat.fmnw.ui.core.theme.AppTheme
 import de.charlex.compose.BottomAppBarSpeedDialFloatingActionButton
@@ -54,18 +55,27 @@ fun HomeScreen(
                     items = listOf(
                         FloatingActionButtonItem(
                             icon = Icons.Default.Abc,
-                            label = "From text...",
-                            onFabItemClicked = events::onAddTextCodeClicked
+                            label = "From text",
+                            onFabItemClicked = {
+                                events.onAddTextCodeClicked()
+                                fabState.stateChange()
+                            }
                         ),
                         FloatingActionButtonItem(
                             icon = Icons.Filled.CameraAlt,
-                            label = "From photo...",
-                            onFabItemClicked = events::onScanBarcodeFromCameraClicked
+                            label = "From photo",
+                            onFabItemClicked = {
+                                events.onScanBarcodeFromCameraClicked()
+                                fabState.stateChange()
+                            }
                         ),
                         FloatingActionButtonItem(
                             icon = Icons.Filled.Image,
-                            label = "From image...",
-                            onFabItemClicked = events::onScanBarcodeFromImageClicked
+                            label = "From image",
+                            onFabItemClicked = {
+                                events.onScanBarcodeFromImageClicked()
+                                fabState.stateChange()
+                            }
                         )
                     )
                 )
@@ -122,8 +132,8 @@ private fun NonEmptyContent(state: HomeScreenState, events: HomeScreenEvents) {
         items(state.codes) { code ->
             CodeFiche(
                 headline = code.name,
-                text = code.value,
-                onDeleteClicked = { events.onDeleteCodeClicked(code) },
+                onClick = { events.onShowCodeClicked(code) },
+                onDeleteClick = { events.onDeleteCodeClicked(code) },
                 modifier = Modifier
                     .padding(top = 8.dp, bottom = 8.dp)
                     .fillParentMaxWidth()
@@ -144,8 +154,8 @@ fun HomeScreen_full() {
     HomeScreen(
         HomeScreenState(
             codes = listOf(
-                CodeState(1, "Supercode", "test"),
-                CodeState(2, "Supercode2345", "test2345")
+                CodeModel(1, "Supercode", "test", "qr_code"),
+                CodeModel(2, "Supercode2345", "test2345", "raw_text")
             )
         )
     )

@@ -5,6 +5,7 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.github.ilikeyourhat.fmnw.db.StoredCode
 import com.github.ilikeyourhat.fmnw.db.StoredCodeDao
+import com.github.ilikeyourhat.fmnw.model.CodeModel
 import com.github.ilikeyourhat.fmnw.ui.core.navigation.Navigation
 import com.github.ilikeyourhat.fmnw.ui.core.navigation.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -38,16 +39,27 @@ class HomeViewModel @Inject constructor(
         router.navigate(Navigation.PickCode)
     }
 
-    override fun onDeleteCodeClicked(code: CodeState) {
+    override fun onShowCodeClicked(code: CodeModel) {
+        val codeModel = CodeModel(
+            id = code.id,
+            name = code.name,
+            value = code.value,
+            type = code.type
+        )
+        router.navigate(Navigation.ShowCode(codeModel))
+    }
+
+    override fun onDeleteCodeClicked(code: CodeModel) {
         viewModelScope.launch {
             storedCodeDao.delete(code.id)
         }
     }
 
-    private fun StoredCode.toUiState(): CodeState {
-        return CodeState(
+    private fun StoredCode.toUiState(): CodeModel {
+        return CodeModel(
             id = id,
             name = name,
+            type = type,
             value = value
         )
     }

@@ -32,15 +32,16 @@ import com.github.ilikeyourhat.fmnw.ui.core.theme.primaryLight
 @Composable
 fun CodeFiche(
     headline: String,
-    text: String,
     modifier: Modifier = Modifier,
-    onDeleteClicked: () -> Unit = {}
+    onClick: () -> Unit = {},
+    onDeleteClick: () -> Unit = {}
 ) {
     Card(
         elevation = CardDefaults.cardElevation(
             defaultElevation = 2.dp
         ),
         border = BorderStroke(2.dp, primaryLight),
+        onClick = onClick,
         modifier = modifier
     ) {
         Row(
@@ -60,15 +61,6 @@ fun CodeFiche(
                             top = 8.dp
                         )
                 )
-                Text(
-                    text = text,
-                    modifier = Modifier
-                        .padding(
-                            start = 8.dp,
-                            end = 8.dp,
-                            bottom = 8.dp
-                        )
-                )
             }
             var expanded by remember { mutableStateOf(false) }
             IconButton(
@@ -85,7 +77,7 @@ fun CodeFiche(
                         },
                         text = {  Text("Delete") },
                         onClick = {
-                            onDeleteClicked()
+                            onDeleteClick()
                             expanded = false
                         }
                     )
@@ -101,8 +93,7 @@ fun CodeFiche(
 fun CodeFiche_default() {
     AppTheme {
         CodeFiche(
-            headline = "Headline",
-            text = "My secret code"
+            headline = "Headline"
         )
     }
 }
@@ -113,7 +104,6 @@ fun CodeFiche_long() {
     AppTheme {
         CodeFiche(
             headline = "Headline",
-            text = "My secret code",
             modifier = Modifier.width(200.dp)
         )
     }

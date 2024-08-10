@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
+    id("kotlin-parcelize")
 }
 
 android {
@@ -56,7 +57,7 @@ dependencies {
     implementation(libs.androidx.camera.lifecycle)
     implementation(libs.composed.barcodes)
     ksp(libs.hilt.ksp)
-    implementation("de.charlex.compose:speeddial-bottomappbar-material3:1.1.1")
+    implementation("de.charlex.compose:speeddial-bottomappbar-material3:1.2.0")
     implementation("androidx.compose.material:material-icons-extended:1.6.8")
 
     implementation(libs.liveevent)

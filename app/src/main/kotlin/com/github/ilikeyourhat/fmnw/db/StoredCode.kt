@@ -8,5 +8,6 @@ data class StoredCode(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     val name: String,
-    val value: String
+    val value: String,
+    val type: String
 )

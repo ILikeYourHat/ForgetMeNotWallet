@@ -25,9 +25,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".ui.screen.addcode.AddCodeActivity" />
         <activity android:name=".ui.screen.scancode.ScanCodeActivity" />
+        <activity android:name=".ui.screen.showcode.ShowCodeActivity" />
     </application>
 
 </manifest>

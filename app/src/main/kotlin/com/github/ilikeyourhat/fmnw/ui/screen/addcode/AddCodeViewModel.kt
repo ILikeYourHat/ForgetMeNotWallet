@@ -2,10 +2,12 @@ package com.github.ilikeyourhat.fmnw.ui.screen.addcode
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.ilikeyourhat.fmnw.db.StoredCode
 import com.github.ilikeyourhat.fmnw.db.StoredCodeDao
+import com.github.ilikeyourhat.fmnw.model.BarcodeModel
 import com.github.ilikeyourhat.fmnw.ui.core.navigation.Navigation
 import com.github.ilikeyourhat.fmnw.ui.core.navigation.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,11 +17,16 @@ import javax.inject.Inject
 @HiltViewModel
 class AddCodeViewModel @Inject constructor(
     val router: Router,
+    savedStateHandle: SavedStateHandle,
     private val storedCodeDao: StoredCodeDao
 ): ViewModel(), AddCodeEvents {
 
+    private val barcode: BarcodeModel? by lazy { savedStateHandle["barcode"] }
+
     private val _screen = MutableLiveData(
-        AddCodeScreenState()
+        AddCodeScreenState(
+            barcode = barcode
+        )
     )
     val screen: LiveData<AddCodeScreenState> = _screen
 
@@ -37,7 +44,8 @@ class AddCodeViewModel @Inject constructor(
             storedCodeDao.insert(
                 StoredCode(
                     name = state.name,
-                    value = state.value
+                    value = state.barcode?.value ?: state.value,
+                    type = state.barcode?.type ?: "raw_text"
                 )
             )
             router.navigate(Navigation.Close)
