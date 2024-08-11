@@ -43,8 +43,11 @@ fun AddCodeScreen(
                         }
                     },
                     title = {
-                        val isPersisted = state.barcode?.isPersisted() ?: false
-                        val titleText = if (isPersisted) "Edit code" else "Add new code"
+                        val titleText = if (state.barcode.isPersisted()) {
+                            "Edit code"
+                        } else {
+                            "Add new code"
+                        }
                         Text(titleText)
                     }
                 )
@@ -65,13 +68,13 @@ private fun Content(state: AddCodeScreenState, events: AddCodeEvents) {
         modifier = Modifier.padding(start = 16.dp, end = 16.dp)
     ) {
         OutlinedTextField(
-            value = state.name,
+            value = state.barcode.name,
             label = { Text(text = "Enter name of your code") },
             onValueChange = events::onCodeNameChanged
         )
-        if (state.barcode == null) {
+        if (state.barcode.type == null) {
             OutlinedTextField(
-                value = state.value,
+                value = state.barcode.value,
                 label = { Text(text = "Enter your code") },
                 onValueChange = events::onCodeValueChanged,
                 modifier = Modifier.padding(top = 8.dp)

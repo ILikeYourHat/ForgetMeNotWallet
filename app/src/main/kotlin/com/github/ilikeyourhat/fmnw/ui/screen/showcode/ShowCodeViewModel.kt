@@ -16,7 +16,7 @@ class ShowCodeViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle
 ): ViewModel(), ShowCodeScreenEvents {
 
-    private val code: CodeModel = savedStateHandle["code"]!!
+    private val code: CodeModel = savedStateHandle[Navigation.KEY_BARCODE]!!
 
     private val _uiState = MutableLiveData(
         ShowCodeScreenState(code)

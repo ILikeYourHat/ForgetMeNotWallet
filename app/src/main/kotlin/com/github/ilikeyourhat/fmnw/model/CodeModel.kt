@@ -7,8 +7,8 @@ import kotlinx.parcelize.Parcelize
 data class CodeModel (
     val id: Int? = null,
     val name: String = "",
-    val value: String,
-    val type: BarcodeModelType?
+    val value: String = "",
+    val type: BarcodeModelType? = null
 ) : Parcelable {
     fun isPersisted() = id != null
 }

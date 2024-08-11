@@ -5,6 +5,7 @@ import android.content.Intent
 import android.widget.Toast
 import com.github.ilikeyourhat.fmnw.model.CodeModel
 import com.github.ilikeyourhat.fmnw.ui.screen.addcode.AddCodeActivity
+import com.github.ilikeyourhat.fmnw.ui.screen.addcode.AddCodeViewModel
 import com.github.ilikeyourhat.fmnw.ui.screen.scancode.ScanCodeActivity
 import com.github.ilikeyourhat.fmnw.ui.screen.showcode.ShowCodeActivity
 
@@ -23,7 +24,7 @@ sealed class Navigation {
     ): Navigation() {
         override fun navigate(activity: Activity) {
             val intent = Intent(activity, AddCodeActivity::class.java)
-            intent.putExtra("barcode", barcode)
+            intent.putExtra(KEY_BARCODE, barcode)
             activity.startActivity(intent)
             if (closeCurrent) {
                 activity.finish()
@@ -47,8 +48,12 @@ sealed class Navigation {
     data class ShowCode(val code: CodeModel): Navigation() {
         override fun navigate(activity: Activity) {
             val intent = Intent(activity, ShowCodeActivity::class.java)
-            intent.putExtra("code", code)
+            intent.putExtra(KEY_BARCODE, code)
             activity.startActivity(intent)
         }
+    }
+    
+    companion object {
+        const val KEY_BARCODE = "barcode"
     }
 }

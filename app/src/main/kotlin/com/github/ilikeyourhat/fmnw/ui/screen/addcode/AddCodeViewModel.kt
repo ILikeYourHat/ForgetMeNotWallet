@@ -22,34 +22,30 @@ class AddCodeViewModel @Inject constructor(
     private val storedCodeDao: StoredCodeDao
 ) : ViewModel(), AddCodeEvents {
 
-    private val barcode: CodeModel? by lazy { savedStateHandle["barcode"] }
-
     private val _screen = MutableLiveData(
         AddCodeScreenState(
-            name = barcode?.name.orEmpty(),
-            value = barcode?.value.orEmpty(),
-            barcode = barcode,
+            barcode = savedStateHandle[Navigation.KEY_BARCODE] ?: CodeModel(),
         )
     )
     val screen: LiveData<AddCodeScreenState> = _screen
 
     override fun onCodeNameChanged(name: String) {
-        _screen.value = _screen.value!!.copy(name = name)
+        val state = _screen.value!!
+        _screen.value = state.copy(
+            barcode = state.barcode.copy(name = name)
+        )
     }
 
     override fun onCodeValueChanged(value: String) {
-        _screen.value = _screen.value!!.copy(value = value)
+        val state = _screen.value!!
+        _screen.value = state.copy(
+            barcode = state.barcode.copy(value = value)
+        )
     }
 
     override fun onDoneClicked() {
         viewModelScope.launch {
-            val state = _screen.value!!
-            val codeModel = CodeModel(
-                id = barcode?.id,
-                name = state.name,
-                value = barcode?.value ?: state.value,
-                type = barcode?.type
-            )
+            val codeModel = _screen.value!!.barcode
             storedCodeDao.insertOrReplace(codeModel.toStoredCode())
             router.navigate(Navigation.Close)
         }

@@ -3,9 +3,7 @@ package com.github.ilikeyourhat.fmnw.ui.screen.addcode
 import com.github.ilikeyourhat.fmnw.model.CodeModel
 
 data class AddCodeScreenState(
-    val name: String = "",
-    val value: String = "",
-    val barcode: CodeModel? = null
+    val barcode: CodeModel = CodeModel()
 )
 
 interface AddCodeEvents {
