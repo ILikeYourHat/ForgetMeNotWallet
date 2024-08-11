@@ -9,4 +9,6 @@ data class CodeModel (
     val name: String = "",
     val value: String,
     val type: BarcodeModelType?
-) : Parcelable
+) : Parcelable {
+    fun isPersisted() = id != null
+}

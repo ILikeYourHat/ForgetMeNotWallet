@@ -50,6 +50,10 @@ class HomeViewModel @Inject constructor(
         router.navigate(Navigation.ShowCode(codeModel))
     }
 
+    override fun onEditCodeClicked(code: CodeModel) {
+        router.navigate(Navigation.AddCode(code))
+    }
+
     override fun onDeleteCodeClicked(code: CodeModel) {
         viewModelScope.launch {
             storedCodeDao.delete(code.id!!)

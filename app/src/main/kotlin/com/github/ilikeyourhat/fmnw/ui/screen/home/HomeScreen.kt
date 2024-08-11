@@ -134,6 +134,7 @@ private fun NonEmptyContent(state: HomeScreenState, events: HomeScreenEvents) {
             CodeFiche(
                 headline = code.name,
                 onClick = { events.onShowCodeClicked(code) },
+                onEditClick = { events.onEditCodeClicked(code) },
                 onDeleteClick = { events.onDeleteCodeClicked(code) },
                 modifier = Modifier
                     .padding(top = 8.dp, bottom = 8.dp)

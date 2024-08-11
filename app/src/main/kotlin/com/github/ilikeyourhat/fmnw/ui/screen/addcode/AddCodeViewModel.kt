@@ -26,7 +26,9 @@ class AddCodeViewModel @Inject constructor(
 
     private val _screen = MutableLiveData(
         AddCodeScreenState(
-            barcode = barcode
+            name = barcode?.name.orEmpty(),
+            value = barcode?.value.orEmpty(),
+            barcode = barcode,
         )
     )
     val screen: LiveData<AddCodeScreenState> = _screen
@@ -43,7 +45,7 @@ class AddCodeViewModel @Inject constructor(
         viewModelScope.launch {
             val state = _screen.value!!
             val codeModel = CodeModel(
-                id = 0,
+                id = barcode?.id,
                 name = state.name,
                 value = barcode?.value ?: state.value,
                 type = barcode?.type

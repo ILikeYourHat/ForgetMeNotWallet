@@ -1,10 +1,9 @@
 package com.github.ilikeyourhat.fmnw.ui.screen.showcode
 
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -34,7 +33,7 @@ fun ShowCodeScreen(
                     navigationIcon = {
                         IconButton(onClick = events::onCloseClicked) {
                             Icon(
-                                imageVector = Icons.Filled.Close,
+                                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                                 contentDescription = "Localized description"
                             )
                         }

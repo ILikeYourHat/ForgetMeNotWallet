@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Button
@@ -43,7 +42,11 @@ fun AddCodeScreen(
                             )
                         }
                     },
-                    title = { Text("Add new code") }
+                    title = {
+                        val isPersisted = state.barcode?.isPersisted() ?: false
+                        val titleText = if (isPersisted) "Edit code" else "Add new code"
+                        Text(titleText)
+                    }
                 )
             },
             content = { padding ->
@@ -84,7 +87,7 @@ private fun Content(state: AddCodeScreenState, events: AddCodeEvents) {
         Button(
             onClick = events::onDoneClicked,
             content = {
-                Text("Add")
+                Text("Save")
             },
             modifier = Modifier.padding(top = 8.dp)
         )

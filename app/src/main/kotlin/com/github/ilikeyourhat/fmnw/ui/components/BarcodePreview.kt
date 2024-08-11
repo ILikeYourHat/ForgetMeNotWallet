@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -43,8 +44,10 @@ fun BarcodePreview(
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
-                .shadow(4.dp)
-                .clip(RoundedCornerShape(16.dp))
+                .shadow(
+                    elevation = 4.dp,
+                    shape = RoundedCornerShape(16.dp)
+                )
                 .background(Color.White)
                 .padding(16.dp)
         ) {
@@ -202,5 +205,21 @@ fun BarcodePreview_adjustToSize() {
                 type = null
             )
         )
+    }
+}
+
+@Preview
+@Composable
+fun BarcodePreview_onSurface() {
+    AppTheme {
+        Surface {
+            BarcodePreview(
+                CodeModel(
+                    value = "12345",
+                    type = BarcodeModelType.QR_CODE
+                ),
+                modifier = Modifier.padding(8.dp)
+            )
+        }
     }
 }

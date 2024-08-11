@@ -11,6 +11,7 @@ interface HomeScreenEvents {
     fun onScanBarcodeFromCameraClicked()
     fun onScanBarcodeFromImageClicked()
     fun onShowCodeClicked(code: CodeModel)
+    fun onEditCodeClicked(code: CodeModel)
     fun onDeleteCodeClicked(code: CodeModel)
 
     companion object {
@@ -19,6 +20,7 @@ interface HomeScreenEvents {
             override fun onScanBarcodeFromCameraClicked() = Unit
             override fun onScanBarcodeFromImageClicked() = Unit
             override fun onShowCodeClicked(code: CodeModel) = Unit
+            override fun onEditCodeClicked(code: CodeModel) = Unit
             override fun onDeleteCodeClicked(code: CodeModel) = Unit
         }
     }

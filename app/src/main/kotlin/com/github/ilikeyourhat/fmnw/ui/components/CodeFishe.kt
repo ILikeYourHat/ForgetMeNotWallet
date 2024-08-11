@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -34,6 +35,7 @@ fun CodeFiche(
     headline: String,
     modifier: Modifier = Modifier,
     onClick: () -> Unit = {},
+    onEditClick: () -> Unit = {},
     onDeleteClick: () -> Unit = {}
 ) {
     Card(
@@ -65,6 +67,16 @@ fun CodeFiche(
                     expanded = expanded,
                     onDismissRequest = { expanded = false }
                 ) {
+                    DropdownMenuItem(
+                        leadingIcon = {
+                            Icon(imageVector = Icons.Filled.Edit, contentDescription = "")
+                        },
+                        text = { Text("Edit") },
+                        onClick = {
+                            onEditClick()
+                            expanded = false
+                        }
+                    )
                     DropdownMenuItem(
                         leadingIcon = {
                             Icon(imageVector = Icons.Filled.Delete, contentDescription = "")
