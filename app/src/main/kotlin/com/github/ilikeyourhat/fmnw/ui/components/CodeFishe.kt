@@ -2,11 +2,11 @@ package com.github.ilikeyourhat.fmnw.ui.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CreditCard
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.MoreVert
@@ -18,6 +18,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.minimumInteractiveComponentSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -51,12 +52,17 @@ fun CodeFiche(
             verticalAlignment = Alignment.Top,
             modifier = Modifier.padding(8.dp)
         ) {
+            Icon(
+                imageVector = Icons.Filled.CreditCard,
+                contentDescription = "",
+                modifier = Modifier.minimumInteractiveComponentSize()
+            )
             Text(
                 text = headline,
                 style = MaterialTheme.typography.headlineSmall,
                 modifier = Modifier
                     .weight(1f)
-                    .padding(8.dp)
+                    .padding(top = 8.dp, bottom = 8.dp)
             )
             var expanded by remember { mutableStateOf(false) }
             IconButton(
@@ -110,7 +116,7 @@ fun CodeFiche_long() {
     AppTheme {
         CodeFiche(
             headline = "Headline",
-            modifier = Modifier.width(200.dp)
+            modifier = Modifier.width(220.dp)
         )
     }
 }

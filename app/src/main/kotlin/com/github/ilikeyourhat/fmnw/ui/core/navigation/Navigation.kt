@@ -5,7 +5,6 @@ import android.content.Intent
 import android.widget.Toast
 import com.github.ilikeyourhat.fmnw.model.CodeModel
 import com.github.ilikeyourhat.fmnw.ui.screen.addcode.AddCodeActivity
-import com.github.ilikeyourhat.fmnw.ui.screen.addcode.AddCodeViewModel
 import com.github.ilikeyourhat.fmnw.ui.screen.scancode.ScanCodeActivity
 import com.github.ilikeyourhat.fmnw.ui.screen.showcode.ShowCodeActivity
 
@@ -52,7 +51,7 @@ sealed class Navigation {
             activity.startActivity(intent)
         }
     }
-    
+
     companion object {
         const val KEY_BARCODE = "barcode"
     }
