@@ -50,7 +50,7 @@ class AddCodeViewModel @Inject constructor(
                 value = barcode?.value ?: state.value,
                 type = barcode?.type
             )
-            storedCodeDao.insert(codeModel.toStoredCode())
+            storedCodeDao.insertOrReplace(codeModel.toStoredCode())
             router.navigate(Navigation.Close)
         }
     }
