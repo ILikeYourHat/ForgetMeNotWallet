@@ -1,5 +1,9 @@
 package com.github.ilikeyourhat.fmnw.ui.screen.home
 
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.VisibilityThreshold
+import androidx.compose.animation.core.spring
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -23,6 +27,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.github.ilikeyourhat.fmnw.R
 import com.github.ilikeyourhat.fmnw.model.BarcodeModelType
@@ -124,13 +129,17 @@ private fun EmptyContent() {
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun NonEmptyContent(state: HomeScreenState, events: HomeScreenEvents) {
     LazyColumn(
         contentPadding = PaddingValues(16.dp),
         modifier = Modifier.fillMaxSize()
     ) {
-        items(state.codes) { code ->
+        items(
+            items = state.codes,
+            key = { it.id!! }
+        ) { code ->
             CodeFiche(
                 headline = code.name,
                 onClick = { events.onShowCodeClicked(code) },
@@ -139,6 +148,12 @@ private fun NonEmptyContent(state: HomeScreenState, events: HomeScreenEvents) {
                 modifier = Modifier
                     .padding(top = 8.dp, bottom = 8.dp)
                     .fillParentMaxWidth()
+                    .animateItemPlacement(
+                        animationSpec = spring(
+                            stiffness = Spring.StiffnessMediumLow,
+                            visibilityThreshold = IntOffset.VisibilityThreshold
+                        )
+                    )
             )
         }
     }

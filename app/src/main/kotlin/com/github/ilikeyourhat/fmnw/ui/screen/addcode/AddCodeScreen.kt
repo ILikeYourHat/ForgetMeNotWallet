@@ -7,15 +7,24 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Button
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -69,31 +78,74 @@ private fun Content(state: AddCodeScreenState, events: AddCodeEvents) {
     ) {
         OutlinedTextField(
             value = state.barcode.name,
-            label = { Text(text = "Enter name of your code") },
-            onValueChange = events::onCodeNameChanged
+            label = { Text(text = "Name") },
+            onValueChange = events::onCodeNameChanged,
+            modifier = Modifier.fillMaxWidth()
         )
-        if (state.barcode.type == null) {
-            OutlinedTextField(
-                value = state.barcode.value,
-                label = { Text(text = "Enter your code") },
-                onValueChange = events::onCodeValueChanged,
-                modifier = Modifier.padding(top = 8.dp)
-            )
-        } else {
-            BarcodePreview(
-                barcodeModel = state.barcode,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(200.dp)
-            )
-        }
+        FormatPicker(
+            selectedFormat = state.barcode.type,
+            events = events,
+            modifier = Modifier
+                .padding(top = 8.dp)
+                .fillMaxWidth()
+        )
+        OutlinedTextField(
+            value = state.barcode.value,
+            label = { Text(text = "Value") },
+            onValueChange = events::onCodeValueChanged,
+            modifier = Modifier
+                .padding(top = 8.dp)
+                .fillMaxWidth()
+        )
         Button(
             onClick = events::onDoneClicked,
             content = {
                 Text("Save")
             },
             modifier = Modifier.padding(top = 8.dp)
+                .fillMaxWidth()
         )
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun FormatPicker(
+    selectedFormat: BarcodeModelType?,
+    events: AddCodeEvents,
+    modifier: Modifier = Modifier
+) {
+    val options = listOf("Raw text") + BarcodeModelType.entries.map { it.toString() }
+    var expanded by remember { mutableStateOf(false) }
+    ExposedDropdownMenuBox(
+        expanded = expanded,
+        onExpandedChange = { expanded = it },
+    ) {
+        OutlinedTextField(
+            modifier = modifier.menuAnchor(),
+            value = selectedFormat?.toString() ?: "Raw text",
+            onValueChange = { },
+
+            label = { Text("Label") },
+            trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
+            colors = ExposedDropdownMenuDefaults.textFieldColors(),
+        )
+        ExposedDropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { expanded = false },
+        ) {
+            options.forEach { option ->
+                DropdownMenuItem(
+                    text = { Text(option) },
+                    onClick = {
+                        val format = BarcodeModelType.entries.singleOrNull { option == it.toString() }
+                        events.onCodeFormatChanged(format)
+                        expanded = false
+                    },
+                    contentPadding = ExposedDropdownMenuDefaults.ItemContentPadding,
+                )
+            }
+        }
     }
 }
 

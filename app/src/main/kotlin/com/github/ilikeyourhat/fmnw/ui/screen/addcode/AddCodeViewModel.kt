@@ -36,6 +36,13 @@ class AddCodeViewModel @Inject constructor(
         )
     }
 
+    override fun onCodeFormatChanged(format: BarcodeModelType?) {
+        val state = _screen.value!!
+        _screen.value = state.copy(
+            barcode = state.barcode.copy(type = format)
+        )
+    }
+
     override fun onCodeValueChanged(value: String) {
         val state = _screen.value!!
         _screen.value = state.copy(
