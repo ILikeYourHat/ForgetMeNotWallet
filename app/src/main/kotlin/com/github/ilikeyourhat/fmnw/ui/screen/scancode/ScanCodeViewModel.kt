@@ -2,8 +2,10 @@ package com.github.ilikeyourhat.fmnw.ui.screen.scancode
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.github.ilikeyourhat.fmnw.model.BarcodeModelType
+import com.github.ilikeyourhat.fmnw.model.Group
 import com.github.ilikeyourhat.fmnw.model.LoyaltyCard
 import com.github.ilikeyourhat.fmnw.ui.navigation.Navigation
 import com.github.ilikeyourhat.fmnw.ui.navigation.Router
@@ -14,6 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ScanCodeViewModel @Inject constructor(
+    savedStateHandle: SavedStateHandle,
     val router: Router
 ) : ViewModel(), ScanCodeScreenEvents {
 
@@ -21,6 +24,8 @@ class ScanCodeViewModel @Inject constructor(
         ScanCodeScreenState()
     )
     val uiState: LiveData<ScanCodeScreenState> = _uiState
+
+    private val parentGroup: Group? = savedStateHandle["parent_group"]
 
     override fun onCloseClicked() {
         router.navigate(Navigation.Close)
@@ -47,7 +52,8 @@ class ScanCodeViewModel @Inject constructor(
         val value = rawValue ?: return null
         return LoyaltyCard(
             barcodeType = type,
-            value = value
+            value = value,
+            groupId = parentGroup?.id
         )
     }
 

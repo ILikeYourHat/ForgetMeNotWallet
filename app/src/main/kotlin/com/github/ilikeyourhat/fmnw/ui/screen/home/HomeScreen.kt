@@ -11,17 +11,17 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.Note
-import androidx.compose.material.icons.filled.Abc
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Apps
-import androidx.compose.material.icons.filled.CameraAlt
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.CreditCard
-import androidx.compose.material.icons.filled.Image
-import androidx.compose.material.icons.filled.Note
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -60,7 +60,23 @@ fun HomeScreen(
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text(stringResource(R.string.app_name)) }
+                    title = {
+                        if (state.group != null) {
+                            Text(state.group.name)
+                        } else {
+                            Text(stringResource(R.string.app_name))
+                        }
+                    },
+                    navigationIcon = {
+                        if (state.group != null) {
+                            IconButton(onClick = events::onBackClicked) {
+                                Icon(
+                                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                                    contentDescription = "Localized description"
+                                )
+                            }
+                        }
+                    },
                 )
             },
             floatingActionButton = {
@@ -151,9 +167,9 @@ private fun NonEmptyContent(state: HomeScreenState, events: HomeScreenEvents) {
             CodeFiche(
                 headline = code.name,
                 icon = getIconFor(code),
-                onClick = { events.onShowCodeClicked(code) },
-                onEditClick = { events.onEditCodeClicked(code) },
-                onDeleteClick = { events.onDeleteCodeClicked(code) },
+                onClick = { events.onItemClicked(code) },
+                onEditClick = { events.onEditItemClicked(code) },
+                onDeleteClick = { events.onDeleteItemClicked(code) },
                 modifier = Modifier
                     .padding(top = 8.dp, bottom = 8.dp)
                     .fillParentMaxWidth()

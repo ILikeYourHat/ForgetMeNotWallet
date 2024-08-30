@@ -121,10 +121,9 @@ private fun FormatPicker(
             modifier = modifier.menuAnchor(),
             value = selectedFormat?.toString() ?: "Raw text",
             onValueChange = { },
-
-            label = { Text("Label") },
+            readOnly = true,
+            label = { Text("Barcode type") },
             trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
-            colors = ExposedDropdownMenuDefaults.textFieldColors(),
         )
         ExposedDropdownMenu(
             expanded = expanded,

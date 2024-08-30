@@ -44,18 +44,35 @@ fun ShowCodeScreen(
             },
             content = { padding ->
                 Surface(modifier = Modifier.padding(padding)) {
-                    if (state.item is LoyaltyCard) {
-                        BarcodePreview(
-                            barcodeContainer = state.item,
-                            modifier = Modifier.fillMaxWidth()
-                                .padding(16.dp)
-                        )
+                    when (state.item) {
+                        is LoyaltyCard -> LoyaltyCardContent(state.item)
+                        is Note -> NoteContent(state.item)
+                        else -> {}
                     }
                 }
             }
 
         )
     }
+}
+
+@Composable
+private fun LoyaltyCardContent(loyaltyCard: LoyaltyCard) {
+    BarcodePreview(
+        barcodeContainer = loyaltyCard,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+    )
+}
+
+@Composable
+private fun NoteContent(note: Note) {
+    Text(
+        text = note.value,
+        modifier = Modifier
+            .padding(16.dp)
+    )
 }
 
 @Preview

@@ -1,5 +1,6 @@
 package com.github.ilikeyourhat.fmnw.ui.screen.home
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
@@ -20,31 +21,26 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     val router: Router,
+    savedStateHandle: SavedStateHandle,
     private val repository: DatabaseRepository
 ): ViewModel(), HomeScreenEvents {
 
-    val uiState = repository.getContent()
+    private val group: Group? = savedStateHandle["group"]
+
+    val uiState = repository.getGroupContent(group)
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
-        .map { HomeScreenState(it) }
+        .map { HomeScreenState(group, it) }
         .asLiveData()
 
-    override fun onAddTextCodeClicked() {
-        router.navigate(Navigation.AddCode())
+    override fun onItemClicked(item: WalletItem) {
+        if (item is Group) {
+            router.navigate(Navigation.ShowGroup(item))
+        } else {
+            router.navigate(Navigation.ShowCode(item))
+        }
     }
 
-    override fun onScanBarcodeFromCameraClicked() {
-        router.navigate(Navigation.ScanCodeFromCamera)
-    }
-
-    override fun onScanBarcodeFromImageClicked() {
-        router.navigate(Navigation.ScanCodeFromImage)
-    }
-
-    override fun onShowCodeClicked(item: WalletItem) {
-        router.navigate(Navigation.ShowCode(item))
-    }
-
-    override fun onEditCodeClicked(item: WalletItem) {
+    override fun onEditItemClicked(item: WalletItem) {
         val navigationTarget = when(item) {
             is LoyaltyCard -> Navigation.EditLoyaltyCard(item)
             is Note -> Navigation.EditNote(item)
@@ -53,21 +49,25 @@ class HomeViewModel @Inject constructor(
         router.navigate(navigationTarget)
     }
 
-    override fun onDeleteCodeClicked(item: WalletItem) {
+    override fun onDeleteItemClicked(item: WalletItem) {
         viewModelScope.launch {
             repository.delete(item)
         }
     }
 
     override fun onAddLoyaltyCardClicked() {
-        router.navigate(Navigation.AddLoyaltyCard)
+        router.navigate(Navigation.AddLoyaltyCard(group))
     }
 
     override fun onAddNoteClicked() {
-        router.navigate(Navigation.AddNote)
+        router.navigate(Navigation.AddNote(group))
     }
 
     override fun onAddGroupClicked() {
-        router.navigate(Navigation.AddGroup)
+        router.navigate(Navigation.AddGroup(group))
+    }
+
+    override fun onBackClicked() {
+        router.navigate(Navigation.Close)
     }
 }

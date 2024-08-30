@@ -1,6 +1,7 @@
 package com.github.ilikeyourhat.fmnw.domain
 
 import com.github.ilikeyourhat.fmnw.db.WalletItemDao
+import com.github.ilikeyourhat.fmnw.model.Group
 import com.github.ilikeyourhat.fmnw.model.WalletItem
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -14,10 +15,11 @@ class DatabaseRepository @Inject constructor(
         walletItemDao.insertOrReplace(item.toEntity())
     }
 
-    fun getContent(): Flow<List<WalletItem>> {
-        return walletItemDao.getAll(null)
-            .map { storedCodes ->
-                storedCodes.map { it.toDomainModel() }
+    fun getGroupContent(group: Group?): Flow<List<WalletItem>> {
+        return walletItemDao.getAll(group?.id)
+            .map { items ->
+                items.map { it.toDomainModel() }
+                    .sortedWith(compareBy({ it !is Group }, { it.name }))
             }
     }
 

@@ -10,6 +10,7 @@ import com.github.ilikeyourhat.fmnw.model.WalletItem
 import com.github.ilikeyourhat.fmnw.ui.screen.edit.group.EditGroupActivity
 import com.github.ilikeyourhat.fmnw.ui.screen.edit.loyaltycard.EditLoyaltyCardActivity
 import com.github.ilikeyourhat.fmnw.ui.screen.edit.note.EditNoteActivity
+import com.github.ilikeyourhat.fmnw.ui.screen.home.HomeActivity
 import com.github.ilikeyourhat.fmnw.ui.screen.scancode.ScanCodeActivity
 import com.github.ilikeyourhat.fmnw.ui.screen.showcode.ShowCodeActivity
 
@@ -36,61 +37,46 @@ sealed class Navigation {
         }
     }
 
-    data object AddLoyaltyCard: Navigation() {
+    data class AddLoyaltyCard(val parentGroup: Group?): Navigation() {
         override fun navigate(activity: Activity) {
             val intent = Intent(activity, ScanCodeActivity::class.java)
+            intent.putExtra("parent_group", parentGroup)
             activity.startActivity(intent)
         }
     }
 
     data class EditLoyaltyCard(val card: LoyaltyCard): Navigation() {
         override fun navigate(activity: Activity) {
-            val intent = Intent(activity, EditLoyaltyCardActivity::class.java)
-            intent.putExtra(KEY_BARCODE, card)
+            val intent = EditLoyaltyCardActivity.intentEdit(activity, card)
             activity.startActivity(intent)
         }
     }
 
-    data object AddNote: Navigation() {
+    data class AddNote(val parentGroup: Group?): Navigation() {
         override fun navigate(activity: Activity) {
-            val intent = Intent(activity, EditNoteActivity::class.java)
+            val intent = EditNoteActivity.intentCreate(activity, parentGroup)
             activity.startActivity(intent)
         }
     }
 
     data class EditNote(val note: Note): Navigation() {
         override fun navigate(activity: Activity) {
-            val intent = Intent(activity, EditNoteActivity::class.java)
-            intent.putExtra(KEY_BARCODE, note)
+            val intent = EditNoteActivity.intentEdit(activity, note)
             activity.startActivity(intent)
         }
     }
 
-    data object AddGroup: Navigation() {
+    data class AddGroup(val parentGroup: Group?): Navigation() {
         override fun navigate(activity: Activity) {
-            val intent = Intent(activity, EditGroupActivity::class.java)
+            val intent = EditGroupActivity.intentCreate(activity, parentGroup)
             activity.startActivity(intent)
         }
     }
 
     data class EditGroup(val group: Group): Navigation() {
         override fun navigate(activity: Activity) {
-            val intent = Intent(activity, EditGroupActivity::class.java)
-            intent.putExtra(KEY_BARCODE, group)
+            val intent = EditGroupActivity.intentEdit(activity, group)
             activity.startActivity(intent)
-        }
-    }
-
-    data object ScanCodeFromCamera: Navigation() {
-        override fun navigate(activity: Activity) {
-            val intent = Intent(activity, ScanCodeActivity::class.java)
-            activity.startActivity(intent)
-        }
-    }
-
-    data object ScanCodeFromImage: Navigation() {
-        override fun navigate(activity: Activity) {
-            Toast.makeText(activity, "Not yet implemented", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -98,6 +84,14 @@ sealed class Navigation {
         override fun navigate(activity: Activity) {
             val intent = Intent(activity, ShowCodeActivity::class.java)
             intent.putExtra(KEY_BARCODE, item)
+            activity.startActivity(intent)
+        }
+    }
+
+    data class ShowGroup(val item: Group) : Navigation() {
+        override fun navigate(activity: Activity) {
+            val intent = Intent(activity, HomeActivity::class.java)
+            intent.putExtra("group", item)
             activity.startActivity(intent)
         }
     }
