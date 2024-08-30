@@ -10,11 +10,13 @@ data class ScanCodeScreenState(
 interface ScanCodeScreenEvents {
     fun onCloseClicked()
     fun onBarcodeDetected(barcode: Barcode)
+    fun onInputManuallyClicked()
 
     companion object {
         val DUMMY = object : ScanCodeScreenEvents {
             override fun onCloseClicked() = Unit
             override fun onBarcodeDetected(barcode: Barcode) = Unit
+            override fun onInputManuallyClicked() = Unit
         }
     }
 }

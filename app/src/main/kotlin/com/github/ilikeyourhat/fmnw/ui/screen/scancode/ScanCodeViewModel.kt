@@ -41,6 +41,12 @@ class ScanCodeViewModel @Inject constructor(
         }
     }
 
+    override fun onInputManuallyClicked() {
+        _uiState.value = _uiState.value!!.copy(barcodeDetected = true)
+        val loyaltyCard = LoyaltyCard(groupId = parentGroup?.id)
+        router.navigate(Navigation.AddCode(loyaltyCard, closeCurrent = true))
+    }
+
     fun onPermissionGranted() {
         _uiState.value = _uiState.value!!.copy(
             permissionGranted = true

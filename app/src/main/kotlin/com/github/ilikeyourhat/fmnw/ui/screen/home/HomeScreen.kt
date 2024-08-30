@@ -149,7 +149,7 @@ private fun EmptyContent() {
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        Text("Add a new code by clicking the + button")
+        Text("Add a new item by clicking the + button")
     }
 }
 

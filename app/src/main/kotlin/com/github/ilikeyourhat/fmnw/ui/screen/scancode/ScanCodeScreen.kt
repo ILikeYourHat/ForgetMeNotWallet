@@ -1,10 +1,14 @@
 package com.github.ilikeyourhat.fmnw.ui.screen.scancode
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
@@ -12,6 +16,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.github.ilikeyourhat.fmnw.ui.components.CameraPreview
 import com.github.ilikeyourhat.fmnw.ui.theme.AppTheme
@@ -42,11 +47,23 @@ fun ScanCodeScreen(
                     if (state.permissionGranted && !state.barcodeDetected) {
                         CameraPreview(events::onBarcodeDetected)
                     } else {
-                        CircularProgressIndicator()
+                        Box(
+                            modifier = Modifier.fillMaxSize()
+                        ) {
+                            CircularProgressIndicator(
+                                modifier = Modifier.align(Alignment.Center)
+                            )
+                        }
                     }
                 }
+            },
+            floatingActionButton = {
+                ExtendedFloatingActionButton(
+                    onClick = events::onInputManuallyClicked,
+                    icon = { Icon(Icons.Filled.Edit, null) },
+                    text = { Text(text = "Input manually") },
+                )
             }
-
         )
     }
 }
