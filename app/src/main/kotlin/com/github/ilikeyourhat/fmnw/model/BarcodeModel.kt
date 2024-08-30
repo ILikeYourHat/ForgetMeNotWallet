@@ -1,5 +1,7 @@
 package com.github.ilikeyourhat.fmnw.model
 
+import java.util.Locale
+
 enum class BarcodeModelType(
     val isSquare: Boolean
 ) {
@@ -15,5 +17,9 @@ enum class BarcodeModelType(
     PDF_417(false),
     CODABAR(false),
     DATA_MATRIX(true),
-    AZTEC(true)
+    AZTEC(true);
+
+    override fun toString(): String {
+        return super.toString().lowercase(Locale.ROOT)
+    }
 }

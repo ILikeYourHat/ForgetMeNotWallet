@@ -4,9 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.github.ilikeyourhat.fmnw.domain.DatabaseRepository
-import com.github.ilikeyourhat.fmnw.model.CodeModel
-import com.github.ilikeyourhat.fmnw.ui.core.navigation.Navigation
-import com.github.ilikeyourhat.fmnw.ui.core.navigation.Router
+import com.github.ilikeyourhat.fmnw.model.WalletItem
+import com.github.ilikeyourhat.fmnw.ui.navigation.Navigation
+import com.github.ilikeyourhat.fmnw.ui.navigation.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map
@@ -37,17 +37,29 @@ class HomeViewModel @Inject constructor(
         router.navigate(Navigation.ScanCodeFromImage)
     }
 
-    override fun onShowCodeClicked(code: CodeModel) {
-        router.navigate(Navigation.ShowCode(code))
+    override fun onShowCodeClicked(item: WalletItem) {
+        router.navigate(Navigation.ShowCode(item))
     }
 
-    override fun onEditCodeClicked(code: CodeModel) {
-        router.navigate(Navigation.AddCode(code))
+    override fun onEditCodeClicked(item: WalletItem) {
+        router.navigate(Navigation.AddCode(item))
     }
 
-    override fun onDeleteCodeClicked(code: CodeModel) {
+    override fun onDeleteCodeClicked(item: WalletItem) {
         viewModelScope.launch {
-            repository.delete(code)
+            repository.delete(item)
         }
+    }
+
+    override fun onAddLoyaltyCardClicked() {
+        router.navigate(Navigation.AddLoyaltyCard)
+    }
+
+    override fun onAddNoteClicked() {
+        router.navigate(Navigation.AddNote)
+    }
+
+    override fun onAddGroupClicked() {
+        router.navigate(Navigation.AddGroup)
     }
 }

@@ -1,4 +1,4 @@
-package com.github.ilikeyourhat.fmnw.ui.core.theme
+package com.github.ilikeyourhat.fmnw.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

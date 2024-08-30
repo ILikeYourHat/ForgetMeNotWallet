@@ -14,7 +14,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.github.ilikeyourhat.fmnw.ui.components.CameraPreview
-import com.github.ilikeyourhat.fmnw.ui.core.theme.AppTheme
+import com.github.ilikeyourhat.fmnw.ui.theme.AppTheme
 
 @OptIn(ExperimentalMaterial3Api::class) // Experimental my ass
 @Composable

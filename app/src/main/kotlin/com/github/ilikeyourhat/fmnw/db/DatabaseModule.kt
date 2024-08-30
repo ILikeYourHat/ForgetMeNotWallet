@@ -26,7 +26,7 @@ class DatabaseModule {
     }
 
     @Provides
-    fun provideStoredCodeDao(database: ForgetMeNotWalletDatabase): StoredCodeDao {
-        return database.storedCodeDao()
+    fun provideWalletItemDao(database: ForgetMeNotWalletDatabase): WalletItemDao {
+        return database.walletItemDao()
     }
 }

@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.github.ilikeyourhat.fmnw.model.CodeModel
-import com.github.ilikeyourhat.fmnw.ui.core.navigation.Navigation
-import com.github.ilikeyourhat.fmnw.ui.core.navigation.Router
+import com.github.ilikeyourhat.fmnw.model.WalletItem
+import com.github.ilikeyourhat.fmnw.ui.navigation.Navigation
+import com.github.ilikeyourhat.fmnw.ui.navigation.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -16,10 +16,10 @@ class ShowCodeViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle
 ): ViewModel(), ShowCodeScreenEvents {
 
-    private val code: CodeModel = savedStateHandle[Navigation.KEY_BARCODE]!!
+    private val item: WalletItem = savedStateHandle[Navigation.KEY_BARCODE]!!
 
     private val _uiState = MutableLiveData(
-        ShowCodeScreenState(code)
+        ShowCodeScreenState(item)
     )
     val uiState: LiveData<ShowCodeScreenState> = _uiState
 

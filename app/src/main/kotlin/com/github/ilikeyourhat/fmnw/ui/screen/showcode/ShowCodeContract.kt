@@ -1,9 +1,9 @@
 package com.github.ilikeyourhat.fmnw.ui.screen.showcode
 
-import com.github.ilikeyourhat.fmnw.model.CodeModel
+import com.github.ilikeyourhat.fmnw.model.WalletItem
 
 data class ShowCodeScreenState(
-    val code: CodeModel
+    val item: WalletItem
 )
 
 interface ShowCodeScreenEvents {

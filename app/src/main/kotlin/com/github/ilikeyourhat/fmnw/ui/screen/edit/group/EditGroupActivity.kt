@@ -1,4 +1,4 @@
-package com.github.ilikeyourhat.fmnw.ui.screen.addcode
+package com.github.ilikeyourhat.fmnw.ui.screen.edit.group
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
@@ -7,15 +7,15 @@ import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AddCodeActivity : AppCompatActivity() {
+class EditGroupActivity : AppCompatActivity() {
 
-    private val viewModel: AddCodeViewModel by viewModels()
+    private val viewModel: EditGroupViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.screen.observe(this) { state ->
             setContent {
-                AddCodeScreen(state, viewModel)
+                EditGroupScreen(state, viewModel)
             }
         }
         viewModel.router.attachTo(this)

@@ -16,9 +16,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.github.ilikeyourhat.fmnw.model.BarcodeModelType
-import com.github.ilikeyourhat.fmnw.model.CodeModel
+import com.github.ilikeyourhat.fmnw.model.LoyaltyCard
+import com.github.ilikeyourhat.fmnw.model.Note
 import com.github.ilikeyourhat.fmnw.ui.components.BarcodePreview
-import com.github.ilikeyourhat.fmnw.ui.core.theme.AppTheme
+import com.github.ilikeyourhat.fmnw.ui.theme.AppTheme
 
 @OptIn(ExperimentalMaterial3Api::class) // Experimental my ass
 @Composable
@@ -38,16 +39,18 @@ fun ShowCodeScreen(
                             )
                         }
                     },
-                    title = { Text(state.code.name) }
+                    title = { Text(state.item.name) }
                 )
             },
             content = { padding ->
                 Surface(modifier = Modifier.padding(padding)) {
-                    BarcodePreview(
-                        barcodeModel = state.code,
-                        modifier = Modifier.fillMaxWidth()
-                            .padding(16.dp)
-                    )
+                    if (state.item is LoyaltyCard) {
+                        BarcodePreview(
+                            barcodeContainer = state.item,
+                            modifier = Modifier.fillMaxWidth()
+                                .padding(16.dp)
+                        )
+                    }
                 }
             }
 
@@ -60,10 +63,10 @@ fun ShowCodeScreen(
 fun ShowCodeScreen_withBarcode() {
     ShowCodeScreen(
         ShowCodeScreenState(
-            code = CodeModel(
+            item = LoyaltyCard(
                 id = 123,
                 name = "My saved code",
-                type = BarcodeModelType.QR_CODE,
+                barcodeType = BarcodeModelType.QR_CODE,
                 value = "123456"
             )
         )
@@ -75,10 +78,9 @@ fun ShowCodeScreen_withBarcode() {
 fun ShowCodeScreen_withTextCode() {
     ShowCodeScreen(
         ShowCodeScreenState(
-            code = CodeModel(
+            item = Note(
                 id = 123,
                 name = "My saved code",
-                type = null,
                 value = "123456"
             )
         )

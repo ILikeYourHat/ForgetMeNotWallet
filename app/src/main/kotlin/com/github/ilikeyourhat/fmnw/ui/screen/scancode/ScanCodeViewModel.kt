@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.github.ilikeyourhat.fmnw.model.BarcodeModelType
-import com.github.ilikeyourhat.fmnw.model.CodeModel
-import com.github.ilikeyourhat.fmnw.ui.core.navigation.Navigation
-import com.github.ilikeyourhat.fmnw.ui.core.navigation.Router
+import com.github.ilikeyourhat.fmnw.model.LoyaltyCard
+import com.github.ilikeyourhat.fmnw.ui.navigation.Navigation
+import com.github.ilikeyourhat.fmnw.ui.navigation.Router
 import com.google.mlkit.vision.barcode.common.Barcode
 import com.google.mlkit.vision.barcode.common.Barcode.BarcodeFormat
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -29,10 +29,10 @@ class ScanCodeViewModel @Inject constructor(
     override fun onBarcodeDetected(barcode: Barcode) {
         if (_uiState.value!!.barcodeDetected) return
 
-        val barcodeModel = barcode.toCodeModel()
-        if (barcodeModel != null) {
+        val loyaltyCard = barcode.toLoyaltyCard()
+        if (loyaltyCard != null) {
             _uiState.value = _uiState.value!!.copy(barcodeDetected = true)
-            router.navigate(Navigation.AddCode(barcodeModel, closeCurrent = true))
+            router.navigate(Navigation.AddCode(loyaltyCard, closeCurrent = true))
         }
     }
 
@@ -42,11 +42,11 @@ class ScanCodeViewModel @Inject constructor(
         )
     }
 
-    private fun Barcode.toCodeModel(): CodeModel? {
+    private fun Barcode.toLoyaltyCard(): LoyaltyCard? {
         val type = format.toBarcodeType() ?: return null
         val value = rawValue ?: return null
-        return CodeModel(
-            type = type,
+        return LoyaltyCard(
+            barcodeType = type,
             value = value
         )
     }
@@ -59,7 +59,7 @@ class ScanCodeViewModel @Inject constructor(
             Barcode.FORMAT_CODABAR -> BarcodeModelType.CODABAR
             Barcode.FORMAT_DATA_MATRIX -> BarcodeModelType.DATA_MATRIX
             Barcode.FORMAT_EAN_13 -> BarcodeModelType.EAN_13
-            Barcode.FORMAT_EAN_8 -> BarcodeModelType.EAN_13
+            Barcode.FORMAT_EAN_8 -> BarcodeModelType.EAN_8
             Barcode.FORMAT_ITF -> BarcodeModelType.ITF
             Barcode.FORMAT_QR_CODE -> BarcodeModelType.QR_CODE
             Barcode.FORMAT_UPC_A -> BarcodeModelType.UPC_A

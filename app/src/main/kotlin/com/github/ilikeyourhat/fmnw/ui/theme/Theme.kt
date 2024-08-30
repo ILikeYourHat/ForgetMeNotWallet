@@ -1,4 +1,4 @@
-package com.github.ilikeyourhat.fmnw.ui.core.theme
+package com.github.ilikeyourhat.fmnw.ui.theme
 
 import android.app.Activity
 import android.os.Build

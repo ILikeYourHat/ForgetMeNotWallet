@@ -28,8 +28,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.github.ilikeyourhat.fmnw.ui.core.theme.AppTheme
-import com.github.ilikeyourhat.fmnw.ui.core.theme.primaryLight
+import com.github.ilikeyourhat.fmnw.ui.theme.AppTheme
+import com.github.ilikeyourhat.fmnw.ui.theme.primaryLight
 
 @Composable
 fun CodeFiche(

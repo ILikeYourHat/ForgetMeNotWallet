@@ -1,10 +1,12 @@
-package com.github.ilikeyourhat.fmnw.ui.core.navigation
+package com.github.ilikeyourhat.fmnw.ui.navigation
 
 import android.app.Activity
 import android.content.Intent
 import android.widget.Toast
-import com.github.ilikeyourhat.fmnw.model.CodeModel
-import com.github.ilikeyourhat.fmnw.ui.screen.addcode.AddCodeActivity
+import com.github.ilikeyourhat.fmnw.model.WalletItem
+import com.github.ilikeyourhat.fmnw.ui.screen.edit.group.EditGroupActivity
+import com.github.ilikeyourhat.fmnw.ui.screen.edit.loyaltycard.EditLoyaltyCardActivity
+import com.github.ilikeyourhat.fmnw.ui.screen.edit.note.EditNoteActivity
 import com.github.ilikeyourhat.fmnw.ui.screen.scancode.ScanCodeActivity
 import com.github.ilikeyourhat.fmnw.ui.screen.showcode.ShowCodeActivity
 
@@ -18,16 +20,37 @@ sealed class Navigation {
     }
 
     data class AddCode(
-        val barcode: CodeModel? = null,
+        val item: WalletItem? = null,
         val closeCurrent: Boolean = false
     ): Navigation() {
         override fun navigate(activity: Activity) {
-            val intent = Intent(activity, AddCodeActivity::class.java)
-            intent.putExtra(KEY_BARCODE, barcode)
+            val intent = Intent(activity, EditLoyaltyCardActivity::class.java)
+            intent.putExtra(KEY_BARCODE, item)
             activity.startActivity(intent)
             if (closeCurrent) {
                 activity.finish()
             }
+        }
+    }
+
+    data object AddLoyaltyCard: Navigation() {
+        override fun navigate(activity: Activity) {
+            val intent = Intent(activity, ScanCodeActivity::class.java)
+            activity.startActivity(intent)
+        }
+    }
+
+    data object AddNote: Navigation() {
+        override fun navigate(activity: Activity) {
+            val intent = Intent(activity, EditNoteActivity::class.java)
+            activity.startActivity(intent)
+        }
+    }
+
+    data object AddGroup: Navigation() {
+        override fun navigate(activity: Activity) {
+            val intent = Intent(activity, EditGroupActivity::class.java)
+            activity.startActivity(intent)
         }
     }
 
@@ -44,10 +67,10 @@ sealed class Navigation {
         }
     }
 
-    data class ShowCode(val code: CodeModel): Navigation() {
+    data class ShowCode(val item: WalletItem): Navigation() {
         override fun navigate(activity: Activity) {
             val intent = Intent(activity, ShowCodeActivity::class.java)
-            intent.putExtra(KEY_BARCODE, code)
+            intent.putExtra(KEY_BARCODE, item)
             activity.startActivity(intent)
         }
     }

@@ -2,23 +2,47 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "cacee5ddadbe1d3348ad70532db717cf",
+    "identityHash": "8ad9a88badf0fc0c23b29ac8f6ffd8ca",
     "entities": [
       {
-        "tableName": "stored_codes",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `code` TEXT NOT NULL)",
+        "tableName": "wallet",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `type` TEXT NOT NULL, `name` TEXT NOT NULL, `groupId` INTEGER, `value` TEXT, `barcodeType` TEXT)",
         "fields": [
           {
             "fieldPath": "id",
             "columnName": "id",
             "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
+            "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "code",
-            "columnName": "code",
+            "fieldPath": "name",
+            "columnName": "name",
             "affinity": "TEXT",
             "notNull": true
+          },
+          {
+            "fieldPath": "groupId",
+            "columnName": "groupId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "value",
+            "columnName": "value",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "barcodeType",
+            "columnName": "barcodeType",
+            "affinity": "TEXT",
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -34,7 +58,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'cacee5ddadbe1d3348ad70532db717cf')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '8ad9a88badf0fc0c23b29ac8f6ffd8ca')"
     ]
   }
 }

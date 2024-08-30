@@ -16,7 +16,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -26,16 +25,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.github.ilikeyourhat.fmnw.R
+import com.github.ilikeyourhat.fmnw.model.BarcodeContainer
 import com.github.ilikeyourhat.fmnw.model.BarcodeModelType
-import com.github.ilikeyourhat.fmnw.model.CodeModel
-import com.github.ilikeyourhat.fmnw.ui.core.theme.AppTheme
-import com.github.ilikeyourhat.fmnw.ui.core.theme.Typography
+import com.github.ilikeyourhat.fmnw.ui.theme.AppTheme
+import com.github.ilikeyourhat.fmnw.ui.theme.Typography
 import com.simonsickle.compose.barcodes.Barcode
 import com.simonsickle.compose.barcodes.BarcodeType
 
 @Composable
 fun BarcodePreview(
-    barcodeModel: CodeModel,
+    barcodeContainer: BarcodeContainer,
     modifier: Modifier = Modifier
 ) {
     Box(
@@ -51,14 +50,15 @@ fun BarcodePreview(
                 .background(Color.White)
                 .padding(16.dp)
         ) {
-            if (barcodeModel.type != null) {
+            val type = barcodeContainer.barcodeType
+            if (type != null) {
                 BarcodeWrapper(
-                    type = barcodeModel.type,
-                    value = barcodeModel.value
+                    type = type,
+                    value = barcodeContainer.value
                 )
             }
             Text(
-                text = barcodeModel.value,
+                text = barcodeContainer.value,
                 style = Typography.titleLarge,
                 color = Color.Black,
                 textAlign = TextAlign.Center,
@@ -125,10 +125,10 @@ private fun BarcodeModelType.toUiType(): BarcodeType {
 fun BarcodePreview_1D() {
     AppTheme {
         BarcodePreview(
-            CodeModel(
-                value = "12345",
-                type = BarcodeModelType.ITF
-            )
+            object : BarcodeContainer {
+                override val value = "12345"
+                override val barcodeType = BarcodeModelType.ITF
+            }
         )
     }
 }
@@ -138,10 +138,10 @@ fun BarcodePreview_1D() {
 fun BarcodePreview_2D() {
     AppTheme {
         BarcodePreview(
-            CodeModel(
-                value = "12345",
-                type = BarcodeModelType.QR_CODE
-            )
+            object : BarcodeContainer {
+                override val value = "12345"
+                override val barcodeType = BarcodeModelType.QR_CODE
+            }
         )
     }
 }
@@ -151,10 +151,10 @@ fun BarcodePreview_2D() {
 fun BarcodePreview_2D_long() {
     AppTheme {
         BarcodePreview(
-            CodeModel(
-                value = "12345678901234",
-                type = BarcodeModelType.QR_CODE
-            ),
+            object : BarcodeContainer {
+                override val value = "12345678901234"
+                override val barcodeType = BarcodeModelType.QR_CODE
+            },
             modifier = Modifier
                 .width(200.dp)
         )
@@ -166,10 +166,10 @@ fun BarcodePreview_2D_long() {
 fun BarcodePreview_text() {
     AppTheme {
         BarcodePreview(
-            CodeModel(
-                value = "12345678",
-                type = null
-            )
+            object : BarcodeContainer {
+                override val value = "12345678"
+                override val barcodeType = null
+            }
         )
     }
 }
@@ -179,31 +179,14 @@ fun BarcodePreview_text() {
 fun BarcodePreview_text_multiline() {
     AppTheme {
         BarcodePreview(
-            CodeModel(
-                value = """
+            object : BarcodeContainer {
+                override val value = """
                     some text
                     that should be displayed
                     in multiple lines
-                """.trimIndent(),
-                type = null
-            )
-        )
-    }
-}
-
-@Preview
-@Composable
-fun BarcodePreview_adjustToSize() {
-    AppTheme {
-        BarcodePreview(
-            CodeModel(
-                value = """
-                    some text
-                    that should be displayed
-                    in multiple lines
-                """.trimIndent(),
-                type = null
-            )
+                    """.trimIndent()
+                override val barcodeType = null
+            }
         )
     }
 }
@@ -214,10 +197,10 @@ fun BarcodePreview_onSurface() {
     AppTheme {
         Surface {
             BarcodePreview(
-                CodeModel(
-                    value = "12345",
-                    type = BarcodeModelType.QR_CODE
-                ),
+                object : BarcodeContainer {
+                    override val value = "12345"
+                    override val barcodeType = BarcodeModelType.QR_CODE
+                },
                 modifier = Modifier.padding(8.dp)
             )
         }

@@ -11,10 +11,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Note
 import androidx.compose.material.icons.filled.Abc
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Apps
 import androidx.compose.material.icons.filled.CameraAlt
+import androidx.compose.material.icons.filled.CreditCard
 import androidx.compose.material.icons.filled.Image
+import androidx.compose.material.icons.filled.Note
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -31,9 +35,9 @@ import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.github.ilikeyourhat.fmnw.R
 import com.github.ilikeyourhat.fmnw.model.BarcodeModelType
-import com.github.ilikeyourhat.fmnw.model.CodeModel
+import com.github.ilikeyourhat.fmnw.model.LoyaltyCard
 import com.github.ilikeyourhat.fmnw.ui.components.CodeFiche
-import com.github.ilikeyourhat.fmnw.ui.core.theme.AppTheme
+import com.github.ilikeyourhat.fmnw.ui.theme.AppTheme
 import de.charlex.compose.BottomAppBarSpeedDialFloatingActionButton
 import de.charlex.compose.FloatingActionButtonItem
 import de.charlex.compose.SubSpeedDialFloatingActionButtons
@@ -60,26 +64,26 @@ fun HomeScreen(
                     state = fabState,
                     items = listOf(
                         FloatingActionButtonItem(
-                            icon = Icons.Default.Abc,
-                            label = "From text",
+                            icon = Icons.Default.CreditCard,
+                            label = "Loyalty card",
                             onFabItemClicked = {
-                                events.onAddTextCodeClicked()
+                                events.onAddLoyaltyCardClicked()
                                 fabState.stateChange()
                             }
                         ),
                         FloatingActionButtonItem(
-                            icon = Icons.Filled.CameraAlt,
-                            label = "From photo",
+                            icon = Icons.AutoMirrored.Filled.Note,
+                            label = "Note",
                             onFabItemClicked = {
-                                events.onScanBarcodeFromCameraClicked()
+                                events.onAddNoteClicked()
                                 fabState.stateChange()
                             }
                         ),
                         FloatingActionButtonItem(
-                            icon = Icons.Filled.Image,
-                            label = "From image",
+                            icon = Icons.Filled.Apps,
+                            label = "Group",
                             onFabItemClicked = {
-                                events.onScanBarcodeFromImageClicked()
+                                events.onAddGroupClicked()
                                 fabState.stateChange()
                             }
                         )
@@ -110,7 +114,7 @@ fun HomeScreen(
 
 @Composable
 private fun Content(state: HomeScreenState, events: HomeScreenEvents) {
-    if (state.codes.isEmpty()) {
+    if (state.items.isEmpty()) {
         EmptyContent()
     } else {
         NonEmptyContent(state, events)
@@ -137,7 +141,7 @@ private fun NonEmptyContent(state: HomeScreenState, events: HomeScreenEvents) {
         modifier = Modifier.fillMaxSize()
     ) {
         items(
-            items = state.codes,
+            items = state.items,
             key = { it.id!! }
         ) { code ->
             CodeFiche(
@@ -170,9 +174,9 @@ fun HomeScreen_empty() {
 fun HomeScreen_full() {
     HomeScreen(
         HomeScreenState(
-            codes = listOf(
-                CodeModel(1, "Supercode", "test", BarcodeModelType.QR_CODE),
-                CodeModel(2, "Supercode2345", "test2345", null)
+            items = listOf(
+                LoyaltyCard(1, "Supercode", null, "test", BarcodeModelType.QR_CODE),
+                LoyaltyCard(2, "Supercode2345", null, "test2345", null)
             )
         )
     )
