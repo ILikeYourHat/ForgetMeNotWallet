@@ -26,6 +26,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.github.ilikeyourhat.fmnw.ui.theme.AppTheme
@@ -34,6 +35,7 @@ import com.github.ilikeyourhat.fmnw.ui.theme.primaryLight
 @Composable
 fun CodeFiche(
     headline: String,
+    icon: ImageVector,
     modifier: Modifier = Modifier,
     onClick: () -> Unit = {},
     onEditClick: () -> Unit = {},
@@ -53,8 +55,8 @@ fun CodeFiche(
             modifier = Modifier.padding(8.dp)
         ) {
             Icon(
-                imageVector = Icons.Filled.CreditCard,
-                contentDescription = "",
+                imageVector = icon,
+                contentDescription = null,
                 modifier = Modifier.minimumInteractiveComponentSize()
             )
             Text(
@@ -105,7 +107,8 @@ fun CodeFiche(
 fun CodeFiche_default() {
     AppTheme {
         CodeFiche(
-            headline = "Headline"
+            headline = "Headline",
+            icon = Icons.Default.CreditCard
         )
     }
 }
@@ -116,6 +119,7 @@ fun CodeFiche_long() {
     AppTheme {
         CodeFiche(
             headline = "Headline",
+            icon = Icons.Default.CreditCard,
             modifier = Modifier.width(220.dp)
         )
     }

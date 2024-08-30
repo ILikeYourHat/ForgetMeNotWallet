@@ -29,13 +29,17 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.github.ilikeyourhat.fmnw.R
 import com.github.ilikeyourhat.fmnw.model.BarcodeModelType
+import com.github.ilikeyourhat.fmnw.model.Group
 import com.github.ilikeyourhat.fmnw.model.LoyaltyCard
+import com.github.ilikeyourhat.fmnw.model.Note
+import com.github.ilikeyourhat.fmnw.model.WalletItem
 import com.github.ilikeyourhat.fmnw.ui.components.CodeFiche
 import com.github.ilikeyourhat.fmnw.ui.theme.AppTheme
 import de.charlex.compose.BottomAppBarSpeedDialFloatingActionButton
@@ -146,6 +150,7 @@ private fun NonEmptyContent(state: HomeScreenState, events: HomeScreenEvents) {
         ) { code ->
             CodeFiche(
                 headline = code.name,
+                icon = getIconFor(code),
                 onClick = { events.onShowCodeClicked(code) },
                 onEditClick = { events.onEditCodeClicked(code) },
                 onDeleteClick = { events.onDeleteCodeClicked(code) },
@@ -160,6 +165,14 @@ private fun NonEmptyContent(state: HomeScreenState, events: HomeScreenEvents) {
                     )
             )
         }
+    }
+}
+
+private fun getIconFor(item: WalletItem): ImageVector {
+    return when (item) {
+        is LoyaltyCard -> Icons.Default.CreditCard
+        is Note -> Icons.AutoMirrored.Filled.Note
+        is Group -> Icons.Default.Apps
     }
 }
 

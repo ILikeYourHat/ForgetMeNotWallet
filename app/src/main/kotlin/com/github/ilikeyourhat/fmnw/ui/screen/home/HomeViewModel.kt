@@ -4,6 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.github.ilikeyourhat.fmnw.domain.DatabaseRepository
+import com.github.ilikeyourhat.fmnw.model.Group
+import com.github.ilikeyourhat.fmnw.model.LoyaltyCard
+import com.github.ilikeyourhat.fmnw.model.Note
 import com.github.ilikeyourhat.fmnw.model.WalletItem
 import com.github.ilikeyourhat.fmnw.ui.navigation.Navigation
 import com.github.ilikeyourhat.fmnw.ui.navigation.Router
@@ -42,7 +45,12 @@ class HomeViewModel @Inject constructor(
     }
 
     override fun onEditCodeClicked(item: WalletItem) {
-        router.navigate(Navigation.AddCode(item))
+        val navigationTarget = when(item) {
+            is LoyaltyCard -> Navigation.EditLoyaltyCard(item)
+            is Note -> Navigation.EditNote(item)
+            is Group -> Navigation.EditGroup(item)
+        }
+        router.navigate(navigationTarget)
     }
 
     override fun onDeleteCodeClicked(item: WalletItem) {

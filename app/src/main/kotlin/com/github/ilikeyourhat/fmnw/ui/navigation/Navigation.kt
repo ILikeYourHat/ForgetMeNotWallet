@@ -3,6 +3,9 @@ package com.github.ilikeyourhat.fmnw.ui.navigation
 import android.app.Activity
 import android.content.Intent
 import android.widget.Toast
+import com.github.ilikeyourhat.fmnw.model.Group
+import com.github.ilikeyourhat.fmnw.model.LoyaltyCard
+import com.github.ilikeyourhat.fmnw.model.Note
 import com.github.ilikeyourhat.fmnw.model.WalletItem
 import com.github.ilikeyourhat.fmnw.ui.screen.edit.group.EditGroupActivity
 import com.github.ilikeyourhat.fmnw.ui.screen.edit.loyaltycard.EditLoyaltyCardActivity
@@ -40,6 +43,14 @@ sealed class Navigation {
         }
     }
 
+    data class EditLoyaltyCard(val card: LoyaltyCard): Navigation() {
+        override fun navigate(activity: Activity) {
+            val intent = Intent(activity, EditLoyaltyCardActivity::class.java)
+            intent.putExtra(KEY_BARCODE, card)
+            activity.startActivity(intent)
+        }
+    }
+
     data object AddNote: Navigation() {
         override fun navigate(activity: Activity) {
             val intent = Intent(activity, EditNoteActivity::class.java)
@@ -47,9 +58,25 @@ sealed class Navigation {
         }
     }
 
+    data class EditNote(val note: Note): Navigation() {
+        override fun navigate(activity: Activity) {
+            val intent = Intent(activity, EditNoteActivity::class.java)
+            intent.putExtra(KEY_BARCODE, note)
+            activity.startActivity(intent)
+        }
+    }
+
     data object AddGroup: Navigation() {
         override fun navigate(activity: Activity) {
             val intent = Intent(activity, EditGroupActivity::class.java)
+            activity.startActivity(intent)
+        }
+    }
+
+    data class EditGroup(val group: Group): Navigation() {
+        override fun navigate(activity: Activity) {
+            val intent = Intent(activity, EditGroupActivity::class.java)
+            intent.putExtra(KEY_BARCODE, group)
             activity.startActivity(intent)
         }
     }
