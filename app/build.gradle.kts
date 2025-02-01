@@ -48,6 +48,9 @@ android {
     room {
         schemaDirectory("$projectDir/schemas")
     }
+    lint {
+        warningsAsErrors = true
+    }
 }
 
 kotlin {
