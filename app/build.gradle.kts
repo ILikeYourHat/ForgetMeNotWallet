@@ -10,12 +10,12 @@ plugins {
 
 android {
     namespace = "com.github.ilikeyourhat.fmnw"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.github.ilikeyourhat.fmnw"
         minSdk = 26
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -59,8 +59,8 @@ dependencies {
     implementation(libs.androidx.camera.lifecycle)
     implementation(libs.composed.barcodes)
     ksp(libs.hilt.ksp)
-    implementation("de.charlex.compose:speeddial-bottomappbar-material3:1.2.0")
-    implementation("androidx.compose.material:material-icons-extended:1.6.8")
+    implementation(libs.speeddial.bottomappbar.material3)
+    implementation(libs.androidx.material.icons.extended)
 
     implementation(libs.liveevent)
     implementation(libs.room.runtime)

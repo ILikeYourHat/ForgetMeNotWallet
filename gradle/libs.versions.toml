@@ -1,26 +1,27 @@
 [versions]
-activityCompose = "1.9.0"
+activityCompose = "1.10.0"
 agp = "8.8.0"
-cameraCamera2 = "1.3.4"
-composeBom = "2024.06.00"
+androidxCamera = "1.4.1"
+composeBom = "2025.01.01"
 composedBarcodes = "1.3.0"
 kotlin = "2.1.10"
-coreKtx = "1.13.1"
+coreKtx = "1.15.0"
 junit = "4.13.2"
-junitVersion = "1.1.5"
-espressoCore = "3.5.1"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
 appcompat = "1.7.0"
 liveEvent = "1.3.0"
 material = "1.12.0"
+materialIconsExtended = "1.7.7"
 room = "2.6.1"
 ksp = "2.1.10-1.0.29"
-lifecycle = "2.8.1"
+lifecycle = "2.8.7"
 hilt = "2.51.1"
-cameraView = "1.3.4"
-cameraLifecycle = "1.3.4"
+speeddialBottomappbarMaterial3 = "1.2.0"
 
 [libraries]
-androidx-camera-camera2 = { module = "androidx.camera:camera-camera2", version.ref = "cameraCamera2" }
+androidx-camera-camera2 = { module = "androidx.camera:camera-camera2", version.ref = "androidxCamera" }
+androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
 desugaring = { module = "com.android.tools:desugar_jdk_libs", version = "2.1.4" }
 composed-barcodes = { module = "com.simonsickle:composed-barcodes", version.ref = "composedBarcodes" }
 liveevent = { module = "com.github.hadilq:live-event", version.ref = "liveEvent" }
@@ -42,9 +43,10 @@ androidx-material3 = { module = "androidx.compose.material3:material3" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 hilt = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-ksp = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
-gms-scanner = { module = "com.google.mlkit:barcode-scanning", version = "17.2.0" }
-androidx-camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "cameraView" }
-androidx-camera-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version.ref = "cameraLifecycle" }
+gms-scanner = { module = "com.google.mlkit:barcode-scanning", version = "17.3.0" }
+androidx-camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "androidxCamera" }
+androidx-camera-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version.ref = "androidxCamera" }
+speeddial-bottomappbar-material3 = { module = "de.charlex.compose:speeddial-bottomappbar-material3", version.ref = "speeddialBottomappbarMaterial3" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
