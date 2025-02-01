@@ -122,7 +122,7 @@ fun HomeScreen(
                         BottomAppBarSpeedDialFloatingActionButton(
                             state = fabState,
                             content = {
-                                Icon(Icons.Filled.Add, "Floating action button.")
+                                Icon(Icons.Filled.Add, "Add new item")
                             }
                         )
                     }
@@ -153,7 +153,6 @@ private fun EmptyContent() {
     }
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun NonEmptyContent(state: HomeScreenState, events: HomeScreenEvents) {
     LazyColumn(
@@ -173,8 +172,10 @@ private fun NonEmptyContent(state: HomeScreenState, events: HomeScreenEvents) {
                 modifier = Modifier
                     .padding(top = 8.dp, bottom = 8.dp)
                     .fillParentMaxWidth()
-                    .animateItemPlacement(
-                        animationSpec = spring(
+                    .animateItem(
+                        fadeInSpec = null,
+                        fadeOutSpec = null,
+                        placementSpec = spring(
                             stiffness = Spring.StiffnessMediumLow,
                             visibilityThreshold = IntOffset.VisibilityThreshold
                         )

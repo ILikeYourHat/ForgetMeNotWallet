@@ -53,6 +53,8 @@ android {
 dependencies {
     coreLibraryDesugaring(libs.desugaring)
 
+    implementation(platform(libs.compose.bom))
+
     implementation(libs.hilt)
     implementation(libs.androidx.camera.view)
     implementation(libs.androidx.camera.camera2)
@@ -69,13 +71,8 @@ dependencies {
     implementation(libs.compose.camera)
     implementation(libs.gms.scanner)
 
-    val composeBom = platform(libs.compose.bom)
-    implementation(composeBom)
-    androidTestImplementation(composeBom)
-
     implementation(libs.androidx.material3)
     implementation(libs.androidx.ui.tooling.preview)
-    debugImplementation(libs.androidx.ui.tooling)
 
     implementation(libs.androidx.activity.compose)
 
@@ -83,7 +80,13 @@ dependencies {
     implementation(libs.androidx.lifecycle)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+
+    debugImplementation(libs.androidx.ui.tooling)
+
     testImplementation(libs.junit)
+
+    androidTestImplementation(platform(libs.compose.bom))
+    androidTestImplementation(libs.androidx.ui.test.junit4.android)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
