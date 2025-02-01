@@ -50,6 +50,12 @@ android {
     }
 }
 
+kotlin {
+    compilerOptions {
+        allWarningsAsErrors = true
+    }
+}
+
 dependencies {
     coreLibraryDesugaring(libs.desugaring)
 

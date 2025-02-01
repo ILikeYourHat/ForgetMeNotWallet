@@ -2,7 +2,6 @@ package io.github.ilikeyourhat.fmnw.ui.navigation
 
 import android.app.Activity
 import android.content.Intent
-import android.widget.Toast
 import io.github.ilikeyourhat.fmnw.model.Group
 import io.github.ilikeyourhat.fmnw.model.LoyaltyCard
 import io.github.ilikeyourhat.fmnw.model.Note

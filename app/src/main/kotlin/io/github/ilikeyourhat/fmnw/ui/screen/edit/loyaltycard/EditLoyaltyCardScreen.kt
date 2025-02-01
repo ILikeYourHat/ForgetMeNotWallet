@@ -12,6 +12,7 @@ import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MenuAnchorType
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -118,7 +119,7 @@ private fun FormatPicker(
         onExpandedChange = { expanded = it },
     ) {
         OutlinedTextField(
-            modifier = modifier.menuAnchor(),
+            modifier = modifier.menuAnchor(MenuAnchorType.PrimaryNotEditable),
             value = selectedFormat?.toString() ?: "Raw text",
             onValueChange = { },
             readOnly = true,

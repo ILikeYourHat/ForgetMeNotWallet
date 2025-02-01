@@ -6,7 +6,6 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import io.github.ilikeyourhat.fmnw.model.Group
 import io.github.ilikeyourhat.fmnw.model.LoyaltyCard
 import io.github.ilikeyourhat.fmnw.ui.navigation.Navigation.Companion.KEY_BARCODE
 import dagger.hilt.android.AndroidEntryPoint
