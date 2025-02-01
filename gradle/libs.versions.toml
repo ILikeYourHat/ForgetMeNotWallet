@@ -21,6 +21,7 @@ cameraLifecycle = "1.3.4"
 
 [libraries]
 androidx-camera-camera2 = { module = "androidx.camera:camera-camera2", version.ref = "cameraCamera2" }
+desugaring = { module = "com.android.tools:desugar_jdk_libs", version = "2.1.4" }
 composed-barcodes = { module = "com.simonsickle:composed-barcodes", version.ref = "composedBarcodes" }
 liveevent = { module = "com.github.hadilq:live-event", version.ref = "liveEvent" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
