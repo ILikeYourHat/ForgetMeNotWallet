@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    namespace = "com.github.ilikeyourhat.fmnw"
+    namespace = "io.github.ilikeyourhat.fmnw"
     compileSdk = 35
 
     defaultConfig {

@@ -21,6 +21,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Foget-Me-Not Wallet"
+rootProject.name = "Forget-Me-Not Wallet"
 include(":app")
  

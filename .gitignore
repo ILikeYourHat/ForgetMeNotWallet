@@ -1,10 +1,15 @@
-*.iml
+### Java ###
+*.class
+*.log
+
+### Kotlin ###
+.kotlin/*
+
+### Gradle ###
 .gradle
-/local.properties
-.idea
-.DS_Store
-build
-/captures
-.externalNativeBuild
-.cxx
+**/build
 local.properties
+
+### Android Studio ###
+*.iml
+.idea/*
