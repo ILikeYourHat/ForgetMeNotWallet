@@ -32,7 +32,7 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 androidx-lifecycle = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
 androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
-compose-camera = { module = "androidx.camera:camera-viewfinder-compose", version = "1.0.0-alpha02" }
+compose-camera = { module = "androidx.camera.viewfinder:viewfinder-compose", version = "1.4.0-alpha12" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { module = "androidx.test.ext:junit" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core" }
