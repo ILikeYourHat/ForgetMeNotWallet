@@ -27,8 +27,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import io.github.ilikeyourhat.fmnw.R
 import io.github.ilikeyourhat.fmnw.ui.theme.AppTheme
 import io.github.ilikeyourhat.fmnw.ui.theme.primaryLight
 
@@ -70,16 +72,19 @@ fun CodeFiche(
             IconButton(
                 onClick = { expanded = true }
             ) {
-                Icon(imageVector = Icons.Filled.MoreVert, contentDescription = "")
+                Icon(
+                    imageVector = Icons.Filled.MoreVert,
+                    contentDescription = stringResource(R.string.codeFishe_moreActionsButton)
+                )
                 DropdownMenu(
                     expanded = expanded,
                     onDismissRequest = { expanded = false }
                 ) {
                     DropdownMenuItem(
                         leadingIcon = {
-                            Icon(imageVector = Icons.Filled.Edit, contentDescription = "")
+                            Icon(imageVector = Icons.Filled.Edit, contentDescription = null)
                         },
-                        text = { Text("Edit") },
+                        text = { Text(stringResource(R.string.codeFishe_editCodeButton)) },
                         onClick = {
                             onEditClick()
                             expanded = false
@@ -87,9 +92,9 @@ fun CodeFiche(
                     )
                     DropdownMenuItem(
                         leadingIcon = {
-                            Icon(imageVector = Icons.Filled.Delete, contentDescription = "")
+                            Icon(imageVector = Icons.Filled.Delete, contentDescription = null)
                         },
-                        text = { Text("Delete") },
+                        text = { Text(stringResource(R.string.codeFishe_deleteCodeButton)) },
                         onClick = {
                             onDeleteClick()
                             expanded = false

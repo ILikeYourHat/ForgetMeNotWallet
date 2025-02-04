@@ -23,8 +23,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import io.github.ilikeyourhat.fmnw.R
 import io.github.ilikeyourhat.fmnw.model.BarcodeModelType
 import io.github.ilikeyourhat.fmnw.model.LoyaltyCard
 import io.github.ilikeyourhat.fmnw.ui.theme.AppTheme
@@ -42,17 +44,18 @@ fun EditLoyaltyCardScreen(
                         IconButton(onClick = events::onCloseClicked) {
                             Icon(
                                 imageVector = Icons.Filled.Close,
-                                contentDescription = "Localized description"
+                                contentDescription = stringResource(R.string.editLoyaltyCardScreen_navigationClose)
                             )
                         }
                     },
                     title = {
-                        val titleText = if (state.loyaltyCard.isPersisted()) {
-                            "Edit code"
-                        } else {
-                            "Add new code"
-                        }
-                        Text(titleText)
+                        Text(
+                            if (state.loyaltyCard.isPersisted()) {
+                                stringResource(R.string.editLoyaltyCardScreen_editCodeTitle)
+                            } else {
+                                stringResource(R.string.editLoyaltyCardScreen_addNewCodeTitle)
+                            }
+                        )
                     }
                 )
             },
@@ -73,7 +76,7 @@ private fun Content(state: EditLoyaltyCardScreenState, events: EditLoyaltyCardEv
     ) {
         OutlinedTextField(
             value = state.loyaltyCard.name,
-            label = { Text(text = "Name") },
+            label = { Text(text = stringResource(R.string.editLoyaltyCardScreen_inputName)) },
             onValueChange = events::onNameChanged,
             modifier = Modifier.fillMaxWidth()
         )
@@ -86,7 +89,7 @@ private fun Content(state: EditLoyaltyCardScreenState, events: EditLoyaltyCardEv
         )
         OutlinedTextField(
             value = state.loyaltyCard.value,
-            label = { Text(text = "Value") },
+            label = { Text(text = stringResource(R.string.editLoyaltyCardScreen_inputValue)) },
             onValueChange = events::onValueChanged,
             modifier = Modifier
                 .padding(top = 8.dp)
@@ -95,9 +98,10 @@ private fun Content(state: EditLoyaltyCardScreenState, events: EditLoyaltyCardEv
         Button(
             onClick = events::onDoneClicked,
             content = {
-                Text("Save")
+                Text(stringResource(R.string.editLoyaltyCardScreen_buttonSave))
             },
-            modifier = Modifier.padding(top = 8.dp)
+            modifier = Modifier
+                .padding(top = 8.dp)
                 .fillMaxWidth()
         )
     }
@@ -109,7 +113,8 @@ private fun FormatPicker(
     events: EditLoyaltyCardEvents,
     modifier: Modifier = Modifier
 ) {
-    val options = listOf("Raw text") + BarcodeModelType.entries.map { it.toString() }
+    val possibilities = mapOf(null to stringResource(R.string.barcodeType_rawText)) +
+            BarcodeModelType.entries.associateWith { stringResource(it.nameStringRes) }
     var expanded by remember { mutableStateOf(false) }
     ExposedDropdownMenuBox(
         expanded = expanded,
@@ -117,21 +122,20 @@ private fun FormatPicker(
     ) {
         OutlinedTextField(
             modifier = modifier.menuAnchor(MenuAnchorType.PrimaryNotEditable),
-            value = selectedFormat?.toString() ?: "Raw text",
+            value = possibilities.getValue(selectedFormat),
             onValueChange = { },
             readOnly = true,
-            label = { Text("Barcode type") },
+            label = { Text(stringResource(R.string.editLoyaltyCardScreen_inputBarcodeType)) },
             trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
         )
         ExposedDropdownMenu(
             expanded = expanded,
             onDismissRequest = { expanded = false },
         ) {
-            options.forEach { option ->
+            possibilities.forEach { (format, label) ->
                 DropdownMenuItem(
-                    text = { Text(option) },
+                    text = { Text(label) },
                     onClick = {
-                        val format = BarcodeModelType.entries.singleOrNull { option == it.toString() }
                         events.onFormatChanged(format)
                         expanded = false
                     },

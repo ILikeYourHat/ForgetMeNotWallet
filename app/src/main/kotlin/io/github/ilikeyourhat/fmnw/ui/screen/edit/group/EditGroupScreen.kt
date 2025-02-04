@@ -15,8 +15,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import io.github.ilikeyourhat.fmnw.R
 import io.github.ilikeyourhat.fmnw.model.Group
 import io.github.ilikeyourhat.fmnw.ui.theme.AppTheme
 
@@ -33,17 +35,18 @@ fun EditGroupScreen(
                         IconButton(onClick = events::onCloseClicked) {
                             Icon(
                                 imageVector = Icons.Filled.Close,
-                                contentDescription = "Localized description"
+                                contentDescription = stringResource(R.string.editGroupScreen_navigationClose)
                             )
                         }
                     },
                     title = {
-                        val titleText = if (state.group.isPersisted()) {
-                            "Edit group"
-                        } else {
-                            "Add new group"
-                        }
-                        Text(titleText)
+                        Text(
+                            if (state.group.isPersisted()) {
+                                stringResource(R.string.editGroupScreen_editGroupTitle)
+                            } else {
+                                stringResource(R.string.editGroupScreen_addNewGroupTitle)
+                            }
+                        )
                     }
                 )
             },
@@ -64,16 +67,17 @@ private fun Content(state: EditGroupScreenState, events: EditGroupEvents) {
     ) {
         OutlinedTextField(
             value = state.group.name,
-            label = { Text(text = "Name") },
+            label = { Text(text = stringResource(R.string.editGroupScreen_inputName)) },
             onValueChange = events::onNameChanged,
             modifier = Modifier.fillMaxWidth()
         )
         Button(
             onClick = events::onDoneClicked,
             content = {
-                Text("Save")
+                Text(stringResource(R.string.editGroupScreen_buttonSave))
             },
-            modifier = Modifier.padding(top = 8.dp)
+            modifier = Modifier
+                .padding(top = 8.dp)
                 .fillMaxWidth()
         )
     }

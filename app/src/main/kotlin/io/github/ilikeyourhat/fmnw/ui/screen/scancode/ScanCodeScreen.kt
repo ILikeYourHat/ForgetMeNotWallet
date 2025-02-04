@@ -17,6 +17,8 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import io.github.ilikeyourhat.fmnw.R
 import io.github.ilikeyourhat.fmnw.ui.components.CameraPreview
 import io.github.ilikeyourhat.fmnw.ui.theme.AppTheme
 
@@ -33,11 +35,11 @@ fun ScanCodeScreen(
                         IconButton(onClick = events::onCloseClicked) {
                             Icon(
                                 imageVector = Icons.Filled.Close,
-                                contentDescription = "Localized description"
+                                contentDescription = stringResource(R.string.scanCodeScreen_navigationClose)
                             )
                         }
                     },
-                    title = { Text("Scan code") }
+                    title = { Text(stringResource(R.string.scanCodeScreen_scanCodeTitle)) }
                 )
             },
             content = { padding ->
@@ -59,7 +61,7 @@ fun ScanCodeScreen(
                 ExtendedFloatingActionButton(
                     onClick = events::onInputManuallyClicked,
                     icon = { Icon(Icons.Filled.Edit, null) },
-                    text = { Text(text = "Input manually") },
+                    text = { Text(text = stringResource(R.string.scanCodeScreen_inputManuallyButton)) },
                 )
             }
         )

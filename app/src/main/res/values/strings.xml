@@ -1,3 +1,56 @@
 <resources>
     <string name="app_name">Forget-Me-Not Wallet</string>
+
+    <string name="homeScreen_navigationBack">Back</string>
+    <string name="homeScreen_addLoyaltyCardButton">Loyalty card</string>
+    <string name="homeScreen_addNoteButton">Note</string>
+    <string name="homeScreen_addGroupButton">Group</string>
+    <string name="homeScreen_addNewItemButton">Add new item</string>
+    <string name="homeScreen_emptyContentHint">Add a new item by clicking the + button</string>
+
+    <string name="editGroupScreen_navigationClose">Close</string>
+    <string name="editGroupScreen_editGroupTitle">Edit group</string>
+    <string name="editGroupScreen_addNewGroupTitle">Add new group</string>
+    <string name="editGroupScreen_inputName">Name</string>
+    <string name="editGroupScreen_buttonSave">Save</string>
+
+    <string name="editLoyaltyCardScreen_navigationClose">Close</string>
+    <string name="editLoyaltyCardScreen_editCodeTitle">Edit loyalty card</string>
+    <string name="editLoyaltyCardScreen_addNewCodeTitle">Add new loyalty card</string>
+    <string name="editLoyaltyCardScreen_inputName">Name</string>
+    <string name="editLoyaltyCardScreen_inputBarcodeType">Barcode type</string>
+    <string name="editLoyaltyCardScreen_inputValue">Value</string>
+    <string name="editLoyaltyCardScreen_buttonSave">Save</string>
+
+    <string name="editNoteScreen_navigationClose">Close</string>
+    <string name="editNoteScreen_editNoteTitle">Edit note</string>
+    <string name="editNoteScreen_addNewNoteTitle">Add new note</string>
+    <string name="editNoteScreen_inputName">Name</string>
+    <string name="editNoteScreen_inputValue">Content</string>
+    <string name="editNoteScreen_buttonSave">Save</string>
+
+    <string name="scanCodeScreen_navigationClose">Close</string>
+    <string name="scanCodeScreen_scanCodeTitle">Scan code</string>
+    <string name="scanCodeScreen_inputManuallyButton">Input manually</string>
+
+    <string name="showCodeScreen_navigationBack">Back</string>
+
+    <string name="codeFishe_editCodeButton">Edit</string>
+    <string name="codeFishe_deleteCodeButton">Delete</string>
+    <string name="codeFishe_moreActionsButton">More actions</string>
+
+    <string name="barcodeType_rawText">Raw text</string>
+    <string name="barcodeType_ean8">EAN-8</string>
+    <string name="barcodeType_upcE">UPC E</string>
+    <string name="barcodeType_ean13">EAN-13</string>
+    <string name="barcodeType_upcA">UPC A</string>
+    <string name="barcodeType_qrCode">QR code</string>
+    <string name="barcodeType_code39">Code 39</string>
+    <string name="barcodeType_code93">Code 93</string>
+    <string name="barcodeType_code128">Code 128</string>
+    <string name="barcodeType_itf">ITF</string>
+    <string name="barcodeType_pdf417">PDF417</string>
+    <string name="barcodeType_codabar">Codabar</string>
+    <string name="barcodeType_dataMatrix">Data Matrix</string>
+    <string name="barcodeType_aztec">Aztec Code</string>
 </resources>

@@ -15,8 +15,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import io.github.ilikeyourhat.fmnw.R
 import io.github.ilikeyourhat.fmnw.model.Note
 import io.github.ilikeyourhat.fmnw.ui.theme.AppTheme
 
@@ -33,17 +35,18 @@ fun EditNoteScreen(
                         IconButton(onClick = events::onCloseClicked) {
                             Icon(
                                 imageVector = Icons.Filled.Close,
-                                contentDescription = "Localized description"
+                                contentDescription = stringResource(R.string.editNoteScreen_navigationClose)
                             )
                         }
                     },
                     title = {
-                        val titleText = if (state.note.isPersisted()) {
-                            "Edit note"
-                        } else {
-                            "Add new note"
-                        }
-                        Text(titleText)
+                        Text(
+                            if (state.note.isPersisted()) {
+                                stringResource(R.string.editNoteScreen_editNoteTitle)
+                            } else {
+                                stringResource(R.string.editNoteScreen_addNewNoteTitle)
+                            }
+                        )
                     }
                 )
             },
@@ -64,13 +67,13 @@ private fun Content(state: EditNoteScreenState, events: EditNoteEvents) {
     ) {
         OutlinedTextField(
             value = state.note.name,
-            label = { Text(text = "Name") },
+            label = { Text(text = stringResource(R.string.editNoteScreen_inputName)) },
             onValueChange = events::onNameChanged,
             modifier = Modifier.fillMaxWidth()
         )
         OutlinedTextField(
             value = state.note.value,
-            label = { Text(text = "Value") },
+            label = { Text(text = stringResource(R.string.editNoteScreen_inputValue)) },
             onValueChange = events::onValueChanged,
             modifier = Modifier
                 .padding(top = 8.dp)
@@ -79,9 +82,10 @@ private fun Content(state: EditNoteScreenState, events: EditNoteEvents) {
         Button(
             onClick = events::onDoneClicked,
             content = {
-                Text("Save")
+                Text(stringResource(R.string.editNoteScreen_buttonSave))
             },
-            modifier = Modifier.padding(top = 8.dp)
+            modifier = Modifier
+                .padding(top = 8.dp)
                 .fillMaxWidth()
         )
     }

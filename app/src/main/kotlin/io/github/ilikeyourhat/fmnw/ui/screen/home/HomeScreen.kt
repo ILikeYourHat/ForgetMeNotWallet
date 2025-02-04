@@ -67,7 +67,7 @@ fun HomeScreen(
                             IconButton(onClick = events::onBackClicked) {
                                 Icon(
                                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                                    contentDescription = "Localized description"
+                                    contentDescription = stringResource(R.string.homeScreen_navigationBack)
                                 )
                             }
                         }
@@ -80,7 +80,7 @@ fun HomeScreen(
                     items = listOf(
                         FloatingActionButtonItem(
                             icon = Icons.Default.CreditCard,
-                            label = "Loyalty card",
+                            label = stringResource(R.string.homeScreen_addLoyaltyCardButton),
                             onFabItemClicked = {
                                 events.onAddLoyaltyCardClicked()
                                 fabState.stateChange()
@@ -88,7 +88,7 @@ fun HomeScreen(
                         ),
                         FloatingActionButtonItem(
                             icon = Icons.AutoMirrored.Filled.Note,
-                            label = "Note",
+                            label = stringResource(R.string.homeScreen_addNoteButton),
                             onFabItemClicked = {
                                 events.onAddNoteClicked()
                                 fabState.stateChange()
@@ -96,7 +96,7 @@ fun HomeScreen(
                         ),
                         FloatingActionButtonItem(
                             icon = Icons.Filled.Apps,
-                            label = "Group",
+                            label = stringResource(R.string.homeScreen_addGroupButton),
                             onFabItemClicked = {
                                 events.onAddGroupClicked()
                                 fabState.stateChange()
@@ -117,7 +117,8 @@ fun HomeScreen(
                         BottomAppBarSpeedDialFloatingActionButton(
                             state = fabState,
                             content = {
-                                Icon(Icons.Filled.Add, "Add new item")
+                                Icon(Icons.Filled.Add,
+                                    stringResource(R.string.homeScreen_addNewItemButton))
                             }
                         )
                     }
@@ -144,7 +145,7 @@ private fun EmptyContent() {
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        Text("Add a new item by clicking the + button")
+        Text(stringResource(R.string.homeScreen_emptyContentHint))
     }
 }
 

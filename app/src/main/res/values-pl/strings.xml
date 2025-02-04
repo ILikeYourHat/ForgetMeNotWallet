@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">Portfel Niezapominajka</string>
+
+    <string name="homeScreen_navigationBack">Wstecz</string>
+    <string name="homeScreen_addLoyaltyCardButton">Karta lojalnościowa</string>
+    <string name="homeScreen_addNoteButton">Notatka</string>
+    <string name="homeScreen_addGroupButton">Grupa</string>
+    <string name="homeScreen_addNewItemButton">Dodaj nowy element</string>
+    <string name="homeScreen_emptyContentHint">Dodaj nowy element naciskając przycisk +</string>
+
+    <string name="editGroupScreen_navigationClose">Zamknij</string>
+    <string name="editGroupScreen_editGroupTitle">Edytuj grupę</string>
+    <string name="editGroupScreen_addNewGroupTitle">Dodaj nową grupę</string>
+    <string name="editGroupScreen_inputName">Nazwa</string>
+    <string name="editGroupScreen_buttonSave">Zapisz</string>
+
+    <string name="editLoyaltyCardScreen_navigationClose">Zamknij</string>
+    <string name="editLoyaltyCardScreen_editCodeTitle">Edytuj kartę lojalnościową</string>
+    <string name="editLoyaltyCardScreen_addNewCodeTitle">Dodaj nową kartę lojalnościową</string>
+    <string name="editLoyaltyCardScreen_inputName">Nazwa</string>
+    <string name="editLoyaltyCardScreen_inputBarcodeType">Typ kodu</string>
+    <string name="editLoyaltyCardScreen_inputValue">Wartość</string>
+    <string name="editLoyaltyCardScreen_buttonSave">Zapisz</string>
+
+    <string name="editNoteScreen_navigationClose">Zamknij</string>
+    <string name="editNoteScreen_editNoteTitle">Edytuj notatkę</string>
+    <string name="editNoteScreen_addNewNoteTitle">Dodaj nową notatnkę</string>
+    <string name="editNoteScreen_inputName">Nazwa</string>
+    <string name="editNoteScreen_inputValue">Zawartość</string>
+    <string name="editNoteScreen_buttonSave">Zapisz</string>
+
+    <string name="scanCodeScreen_navigationClose">Zamknij</string>
+    <string name="scanCodeScreen_scanCodeTitle">Zeskanuj kod</string>
+    <string name="scanCodeScreen_inputManuallyButton">Wprowadź ręcznie</string>
+
+    <string name="showCodeScreen_navigationBack">Cofnij</string>
+
+    <string name="codeFishe_editCodeButton">Edytuj</string>
+    <string name="codeFishe_deleteCodeButton">Usuń</string>
+    <string name="codeFishe_moreActionsButton">Więcej akcji</string>
+
+    <string name="barcodeType_rawText">Czysty tekst</string>
+    <string name="barcodeType_ean8">EAN-8</string>
+    <string name="barcodeType_upcE">UPC E</string>
+    <string name="barcodeType_ean13">EAN-13</string>
+    <string name="barcodeType_upcA">UPC A</string>
+    <string name="barcodeType_qrCode">QR kod</string>
+    <string name="barcodeType_code39">Code 39</string>
+    <string name="barcodeType_code93">Code 93</string>
+    <string name="barcodeType_code128">Code 128</string>
+    <string name="barcodeType_itf">ITF</string>
+    <string name="barcodeType_pdf417">PDF417</string>
+    <string name="barcodeType_codabar">Codabar</string>
+    <string name="barcodeType_dataMatrix">Data Matrix</string>
+    <string name="barcodeType_aztec">Aztec</string>
+</resources>

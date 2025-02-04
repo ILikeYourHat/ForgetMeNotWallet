@@ -12,8 +12,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import io.github.ilikeyourhat.fmnw.R
 import io.github.ilikeyourhat.fmnw.model.BarcodeModelType
 import io.github.ilikeyourhat.fmnw.model.LoyaltyCard
 import io.github.ilikeyourhat.fmnw.model.Note
@@ -33,7 +35,7 @@ fun ShowCodeScreen(
                         IconButton(onClick = events::onCloseClicked) {
                             Icon(
                                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                                contentDescription = "Localized description"
+                                contentDescription = stringResource(R.string.showCodeScreen_navigationBack)
                             )
                         }
                     },
