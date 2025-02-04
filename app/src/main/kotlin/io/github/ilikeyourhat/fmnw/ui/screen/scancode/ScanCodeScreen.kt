@@ -7,7 +7,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -21,7 +20,6 @@ import androidx.compose.ui.Modifier
 import io.github.ilikeyourhat.fmnw.ui.components.CameraPreview
 import io.github.ilikeyourhat.fmnw.ui.theme.AppTheme
 
-@OptIn(ExperimentalMaterial3Api::class) // Experimental my ass
 @Composable
 fun ScanCodeScreen(
     state: ScanCodeScreenState,

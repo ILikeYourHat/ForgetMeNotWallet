@@ -56,6 +56,9 @@ android {
 kotlin {
     compilerOptions {
         allWarningsAsErrors = true
+        optIn = listOf(
+            "androidx.compose.material3.ExperimentalMaterial3Api"
+        )
     }
 }
 

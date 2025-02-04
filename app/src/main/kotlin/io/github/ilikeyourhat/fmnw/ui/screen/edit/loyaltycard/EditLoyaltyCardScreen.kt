@@ -7,7 +7,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
@@ -30,7 +29,6 @@ import io.github.ilikeyourhat.fmnw.model.BarcodeModelType
 import io.github.ilikeyourhat.fmnw.model.LoyaltyCard
 import io.github.ilikeyourhat.fmnw.ui.theme.AppTheme
 
-@OptIn(ExperimentalMaterial3Api::class) // Experimental my ass
 @Composable
 fun EditLoyaltyCardScreen(
     state: EditLoyaltyCardScreenState,
@@ -105,7 +103,6 @@ private fun Content(state: EditLoyaltyCardScreenState, events: EditLoyaltyCardEv
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun FormatPicker(
     selectedFormat: BarcodeModelType?,
