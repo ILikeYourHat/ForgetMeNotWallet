@@ -34,10 +34,12 @@ import io.github.ilikeyourhat.fmnw.ui.theme.AppTheme
 @Composable
 fun EditLoyaltyCardScreen(
     state: EditLoyaltyCardScreenState,
+    modifier: Modifier = Modifier,
     events: EditLoyaltyCardEvents = EditLoyaltyCardEvents.DUMMY
 ) {
     AppTheme {
         Scaffold(
+            modifier = modifier,
             topBar = {
                 TopAppBar(
                     navigationIcon = {
@@ -148,13 +150,13 @@ private fun FormatPicker(
 
 @Preview
 @Composable
-fun AddCodeScreen_default() {
+private fun AddCodeScreen_default() {
     EditLoyaltyCardScreen(EditLoyaltyCardScreenState())
 }
 
 @Preview
 @Composable
-fun AddCodeScreen_withBarcode() {
+private fun AddCodeScreen_withBarcode() {
     EditLoyaltyCardScreen(
         EditLoyaltyCardScreenState(
             loyaltyCard = LoyaltyCard(

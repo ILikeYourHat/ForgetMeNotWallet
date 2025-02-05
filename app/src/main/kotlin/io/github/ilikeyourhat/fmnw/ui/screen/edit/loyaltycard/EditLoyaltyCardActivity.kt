@@ -19,7 +19,10 @@ class EditLoyaltyCardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         viewModel.screen.observe(this) { state ->
             setContent {
-                EditLoyaltyCardScreen(state, viewModel)
+                EditLoyaltyCardScreen(
+                    state = state,
+                    events = viewModel
+                )
             }
         }
         viewModel.router.attachTo(this)

@@ -20,7 +20,10 @@ class EditNoteActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         viewModel.screen.observe(this) { state ->
             setContent {
-                EditNoteScreen(state, viewModel)
+                EditNoteScreen(
+                    state = state,
+                    events = viewModel
+                )
             }
         }
         viewModel.router.attachTo(this)

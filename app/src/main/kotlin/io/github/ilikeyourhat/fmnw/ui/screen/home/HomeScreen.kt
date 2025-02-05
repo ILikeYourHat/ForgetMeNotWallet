@@ -46,13 +46,14 @@ import de.charlex.compose.rememberSpeedDialFloatingActionButtonState
 @Composable
 fun HomeScreen(
     state: HomeScreenState,
+    modifier: Modifier = Modifier,
     events: HomeScreenEvents = HomeScreenEvents.DUMMY
 ) {
     AppTheme {
-
         val fabState = rememberSpeedDialFloatingActionButtonState()
 
         Scaffold(
+            modifier = modifier,
             topBar = {
                 TopAppBar(
                     title = {
@@ -191,13 +192,13 @@ private fun getIconFor(item: WalletItem): ImageVector {
 
 @Preview
 @Composable
-fun HomeScreen_empty() {
+private fun HomeScreen_empty() {
     HomeScreen(HomeScreenState())
 }
 
 @Preview
 @Composable
-fun HomeScreen_full() {
+private fun HomeScreen_full() {
     HomeScreen(
         HomeScreenState(
             items = listOf(

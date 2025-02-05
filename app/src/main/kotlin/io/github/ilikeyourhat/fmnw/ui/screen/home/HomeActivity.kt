@@ -15,7 +15,10 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         viewModel.uiState.observe(this) { state ->
             setContent {
-                HomeScreen(state, viewModel)
+                HomeScreen(
+                    state = state,
+                    events = viewModel
+                )
             }
         }
         viewModel.router.attachTo(this)

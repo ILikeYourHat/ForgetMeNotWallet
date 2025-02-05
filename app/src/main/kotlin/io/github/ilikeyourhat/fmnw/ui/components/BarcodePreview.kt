@@ -122,7 +122,7 @@ private fun BarcodeModelType.toUiType(): BarcodeType {
 
 @Preview
 @Composable
-fun BarcodePreview_1D() {
+private fun BarcodePreview_1D() {
     AppTheme {
         BarcodePreview(
             object : BarcodeContainer {
@@ -135,7 +135,7 @@ fun BarcodePreview_1D() {
 
 @Preview
 @Composable
-fun BarcodePreview_2D() {
+private fun BarcodePreview_2D() {
     AppTheme {
         BarcodePreview(
             object : BarcodeContainer {
@@ -148,7 +148,7 @@ fun BarcodePreview_2D() {
 
 @Preview
 @Composable
-fun BarcodePreview_2D_long() {
+private fun BarcodePreview_2D_long() {
     AppTheme {
         BarcodePreview(
             object : BarcodeContainer {
@@ -163,7 +163,7 @@ fun BarcodePreview_2D_long() {
 
 @Preview
 @Composable
-fun BarcodePreview_text() {
+private fun BarcodePreview_text() {
     AppTheme {
         BarcodePreview(
             object : BarcodeContainer {
@@ -176,7 +176,7 @@ fun BarcodePreview_text() {
 
 @Preview
 @Composable
-fun BarcodePreview_text_multiline() {
+private fun BarcodePreview_text_multiline() {
     AppTheme {
         BarcodePreview(
             object : BarcodeContainer {
@@ -193,7 +193,7 @@ fun BarcodePreview_text_multiline() {
 
 @Preview
 @Composable
-fun BarcodePreview_onSurface() {
+private fun BarcodePreview_onSurface() {
     AppTheme {
         Surface {
             BarcodePreview(

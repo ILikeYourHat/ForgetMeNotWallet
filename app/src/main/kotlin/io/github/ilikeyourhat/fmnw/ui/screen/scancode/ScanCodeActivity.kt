@@ -21,7 +21,10 @@ class ScanCodeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         viewModel.uiState.observe(this) { state ->
             setContent {
-                ScanCodeScreen(state, viewModel)
+                ScanCodeScreen(
+                    state = state,
+                    events = viewModel
+                )
                 if (!state.permissionGranted) {
                     handleCameraPermission()
                 }

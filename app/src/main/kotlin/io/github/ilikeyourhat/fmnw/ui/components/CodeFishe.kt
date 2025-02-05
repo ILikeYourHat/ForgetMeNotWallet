@@ -109,7 +109,7 @@ fun CodeFiche(
 
 @Preview
 @Composable
-fun CodeFiche_default() {
+private fun CodeFiche_default() {
     AppTheme {
         CodeFiche(
             headline = "Headline",
@@ -120,7 +120,7 @@ fun CodeFiche_default() {
 
 @Preview
 @Composable
-fun CodeFiche_long() {
+private fun CodeFiche_long() {
     AppTheme {
         CodeFiche(
             headline = "Headline",

@@ -19,7 +19,10 @@ class EditGroupActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         viewModel.screen.observe(this) { state ->
             setContent {
-                EditGroupScreen(state, viewModel)
+                EditGroupScreen(
+                    state = state,
+                    events = viewModel
+                )
             }
         }
         viewModel.router.attachTo(this)

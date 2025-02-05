@@ -27,12 +27,13 @@ import java.util.concurrent.Executors
 
 @Composable
 fun CameraPreview(
+    modifier: Modifier = Modifier,
     onBarcodeFound: (Barcode) -> Unit = {}
 ) {
     val lifecycleOwner = LocalLifecycleOwner.current
 
     AndroidView(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         factory = { context ->
             val previewView = PreviewView(context).apply {
                 layoutParams = ViewGroup.LayoutParams(

@@ -15,7 +15,10 @@ class ShowCodeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         viewModel.uiState.observe(this) { state ->
             setContent {
-                ShowCodeScreen(state, viewModel)
+                ShowCodeScreen(
+                    state = state,
+                    events = viewModel
+                )
             }
         }
         viewModel.router.attachTo(this)

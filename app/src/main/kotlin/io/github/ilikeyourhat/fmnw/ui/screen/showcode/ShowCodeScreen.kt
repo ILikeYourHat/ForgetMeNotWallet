@@ -25,10 +25,12 @@ import io.github.ilikeyourhat.fmnw.ui.theme.AppTheme
 @Composable
 fun ShowCodeScreen(
     state: ShowCodeScreenState,
+    modifier: Modifier = Modifier,
     events: ShowCodeScreenEvents = ShowCodeScreenEvents.DUMMY
 ) {
     AppTheme {
         Scaffold(
+            modifier = modifier,
             topBar = {
                 TopAppBar(
                     navigationIcon = {
@@ -77,7 +79,7 @@ private fun NoteContent(note: Note) {
 
 @Preview
 @Composable
-fun ShowCodeScreen_withBarcode() {
+private fun ShowCodeScreen_withBarcode() {
     ShowCodeScreen(
         ShowCodeScreenState(
             item = LoyaltyCard(
@@ -92,7 +94,7 @@ fun ShowCodeScreen_withBarcode() {
 
 @Preview
 @Composable
-fun ShowCodeScreen_withTextCode() {
+private fun ShowCodeScreen_withTextCode() {
     ShowCodeScreen(
         ShowCodeScreenState(
             item = Note(

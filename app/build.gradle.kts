@@ -63,6 +63,8 @@ kotlin {
 }
 
 dependencies {
+    lintChecks(libs.compose.lint.checks)
+
     coreLibraryDesugaring(libs.desugaring)
 
     implementation(platform(libs.compose.bom))

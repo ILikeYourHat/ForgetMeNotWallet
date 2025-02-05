@@ -25,10 +25,12 @@ import io.github.ilikeyourhat.fmnw.ui.theme.AppTheme
 @Composable
 fun EditNoteScreen(
     state: EditNoteScreenState,
+    modifier: Modifier = Modifier,
     events: EditNoteEvents = EditNoteEvents.DUMMY
 ) {
     AppTheme {
         Scaffold(
+            modifier = modifier,
             topBar = {
                 TopAppBar(
                     navigationIcon = {
@@ -93,13 +95,13 @@ private fun Content(state: EditNoteScreenState, events: EditNoteEvents) {
 
 @Preview
 @Composable
-fun AddCodeScreen_default() {
+private fun AddCodeScreen_default() {
     EditNoteScreen(EditNoteScreenState())
 }
 
 @Preview
 @Composable
-fun AddCodeScreen_withBarcode() {
+private fun AddCodeScreen_withBarcode() {
     EditNoteScreen(
         EditNoteScreenState(
             note = Note(

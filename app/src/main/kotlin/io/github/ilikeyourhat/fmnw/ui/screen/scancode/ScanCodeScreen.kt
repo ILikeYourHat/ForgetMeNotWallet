@@ -25,10 +25,12 @@ import io.github.ilikeyourhat.fmnw.ui.theme.AppTheme
 @Composable
 fun ScanCodeScreen(
     state: ScanCodeScreenState,
-    events: ScanCodeScreenEvents
+    modifier: Modifier = Modifier,
+    events: ScanCodeScreenEvents = ScanCodeScreenEvents.DUMMY
 ) {
     AppTheme {
         Scaffold(
+            modifier = modifier,
             topBar = {
                 TopAppBar(
                     navigationIcon = {
@@ -45,7 +47,10 @@ fun ScanCodeScreen(
             content = { padding ->
                 Surface(modifier = Modifier.padding(padding)) {
                     if (state.permissionGranted && !state.barcodeDetected) {
-                        CameraPreview(events::onBarcodeDetected)
+                        CameraPreview(
+                            modifier = Modifier.fillMaxSize(),
+                            onBarcodeFound = events::onBarcodeDetected
+                        )
                     } else {
                         Box(
                             modifier = Modifier.fillMaxSize()

@@ -25,10 +25,12 @@ import io.github.ilikeyourhat.fmnw.ui.theme.AppTheme
 @Composable
 fun EditGroupScreen(
     state: EditGroupScreenState,
+    modifier: Modifier = Modifier,
     events: EditGroupEvents = EditGroupEvents.DUMMY
 ) {
     AppTheme {
         Scaffold(
+            modifier = modifier,
             topBar = {
                 TopAppBar(
                     navigationIcon = {
@@ -85,13 +87,13 @@ private fun Content(state: EditGroupScreenState, events: EditGroupEvents) {
 
 @Preview
 @Composable
-fun AddCodeScreen_default() {
+private fun AddCodeScreen_default() {
     EditGroupScreen(EditGroupScreenState())
 }
 
 @Preview
 @Composable
-fun AddCodeScreen_withBarcode() {
+private fun AddCodeScreen_withBarcode() {
     EditGroupScreen(
         EditGroupScreenState(
             group = Group(
