@@ -12,6 +12,7 @@ appcompat = "1.7.0"
 liveEvent = "1.3.0"
 material = "1.12.0"
 materialIconsExtended = "1.7.7"
+mockk = "1.13.16"
 room = "2.6.1"
 ksp = "2.1.10-1.0.29"
 lifecycle = "2.8.7"
@@ -25,6 +26,7 @@ compose-lint-checks = { module = "com.slack.lint.compose:compose-lint-checks", v
 desugaring = { module = "com.android.tools:desugar_jdk_libs", version = "2.1.4" }
 composed-barcodes = { module = "com.simonsickle:composed-barcodes", version.ref = "composedBarcodes" }
 liveevent = { module = "com.github.hadilq:live-event", version.ref = "liveEvent" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }

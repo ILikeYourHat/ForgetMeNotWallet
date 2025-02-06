@@ -7,7 +7,7 @@ import io.github.ilikeyourhat.fmnw.model.Note
 import io.github.ilikeyourhat.fmnw.model.WalletItem
 
 fun WalletItemEntity.toDomainModel(): WalletItem {
-    return when(type) {
+    return when (type) {
         WalletItemEntity.Type.LOYALTY_CARD -> toLoyaltyCardDomainModel()
         WalletItemEntity.Type.NOTE -> toNoteDomainModel()
         WalletItemEntity.Type.GROUP -> toGroupDomainModel()
@@ -36,7 +36,7 @@ private fun WalletItemEntity.toGroupDomainModel() = Group(
 )
 
 fun WalletItem.toEntity(): WalletItemEntity {
-    return when(this) {
+    return when (this) {
         is LoyaltyCard -> toLoyaltyCardEntity()
         is Note -> toNoteEntity()
         is Group -> toGroupEntity()
