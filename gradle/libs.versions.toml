@@ -5,10 +5,11 @@ androidxCamera = "1.4.1"
 composeBom = "2025.01.01"
 composedBarcodes = "1.3.0"
 composeLintChecks = "1.4.2"
+junit5 = "5.11.4"
 kotlin = "2.1.10"
 coreKtx = "1.15.0"
-junit = "4.13.2"
 appcompat = "1.7.0"
+kotlinxCoroutines = "1.10.1"
 liveEvent = "1.3.0"
 material = "1.12.0"
 materialIconsExtended = "1.7.7"
@@ -25,6 +26,11 @@ androidx-material-icons-extended = { module = "androidx.compose.material:materia
 compose-lint-checks = { module = "com.slack.lint.compose:compose-lint-checks", version.ref = "composeLintChecks" }
 desugaring = { module = "com.android.tools:desugar_jdk_libs", version = "2.1.4" }
 composed-barcodes = { module = "com.simonsickle:composed-barcodes", version.ref = "composedBarcodes" }
+junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit5" }
+junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit5" }
+junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junit5" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
 liveevent = { module = "com.github.hadilq:live-event", version.ref = "liveEvent" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
@@ -37,7 +43,6 @@ androidx-lifecycle = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", ve
 androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 compose-camera = { module = "androidx.camera.viewfinder:viewfinder-compose", version = "1.4.0-alpha12" }
-junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { module = "androidx.test.ext:junit" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
@@ -53,6 +58,7 @@ androidx-ui-test-junit4-android = { group = "androidx.compose.ui", name = "ui-te
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
+android-junit5 = { id = "de.mannodermaus.android-junit5", version = "1.11.3.0" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

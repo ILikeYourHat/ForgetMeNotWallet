@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
+    alias(libs.plugins.android.junit5)
     id("kotlin-parcelize")
 }
 
@@ -38,6 +39,9 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+    packaging {
+        resources.excludes += "DebugProbesKt.bin" // Required by Kotlin Coroutines
+    }
     kotlinOptions {
         jvmTarget = "11"
     }
@@ -69,6 +73,7 @@ dependencies {
 
     implementation(platform(libs.compose.bom))
 
+    implementation(libs.kotlinx.coroutines.android)
     implementation(libs.hilt)
     implementation(libs.androidx.camera.view)
     implementation(libs.androidx.camera.camera2)
@@ -97,8 +102,11 @@ dependencies {
 
     debugImplementation(libs.androidx.ui.tooling)
 
-    testImplementation(libs.junit)
+    testRuntimeOnly(libs.junit.jupiter.engine)
+    testImplementation(libs.junit.jupiter.api)
+    testImplementation(libs.junit.jupiter.params)
     testImplementation(libs.mockk)
+    testImplementation(libs.kotlinx.coroutines.test)
 
     androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4.android)
