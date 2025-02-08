@@ -24,13 +24,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.simonsickle.compose.barcodes.Barcode
+import com.simonsickle.compose.barcodes.BarcodeType
 import io.github.ilikeyourhat.fmnw.R
 import io.github.ilikeyourhat.fmnw.model.BarcodeContainer
 import io.github.ilikeyourhat.fmnw.model.BarcodeModelType
 import io.github.ilikeyourhat.fmnw.ui.theme.AppTheme
 import io.github.ilikeyourhat.fmnw.ui.theme.Typography
-import com.simonsickle.compose.barcodes.Barcode
-import com.simonsickle.compose.barcodes.BarcodeType
 
 @Composable
 fun BarcodePreview(
@@ -184,7 +184,7 @@ private fun BarcodePreview_text_multiline() {
                     some text
                     that should be displayed
                     in multiple lines
-                    """.trimIndent()
+                """.trimIndent()
                 override val barcodeType = null
             }
         )

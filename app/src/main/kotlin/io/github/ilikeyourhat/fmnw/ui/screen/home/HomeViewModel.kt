@@ -4,6 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.github.ilikeyourhat.fmnw.domain.DatabaseRepository
 import io.github.ilikeyourhat.fmnw.model.Group
 import io.github.ilikeyourhat.fmnw.model.LoyaltyCard
@@ -11,7 +12,6 @@ import io.github.ilikeyourhat.fmnw.model.Note
 import io.github.ilikeyourhat.fmnw.model.WalletItem
 import io.github.ilikeyourhat.fmnw.ui.navigation.Navigation
 import io.github.ilikeyourhat.fmnw.ui.navigation.Router
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
@@ -23,7 +23,7 @@ class HomeViewModel @Inject constructor(
     val router: Router,
     savedStateHandle: SavedStateHandle,
     private val repository: DatabaseRepository
-): ViewModel(), HomeScreenEvents {
+) : ViewModel(), HomeScreenEvents {
 
     private val group: Group? = savedStateHandle["group"]
 
@@ -41,7 +41,7 @@ class HomeViewModel @Inject constructor(
     }
 
     override fun onEditItemClicked(item: WalletItem) {
-        val navigationTarget = when(item) {
+        val navigationTarget = when (item) {
             is LoyaltyCard -> Navigation.EditLoyaltyCard(item)
             is Note -> Navigation.EditNote(item)
             is Group -> Navigation.EditGroup(item)

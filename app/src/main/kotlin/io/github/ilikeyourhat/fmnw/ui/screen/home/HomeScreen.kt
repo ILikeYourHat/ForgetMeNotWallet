@@ -30,6 +30,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import de.charlex.compose.BottomAppBarSpeedDialFloatingActionButton
+import de.charlex.compose.FloatingActionButtonItem
+import de.charlex.compose.SpeedDialFloatingActionButtonState
+import de.charlex.compose.SubSpeedDialFloatingActionButtons
+import de.charlex.compose.rememberSpeedDialFloatingActionButtonState
 import io.github.ilikeyourhat.fmnw.R
 import io.github.ilikeyourhat.fmnw.model.BarcodeModelType
 import io.github.ilikeyourhat.fmnw.model.Group
@@ -37,13 +42,8 @@ import io.github.ilikeyourhat.fmnw.model.LoyaltyCard
 import io.github.ilikeyourhat.fmnw.model.Note
 import io.github.ilikeyourhat.fmnw.model.WalletItem
 import io.github.ilikeyourhat.fmnw.ui.components.CodeFiche
-import io.github.ilikeyourhat.fmnw.ui.theme.AppTheme
-import de.charlex.compose.BottomAppBarSpeedDialFloatingActionButton
-import de.charlex.compose.FloatingActionButtonItem
-import de.charlex.compose.SpeedDialFloatingActionButtonState
-import de.charlex.compose.SubSpeedDialFloatingActionButtons
-import de.charlex.compose.rememberSpeedDialFloatingActionButtonState
 import io.github.ilikeyourhat.fmnw.ui.components.CodeFisheActions
+import io.github.ilikeyourhat.fmnw.ui.theme.AppTheme
 
 @Composable
 fun HomeScreen(
@@ -92,8 +92,10 @@ fun HomeScreen(
                         BottomAppBarSpeedDialFloatingActionButton(
                             state = fabState,
                             content = {
-                                Icon(Icons.Filled.Add,
-                                    stringResource(R.string.homeScreen_addNewItemButton))
+                                Icon(
+                                    Icons.Filled.Add,
+                                    stringResource(R.string.homeScreen_addNewItemButton)
+                                )
                             }
                         )
                     }
@@ -182,7 +184,6 @@ private fun NonEmptyContent(state: HomeScreenState, events: HomeScreenEvents) {
                 override fun onDeleteClick() {
                     events.onDeleteItemClicked(code)
                 }
-
             }
             CodeFiche(
                 headline = code.name,

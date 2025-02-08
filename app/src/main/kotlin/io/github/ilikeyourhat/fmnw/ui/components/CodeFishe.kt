@@ -71,7 +71,6 @@ fun CodeFiche(
                 onDeleteClick = events::onDeleteClick
             )
         }
-
     }
 }
 

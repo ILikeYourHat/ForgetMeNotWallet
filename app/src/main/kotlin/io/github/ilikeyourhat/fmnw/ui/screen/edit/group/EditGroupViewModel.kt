@@ -5,11 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.github.ilikeyourhat.fmnw.domain.DatabaseRepository
 import io.github.ilikeyourhat.fmnw.model.Group
 import io.github.ilikeyourhat.fmnw.ui.navigation.Navigation
 import io.github.ilikeyourhat.fmnw.ui.navigation.Router
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

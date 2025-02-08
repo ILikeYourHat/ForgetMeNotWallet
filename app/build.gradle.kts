@@ -1,3 +1,5 @@
+import io.gitlab.arturbosch.detekt.Detekt
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -74,6 +76,7 @@ detekt {
 
 dependencies {
     lintChecks(libs.compose.lint.checks)
+    detektPlugins(libs.detekt.formatting)
 
     coreLibraryDesugaring(libs.desugaring)
 

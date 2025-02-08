@@ -45,8 +45,6 @@ fun CameraPreview(
             }
 
             val cameraProviderFuture = ProcessCameraProvider.getInstance(context)
-
-
             val scanner = initBarcode()
 
             cameraProviderFuture.addListener({
@@ -78,7 +76,10 @@ fun CameraPreview(
                 cameraProvider.unbindAll()
 
                 cameraProvider.bindToLifecycle(
-                    lifecycleOwner, CameraSelector.DEFAULT_BACK_CAMERA, preview, useCase
+                    lifecycleOwner,
+                    CameraSelector.DEFAULT_BACK_CAMERA,
+                    preview,
+                    useCase
                 )
             }, ContextCompat.getMainExecutor(context))
             previewView

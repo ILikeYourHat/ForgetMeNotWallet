@@ -6,9 +6,9 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import dagger.hilt.android.AndroidEntryPoint
 import io.github.ilikeyourhat.fmnw.model.Group
 import io.github.ilikeyourhat.fmnw.ui.navigation.Navigation.Companion.KEY_BARCODE
-import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class EditGroupActivity : AppCompatActivity() {

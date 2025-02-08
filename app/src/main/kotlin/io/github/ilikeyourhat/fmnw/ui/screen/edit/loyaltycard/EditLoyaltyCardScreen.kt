@@ -115,8 +115,8 @@ private fun FormatPicker(
     events: EditLoyaltyCardEvents,
     modifier: Modifier = Modifier
 ) {
-    val possibilities = mapOf(null to stringResource(R.string.barcodeType_rawText)) +
-            BarcodeModelType.entries.associateWith { stringResource(it.nameStringRes) }
+    val possibilities = mapOf(null to stringResource(R.string.barcodeType_rawText))
+        .plus(BarcodeModelType.entries.associateWith { stringResource(it.nameStringRes) })
     var expanded by remember { mutableStateOf(false) }
     ExposedDropdownMenuBox(
         expanded = expanded,
