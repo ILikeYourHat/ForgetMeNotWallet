@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
+    alias(libs.plugins.detekt)
     alias(libs.plugins.android.junit5)
     id("kotlin-parcelize")
 }
@@ -64,6 +65,11 @@ kotlin {
             "androidx.compose.material3.ExperimentalMaterial3Api"
         )
     }
+}
+
+detekt {
+    buildUponDefaultConfig = true
+    config.setFrom("$rootDir/config/detekt.yml")
 }
 
 dependencies {

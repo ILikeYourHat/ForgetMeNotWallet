@@ -16,7 +16,7 @@ import io.github.ilikeyourhat.fmnw.ui.screen.showcode.ShowCodeActivity
 sealed class Navigation {
     abstract fun navigate(activity: Activity)
 
-    data object Close: Navigation() {
+    data object Close : Navigation() {
         override fun navigate(activity: Activity) {
             activity.finish()
         }
@@ -25,7 +25,7 @@ sealed class Navigation {
     data class AddCode(
         val item: WalletItem? = null,
         val closeCurrent: Boolean = false
-    ): Navigation() {
+    ) : Navigation() {
         override fun navigate(activity: Activity) {
             val intent = Intent(activity, EditLoyaltyCardActivity::class.java)
             intent.putExtra(KEY_BARCODE, item)
@@ -36,7 +36,7 @@ sealed class Navigation {
         }
     }
 
-    data class AddLoyaltyCard(val parentGroup: Group?): Navigation() {
+    data class AddLoyaltyCard(val parentGroup: Group?) : Navigation() {
         override fun navigate(activity: Activity) {
             val intent = Intent(activity, ScanCodeActivity::class.java)
             intent.putExtra("parent_group", parentGroup)
@@ -44,42 +44,42 @@ sealed class Navigation {
         }
     }
 
-    data class EditLoyaltyCard(val card: LoyaltyCard): Navigation() {
+    data class EditLoyaltyCard(val card: LoyaltyCard) : Navigation() {
         override fun navigate(activity: Activity) {
             val intent = EditLoyaltyCardActivity.intentEdit(activity, card)
             activity.startActivity(intent)
         }
     }
 
-    data class AddNote(val parentGroup: Group?): Navigation() {
+    data class AddNote(val parentGroup: Group?) : Navigation() {
         override fun navigate(activity: Activity) {
             val intent = EditNoteActivity.intentCreate(activity, parentGroup)
             activity.startActivity(intent)
         }
     }
 
-    data class EditNote(val note: Note): Navigation() {
+    data class EditNote(val note: Note) : Navigation() {
         override fun navigate(activity: Activity) {
             val intent = EditNoteActivity.intentEdit(activity, note)
             activity.startActivity(intent)
         }
     }
 
-    data class AddGroup(val parentGroup: Group?): Navigation() {
+    data class AddGroup(val parentGroup: Group?) : Navigation() {
         override fun navigate(activity: Activity) {
             val intent = EditGroupActivity.intentCreate(activity, parentGroup)
             activity.startActivity(intent)
         }
     }
 
-    data class EditGroup(val group: Group): Navigation() {
+    data class EditGroup(val group: Group) : Navigation() {
         override fun navigate(activity: Activity) {
             val intent = EditGroupActivity.intentEdit(activity, group)
             activity.startActivity(intent)
         }
     }
 
-    data class ShowCode(val item: WalletItem): Navigation() {
+    data class ShowCode(val item: WalletItem) : Navigation() {
         override fun navigate(activity: Activity) {
             val intent = Intent(activity, ShowCodeActivity::class.java)
             intent.putExtra(KEY_BARCODE, item)

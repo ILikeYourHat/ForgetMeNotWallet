@@ -61,7 +61,7 @@ fun CameraPreview(
                         ResolutionSelector.Builder()
                             .setResolutionStrategy(
                                 ResolutionStrategy(
-                                    Size(1000, 2500),
+                                    Size(RESOLUTION_IMAGE_WIDTH, RESOLUTION_IMAGE_HEIGHT),
                                     ResolutionStrategy.FALLBACK_RULE_CLOSEST_HIGHER_THEN_LOWER
                                 )
                             )
@@ -114,3 +114,6 @@ private fun processImageProxy(
             }
     }
 }
+
+private const val RESOLUTION_IMAGE_WIDTH = 1000
+private const val RESOLUTION_IMAGE_HEIGHT = 2500

@@ -40,8 +40,10 @@ import io.github.ilikeyourhat.fmnw.ui.components.CodeFiche
 import io.github.ilikeyourhat.fmnw.ui.theme.AppTheme
 import de.charlex.compose.BottomAppBarSpeedDialFloatingActionButton
 import de.charlex.compose.FloatingActionButtonItem
+import de.charlex.compose.SpeedDialFloatingActionButtonState
 import de.charlex.compose.SubSpeedDialFloatingActionButtons
 import de.charlex.compose.rememberSpeedDialFloatingActionButtonState
+import io.github.ilikeyourhat.fmnw.ui.components.CodeFisheActions
 
 @Composable
 fun HomeScreen(
@@ -76,35 +78,7 @@ fun HomeScreen(
                 )
             },
             floatingActionButton = {
-                SubSpeedDialFloatingActionButtons(
-                    state = fabState,
-                    items = listOf(
-                        FloatingActionButtonItem(
-                            icon = Icons.Default.CreditCard,
-                            label = stringResource(R.string.homeScreen_addLoyaltyCardButton),
-                            onFabItemClicked = {
-                                events.onAddLoyaltyCardClicked()
-                                fabState.stateChange()
-                            }
-                        ),
-                        FloatingActionButtonItem(
-                            icon = Icons.AutoMirrored.Filled.Note,
-                            label = stringResource(R.string.homeScreen_addNoteButton),
-                            onFabItemClicked = {
-                                events.onAddNoteClicked()
-                                fabState.stateChange()
-                            }
-                        ),
-                        FloatingActionButtonItem(
-                            icon = Icons.Filled.Apps,
-                            label = stringResource(R.string.homeScreen_addGroupButton),
-                            onFabItemClicked = {
-                                events.onAddGroupClicked()
-                                fabState.stateChange()
-                            }
-                        )
-                    )
-                )
+                AddItemFab(fabState, events)
             },
             content = { padding ->
                 Surface(modifier = Modifier.padding(padding)) {
@@ -127,6 +101,42 @@ fun HomeScreen(
             }
         )
     }
+}
+
+@Composable
+private fun AddItemFab(
+    fabState: SpeedDialFloatingActionButtonState,
+    events: HomeScreenEvents
+) {
+    SubSpeedDialFloatingActionButtons(
+        state = fabState,
+        items = listOf(
+            FloatingActionButtonItem(
+                icon = Icons.Default.CreditCard,
+                label = stringResource(R.string.homeScreen_addLoyaltyCardButton),
+                onFabItemClicked = {
+                    events.onAddLoyaltyCardClicked()
+                    fabState.stateChange()
+                }
+            ),
+            FloatingActionButtonItem(
+                icon = Icons.AutoMirrored.Filled.Note,
+                label = stringResource(R.string.homeScreen_addNoteButton),
+                onFabItemClicked = {
+                    events.onAddNoteClicked()
+                    fabState.stateChange()
+                }
+            ),
+            FloatingActionButtonItem(
+                icon = Icons.Filled.Apps,
+                label = stringResource(R.string.homeScreen_addGroupButton),
+                onFabItemClicked = {
+                    events.onAddGroupClicked()
+                    fabState.stateChange()
+                }
+            )
+        )
+    )
 }
 
 @Composable
@@ -160,12 +170,24 @@ private fun NonEmptyContent(state: HomeScreenState, events: HomeScreenEvents) {
             items = state.items,
             key = { it.id!! }
         ) { code ->
+            val fisheEvents = object : CodeFisheActions {
+                override fun onClick() {
+                    events.onItemClicked(code)
+                }
+
+                override fun onEditClick() {
+                    events.onEditItemClicked(code)
+                }
+
+                override fun onDeleteClick() {
+                    events.onDeleteItemClicked(code)
+                }
+
+            }
             CodeFiche(
                 headline = code.name,
                 icon = getIconFor(code),
-                onClick = { events.onItemClicked(code) },
-                onEditClick = { events.onEditItemClicked(code) },
-                onDeleteClick = { events.onDeleteItemClicked(code) },
+                events = fisheEvents,
                 modifier = Modifier
                     .padding(top = 8.dp, bottom = 8.dp)
                     .fillParentMaxWidth()

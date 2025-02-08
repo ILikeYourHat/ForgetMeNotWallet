@@ -1,0 +1,11 @@
+naming:
+  FunctionNaming:
+    ignoreAnnotated: ['Composable']
+style:
+  UnusedPrivateMember:
+    ignoreAnnotated: ['Preview']
+  MagicNumber:
+    ignorePropertyDeclaration: true
+complexity:
+  TooManyFunctions:
+    thresholdInFiles: 20

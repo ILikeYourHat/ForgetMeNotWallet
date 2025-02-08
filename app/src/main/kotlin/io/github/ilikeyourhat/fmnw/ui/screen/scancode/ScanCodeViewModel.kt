@@ -4,14 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import com.google.mlkit.vision.barcode.common.Barcode
+import com.google.mlkit.vision.barcode.common.Barcode.BarcodeFormat
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.github.ilikeyourhat.fmnw.model.BarcodeModelType
 import io.github.ilikeyourhat.fmnw.model.Group
 import io.github.ilikeyourhat.fmnw.model.LoyaltyCard
 import io.github.ilikeyourhat.fmnw.ui.navigation.Navigation
 import io.github.ilikeyourhat.fmnw.ui.navigation.Router
-import com.google.mlkit.vision.barcode.common.Barcode
-import com.google.mlkit.vision.barcode.common.Barcode.BarcodeFormat
-import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
@@ -54,15 +54,20 @@ class ScanCodeViewModel @Inject constructor(
     }
 
     private fun Barcode.toLoyaltyCard(): LoyaltyCard? {
-        val type = format.toBarcodeType() ?: return null
-        val value = rawValue ?: return null
-        return LoyaltyCard(
-            barcodeType = type,
-            value = value,
-            groupId = parentGroup?.id
-        )
+        val type = format.toBarcodeType()
+        val value = rawValue
+        return if (type != null && value != null) {
+            LoyaltyCard(
+                barcodeType = type,
+                value = value,
+                groupId = parentGroup?.id
+            )
+        } else {
+            null
+        }
     }
 
+    @Suppress("CyclomaticComplexMethod")
     private fun @receiver:BarcodeFormat Int.toBarcodeType(): BarcodeModelType? {
         return when (this) {
             Barcode.FORMAT_CODE_128 -> BarcodeModelType.CODE_128

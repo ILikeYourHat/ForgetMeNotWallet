@@ -39,16 +39,14 @@ fun CodeFiche(
     headline: String,
     icon: ImageVector,
     modifier: Modifier = Modifier,
-    onClick: () -> Unit = {},
-    onEditClick: () -> Unit = {},
-    onDeleteClick: () -> Unit = {}
+    events: CodeFisheActions = CodeFisheActions.DUMMY
 ) {
     Card(
         elevation = CardDefaults.cardElevation(
             defaultElevation = 2.dp
         ),
         border = BorderStroke(2.dp, primaryLight),
-        onClick = onClick,
+        onClick = events::onClick,
         modifier = modifier
     ) {
         Row(
@@ -68,42 +66,69 @@ fun CodeFiche(
                     .weight(1f)
                     .padding(top = 8.dp, bottom = 8.dp)
             )
-            var expanded by remember { mutableStateOf(false) }
-            IconButton(
-                onClick = { expanded = true }
-            ) {
-                Icon(
-                    imageVector = Icons.Filled.MoreVert,
-                    contentDescription = stringResource(R.string.codeFishe_moreActionsButton)
-                )
-                DropdownMenu(
-                    expanded = expanded,
-                    onDismissRequest = { expanded = false }
-                ) {
-                    DropdownMenuItem(
-                        leadingIcon = {
-                            Icon(imageVector = Icons.Filled.Edit, contentDescription = null)
-                        },
-                        text = { Text(stringResource(R.string.codeFishe_editCodeButton)) },
-                        onClick = {
-                            onEditClick()
-                            expanded = false
-                        }
-                    )
-                    DropdownMenuItem(
-                        leadingIcon = {
-                            Icon(imageVector = Icons.Filled.Delete, contentDescription = null)
-                        },
-                        text = { Text(stringResource(R.string.codeFishe_deleteCodeButton)) },
-                        onClick = {
-                            onDeleteClick()
-                            expanded = false
-                        }
-                    )
-                }
-            }
+            MoreActionsButton(
+                onEditClick = events::onEditClick,
+                onDeleteClick = events::onDeleteClick
+            )
         }
 
+    }
+}
+
+interface CodeFisheActions {
+    fun onClick()
+    fun onEditClick()
+    fun onDeleteClick()
+
+    companion object {
+        val DUMMY = object : CodeFisheActions {
+            override fun onClick() = Unit
+            override fun onEditClick() = Unit
+            override fun onDeleteClick() = Unit
+        }
+    }
+}
+
+@Composable
+private fun MoreActionsButton(
+    onEditClick: () -> Unit,
+    onDeleteClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    var expanded by remember { mutableStateOf(false) }
+    IconButton(
+        modifier = modifier,
+        onClick = { expanded = true }
+    ) {
+        Icon(
+            imageVector = Icons.Filled.MoreVert,
+            contentDescription = stringResource(R.string.codeFishe_moreActionsButton)
+        )
+        DropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { expanded = false }
+        ) {
+            DropdownMenuItem(
+                leadingIcon = {
+                    Icon(imageVector = Icons.Filled.Edit, contentDescription = null)
+                },
+                text = { Text(stringResource(R.string.codeFishe_editCodeButton)) },
+                onClick = {
+                    onEditClick()
+                    expanded = false
+                }
+            )
+            DropdownMenuItem(
+                leadingIcon = {
+                    Icon(imageVector = Icons.Filled.Delete, contentDescription = null)
+                },
+                text = { Text(stringResource(R.string.codeFishe_deleteCodeButton)) },
+                onClick = {
+                    onDeleteClick()
+                    expanded = false
+                }
+            )
+        }
     }
 }
 
