@@ -1,12 +1,12 @@
 package io.github.ilikeyourhat.fmnw
 
-import org.junit.jupiter.api.Assertions.assertEquals
+import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 
 class ExampleUnitTest {
 
     @Test
     fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+        (2 + 2).shouldBe(4)
     }
 }

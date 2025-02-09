@@ -3,6 +3,8 @@ package io.github.ilikeyourhat.fmnw.domain
 import io.github.ilikeyourhat.fmnw.db.WalletItemDao
 import io.github.ilikeyourhat.fmnw.db.WalletItemEntity
 import io.github.ilikeyourhat.fmnw.model.Note
+import io.kotest.matchers.nulls.shouldBeNull
+import io.kotest.matchers.shouldBe
 import io.mockk.Runs
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -10,7 +12,6 @@ import io.mockk.just
 import io.mockk.mockk
 import io.mockk.slot
 import kotlinx.coroutines.test.runTest
-import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 class DatabaseRepositoryTest {
@@ -27,9 +28,10 @@ class DatabaseRepositoryTest {
         repository.save(domainModel)
 
         coVerify { walletItemDao.insertOrReplace(any()) }
-        slot.captured.let { entity ->
-            assertEquals(null, entity.id)
-            assertEquals(WalletItemEntity.Type.NOTE, entity.type)
+
+        slot.captured.run {
+            id.shouldBeNull()
+            type.shouldBe(WalletItemEntity.Type.NOTE)
         }
     }
 
@@ -42,9 +44,9 @@ class DatabaseRepositoryTest {
         repository.save(domainModel)
 
         coVerify { walletItemDao.insertOrReplace(any()) }
-        slot.captured.let { entity ->
-            assertEquals(1234L, entity.id)
-            assertEquals(WalletItemEntity.Type.NOTE, entity.type)
+        slot.captured.run {
+            id.shouldBe(1234L)
+            type.shouldBe(WalletItemEntity.Type.NOTE)
         }
     }
 
