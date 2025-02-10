@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.room)
     alias(libs.plugins.detekt)
     alias(libs.plugins.android.junit5)
+    id("tech.apter.junit5.jupiter.robolectric-extension-gradle-plugin") version ("0.9.0")
 }
 
 android {
@@ -115,6 +116,8 @@ dependencies {
     testImplementation(libs.mockk)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.kotest.assertions.core)
+    testImplementation(libs.robolectric)
+    testImplementation(libs.turbine)
 
     androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4.android)
