@@ -67,10 +67,12 @@ turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-junit5 = { id = "de.mannodermaus.android-junit5", version = "1.11.3.0" }
+convention-compose = { id = "io.github.ilikeyourhat.fmnw.convention.compose-convention-plugin", version = "unknown" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+robolectric = { id = "tech.apter.junit5.jupiter.robolectric-extension-gradle-plugin", version = "0.9.0" }
 room = { id = "androidx.room", version.ref = "room" }

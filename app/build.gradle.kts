@@ -8,7 +8,8 @@ plugins {
     alias(libs.plugins.room)
     alias(libs.plugins.detekt)
     alias(libs.plugins.android.junit5)
-    id("tech.apter.junit5.jupiter.robolectric-extension-gradle-plugin") version ("0.9.0")
+    alias(libs.plugins.robolectric)
+    alias(libs.plugins.convention.compose)
 }
 
 android {
