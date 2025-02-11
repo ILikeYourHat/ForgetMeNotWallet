@@ -11,3 +11,8 @@ gradlePlugin {
         }
     }
 }
+
+dependencies {
+    implementation(libs.android.application.plugin)
+    implementation(libs.kotlin.compose.plugin)
+}
