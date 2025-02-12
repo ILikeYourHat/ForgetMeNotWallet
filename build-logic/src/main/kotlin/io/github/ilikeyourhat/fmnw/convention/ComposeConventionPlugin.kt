@@ -10,6 +10,7 @@ class ComposeConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             with(pluginManager) {
+                requireAndroidGradlePlugin()
                 apply(ComposeCompilerGradleSubplugin::class)
             }
             with(androidCommon) {

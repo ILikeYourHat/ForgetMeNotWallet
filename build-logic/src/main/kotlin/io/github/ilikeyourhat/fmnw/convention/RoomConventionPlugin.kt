@@ -11,6 +11,7 @@ class RoomConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             with(pluginManager) {
+                requireAndroidGradlePlugin()
                 apply(KspGradleSubplugin::class)
                 apply(RoomGradlePlugin::class)
             }
