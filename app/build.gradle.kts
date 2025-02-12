@@ -4,11 +4,11 @@ plugins {
     alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.room)
     alias(libs.plugins.detekt)
     alias(libs.plugins.android.junit5)
     alias(libs.plugins.robolectric)
     alias(libs.plugins.convention.compose)
+    alias(libs.plugins.convention.room)
 }
 
 android {
@@ -43,13 +43,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = "11"
-    }
-    ksp {
-        arg("room.incremental", "true")
-        arg("room.generateKotlin", "true")
-    }
-    room {
-        schemaDirectory("$projectDir/schemas")
     }
     lint {
         warningsAsErrors = true
@@ -86,9 +79,6 @@ dependencies {
     implementation(libs.androidx.material.icons.extended)
 
     implementation(libs.liveevent)
-    implementation(libs.room.runtime)
-    ksp(libs.room.compiler)
-    implementation(libs.room.ktx)
     implementation(libs.compose.camera)
     implementation(libs.gms.scanner)
 

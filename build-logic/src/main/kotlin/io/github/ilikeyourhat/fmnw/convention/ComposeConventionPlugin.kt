@@ -3,9 +3,7 @@ package io.github.ilikeyourhat.fmnw.convention
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.apply
-import org.gradle.kotlin.dsl.getByType
 import org.jetbrains.kotlin.compose.compiler.gradle.ComposeCompilerGradleSubplugin
-import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidExtension
 
 class ComposeConventionPlugin : Plugin<Project> {
 
@@ -14,10 +12,10 @@ class ComposeConventionPlugin : Plugin<Project> {
             with(pluginManager) {
                 apply(ComposeCompilerGradleSubplugin::class)
             }
-            with(androidBaseExtension) {
+            with(androidCommon) {
                 buildFeatures.compose = true
             }
-            with(extensions.getByType<KotlinAndroidExtension>()) {
+            with(kotlin) {
                 compilerOptions {
                     optIn.add("androidx.compose.material3.ExperimentalMaterial3Api")
                 }

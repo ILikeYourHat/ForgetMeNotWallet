@@ -39,12 +39,15 @@ kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.
 kotlin-compose-plugin = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "kotlin" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
+ksp-plugin = { module = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 liveevent = { module = "com.github.hadilq:live-event", version.ref = "liveEvent" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+room-plugin = { module = "androidx.room:room-gradle-plugin", version.ref = "room" }
+room-testing = { module = "androidx.room:room-testing", version.ref = "room" }
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -70,11 +73,10 @@ turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-junit5 = { id = "de.mannodermaus.android-junit5", version = "1.11.3.0" }
 convention-compose = { id = "io.github.ilikeyourhat.fmnw.convention.compose-convention-plugin", version = "unknown" }
+convention-room = { id = "io.github.ilikeyourhat.fmnw.convention.room-convention-plugin", version = "unknown" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 robolectric = { id = "tech.apter.junit5.jupiter.robolectric-extension-gradle-plugin", version = "0.9.0" }
-room = { id = "androidx.room", version.ref = "room" }
