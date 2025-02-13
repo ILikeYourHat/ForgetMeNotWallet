@@ -1,6 +1,18 @@
 plugins {
     `java-gradle-plugin`
     `kotlin-dsl`
+    alias(libs.plugins.detekt)
+}
+
+kotlin {
+    compilerOptions {
+        allWarningsAsErrors = true
+    }
+}
+
+detekt {
+    buildUponDefaultConfig = true
+    config.setFrom("../config/detekt.yml")
 }
 
 gradlePlugin {
@@ -25,6 +37,8 @@ gradlePlugin {
 }
 
 dependencies {
+    detektPlugins(libs.detekt.formatting)
+
     implementation(libs.android.application.plugin)
     implementation(libs.hilt.plugin)
     implementation(libs.kotlin.compose.plugin)

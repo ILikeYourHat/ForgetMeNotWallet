@@ -46,7 +46,9 @@ internal fun Pair<DependencyHandler, VersionCatalog>.implementation(dependency: 
     first.add("implementation", second.findLibrary(dependency).get())
 }
 
-internal fun Pair<DependencyHandler, VersionCatalog>.implementation(dependency: Provider<MinimalExternalModuleDependency>) {
+internal fun Pair<DependencyHandler, VersionCatalog>.implementation(
+    dependency: Provider<MinimalExternalModuleDependency>
+) {
     first.add("implementation", dependency)
 }
 
@@ -62,11 +64,15 @@ internal fun Pair<DependencyHandler, VersionCatalog>.androidTestImplementation(d
     first.add("androidTestImplementation", second.findLibrary(dependency).get())
 }
 
-internal fun Pair<DependencyHandler, VersionCatalog>.androidTestImplementation(dependency: Provider<MinimalExternalModuleDependency>) {
+internal fun Pair<DependencyHandler, VersionCatalog>.androidTestImplementation(
+    dependency: Provider<MinimalExternalModuleDependency>
+) {
     first.add("androidTestImplementation", dependency)
 }
 
-internal fun Pair<DependencyHandler, VersionCatalog>.platform(dependency: String): Provider<MinimalExternalModuleDependency> {
+internal fun Pair<DependencyHandler, VersionCatalog>.platform(
+    dependency: String
+): Provider<MinimalExternalModuleDependency> {
     return first.platform(second.findLibrary(dependency).get())
 }
 
@@ -77,4 +83,3 @@ internal fun Pair<DependencyHandler, VersionCatalog>.ksp(dependency: String) {
 internal fun Pair<DependencyHandler, VersionCatalog>.lintChecks(dependency: String) {
     first.add("lintChecks", second.findLibrary(dependency).get())
 }
-
