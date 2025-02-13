@@ -13,11 +13,16 @@ gradlePlugin {
             id = "io.github.ilikeyourhat.fmnw.convention.room-convention-plugin"
             implementationClass = "io.github.ilikeyourhat.fmnw.convention.RoomConventionPlugin"
         }
+        register("hilt") {
+            id = "io.github.ilikeyourhat.fmnw.convention.hilt-convention-plugin"
+            implementationClass = "io.github.ilikeyourhat.fmnw.convention.HiltConventionPlugin"
+        }
     }
 }
 
 dependencies {
     implementation(libs.android.application.plugin)
+    implementation(libs.hilt.plugin)
     implementation(libs.kotlin.compose.plugin)
     implementation(libs.ksp.plugin)
     implementation(libs.room.plugin)

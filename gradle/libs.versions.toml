@@ -61,7 +61,8 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 androidx-material3 = { module = "androidx.compose.material3:material3" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 hilt = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
-hilt-ksp = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
+hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
+hilt-plugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hilt" }
 gms-scanner = { module = "com.google.mlkit:barcode-scanning", version = "17.3.0" }
 androidx-camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "androidxCamera" }
 androidx-camera-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version.ref = "androidxCamera" }
@@ -73,10 +74,9 @@ turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-junit5 = { id = "de.mannodermaus.android-junit5", version = "1.11.3.0" }
 convention-compose = { id = "io.github.ilikeyourhat.fmnw.convention.compose-convention-plugin", version = "unknown" }
+convention-hilt = { id = "io.github.ilikeyourhat.fmnw.convention.hilt-convention-plugin", version = "unknown" }
 convention-room = { id = "io.github.ilikeyourhat.fmnw.convention.room-convention-plugin", version = "unknown" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 robolectric = { id = "tech.apter.junit5.jupiter.robolectric-extension-gradle-plugin", version = "0.9.0" }

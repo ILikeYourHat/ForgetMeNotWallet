@@ -2,12 +2,11 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.parcelize)
-    alias(libs.plugins.hilt)
-    alias(libs.plugins.ksp)
     alias(libs.plugins.detekt)
     alias(libs.plugins.android.junit5)
     alias(libs.plugins.robolectric)
     alias(libs.plugins.convention.compose)
+    alias(libs.plugins.convention.hilt)
     alias(libs.plugins.convention.room)
 }
 
@@ -69,12 +68,10 @@ dependencies {
     implementation(platform(libs.compose.bom))
 
     implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.hilt)
     implementation(libs.androidx.camera.view)
     implementation(libs.androidx.camera.camera2)
     implementation(libs.androidx.camera.lifecycle)
     implementation(libs.composed.barcodes)
-    ksp(libs.hilt.ksp)
     implementation(libs.speeddial.bottomappbar.material3)
     implementation(libs.androidx.material.icons.extended)
 
