@@ -4,9 +4,9 @@ plugins {
     alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.detekt)
     alias(libs.plugins.android.junit5)
-    alias(libs.plugins.robolectric)
     alias(libs.plugins.convention.compose)
     alias(libs.plugins.convention.hilt)
+    alias(libs.plugins.convention.robolectric)
     alias(libs.plugins.convention.room)
 }
 
@@ -97,7 +97,6 @@ dependencies {
     testImplementation(libs.mockk)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.kotest.assertions.core)
-    testImplementation(libs.robolectric)
     testImplementation(libs.turbine)
 
     androidTestImplementation(platform(libs.compose.bom))

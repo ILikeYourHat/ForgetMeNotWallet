@@ -43,6 +43,7 @@ ksp-plugin = { module = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.
 liveevent = { module = "com.github.hadilq:live-event", version.ref = "liveEvent" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
+robolectric-plugin = { module = "tech.apter.junit5.jupiter:robolectric-extension-gradle-plugin", version = "0.9.0" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
@@ -75,8 +76,8 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 android-junit5 = { id = "de.mannodermaus.android-junit5", version = "1.11.3.0" }
 convention-compose = { id = "io.github.ilikeyourhat.fmnw.convention.compose-convention-plugin", version = "unknown" }
 convention-hilt = { id = "io.github.ilikeyourhat.fmnw.convention.hilt-convention-plugin", version = "unknown" }
+convention-robolectric = { id = "io.github.ilikeyourhat.fmnw.convention.robolectric-convention-plugin", version = "unknown" }
 convention-room = { id = "io.github.ilikeyourhat.fmnw.convention.room-convention-plugin", version = "unknown" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
-robolectric = { id = "tech.apter.junit5.jupiter.robolectric-extension-gradle-plugin", version = "0.9.0" }
