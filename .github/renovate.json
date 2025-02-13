@@ -8,9 +8,7 @@
   ],
   "packageRules": [
     {
-      "matchPackageNames": [
-        "@io.github.ilikeyourhat.fmnw.convention.**"
-      ],
+      "packagePatterns": ["^io\\.github\\.ilikeyourhat\\.fmnw\\..*"],
       "enabled": false
     }
   ],
