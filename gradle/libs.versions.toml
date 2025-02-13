@@ -53,13 +53,13 @@ compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = 
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
-androidx-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
-androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
-compose-camera = { module = "androidx.camera.viewfinder:viewfinder-compose", version = "1.4.0-alpha12" }
+androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
+androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+androidx-compose-camera-viewfinder = { module = "androidx.camera.viewfinder:viewfinder-compose", version = "1.4.0-alpha12" }
 androidx-junit = { module = "androidx.test.ext:junit" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
-androidx-material3 = { module = "androidx.compose.material3:material3" }
+androidx-compose-material3 = { module = "androidx.compose.material3:material3" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 hilt = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
@@ -68,7 +68,7 @@ gms-scanner = { module = "com.google.mlkit:barcode-scanning", version = "17.3.0"
 androidx-camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "androidxCamera" }
 androidx-camera-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version.ref = "androidxCamera" }
 speeddial-bottomappbar-material3 = { module = "de.charlex.compose:speeddial-bottomappbar-material3", version.ref = "speeddialBottomappbarMaterial3" }
-androidx-ui-test-junit4-android = { group = "androidx.compose.ui", name = "ui-test-junit4-android" }
+androidx-compose-ui-test = { group = "androidx.compose.ui", name = "ui-test-junit4-android" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 
 [plugins]

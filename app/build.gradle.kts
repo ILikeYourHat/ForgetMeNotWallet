@@ -60,12 +60,9 @@ detekt {
 }
 
 dependencies {
-    lintChecks(libs.compose.lint.checks)
     detektPlugins(libs.detekt.formatting)
 
     coreLibraryDesugaring(libs.desugaring)
-
-    implementation(platform(libs.compose.bom))
 
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.camera.view)
@@ -76,11 +73,8 @@ dependencies {
     implementation(libs.androidx.material.icons.extended)
 
     implementation(libs.liveevent)
-    implementation(libs.compose.camera)
+    implementation(libs.androidx.compose.camera.viewfinder)
     implementation(libs.gms.scanner)
-
-    implementation(libs.androidx.material3)
-    implementation(libs.androidx.ui.tooling.preview)
 
     implementation(libs.androidx.activity.compose)
 
@@ -88,8 +82,6 @@ dependencies {
     implementation(libs.androidx.lifecycle)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-
-    debugImplementation(libs.androidx.ui.tooling)
 
     testRuntimeOnly(libs.junit.jupiter.engine)
     testImplementation(libs.junit.jupiter.api)
@@ -99,8 +91,6 @@ dependencies {
     testImplementation(libs.kotest.assertions.core)
     testImplementation(libs.turbine)
 
-    androidTestImplementation(platform(libs.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4.android)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
