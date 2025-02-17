@@ -17,6 +17,10 @@ detekt {
 
 gradlePlugin {
     plugins {
+        register("codeStyle") {
+            id = "io.github.ilikeyourhat.fmnw.convention.code-style-convention-plugin"
+            implementationClass = "io.github.ilikeyourhat.fmnw.convention.CodeStyleConventionPlugin"
+        }
         register("compose") {
             id = "io.github.ilikeyourhat.fmnw.convention.compose-convention-plugin"
             implementationClass = "io.github.ilikeyourhat.fmnw.convention.ComposeConventionPlugin"
@@ -40,6 +44,7 @@ dependencies {
     detektPlugins(libs.detekt.formatting)
 
     implementation(libs.android.application.plugin)
+    implementation(libs.detekt.plugin)
     implementation(libs.hilt.plugin)
     implementation(libs.kotlin.compose.plugin)
     implementation(libs.ksp.plugin)

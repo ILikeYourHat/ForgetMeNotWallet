@@ -2,8 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.parcelize)
-    alias(libs.plugins.detekt)
     alias(libs.plugins.android.junit5)
+    alias(libs.plugins.convention.codestyle)
     alias(libs.plugins.convention.compose)
     alias(libs.plugins.convention.hilt)
     alias(libs.plugins.convention.robolectric)
@@ -43,25 +43,9 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    lint {
-        warningsAsErrors = true
-    }
-}
-
-kotlin {
-    compilerOptions {
-        allWarningsAsErrors = true
-    }
-}
-
-detekt {
-    buildUponDefaultConfig = true
-    config.setFrom("$rootDir/config/detekt.yml")
 }
 
 dependencies {
-    detektPlugins(libs.detekt.formatting)
-
     coreLibraryDesugaring(libs.desugaring)
 
     implementation(libs.kotlinx.coroutines.android)

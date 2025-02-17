@@ -1,30 +1,18 @@
 package io.github.ilikeyourhat.fmnw.convention
 
 import androidx.room.gradle.RoomExtension
-import com.android.build.gradle.BaseExtension
 import com.google.devtools.ksp.gradle.KspExtension
-import org.gradle.api.GradleException
+import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 import org.gradle.api.Project
 import org.gradle.api.artifacts.MinimalExternalModuleDependency
 import org.gradle.api.artifacts.VersionCatalog
 import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.api.artifacts.dsl.DependencyHandler
-import org.gradle.api.plugins.PluginManager
 import org.gradle.api.provider.Provider
 import org.gradle.kotlin.dsl.getByType
 import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidExtension
 
-internal fun PluginManager.requireAndroidGradlePlugin() {
-    findPlugin("com.android.base") ?: throw GradleException(
-        "This plugin requires either com.android.application or com.android.library plugin applied"
-    )
-}
-
-internal fun Project.isAndroidApplication(): Boolean {
-    return plugins.hasPlugin("com.android.application")
-}
-
-internal val Project.androidCommon: BaseExtension
+internal val Project.detekt: DetektExtension
     get() = extensions.getByType()
 
 internal val Project.ksp: KspExtension
@@ -82,4 +70,8 @@ internal fun Pair<DependencyHandler, VersionCatalog>.ksp(dependency: String) {
 
 internal fun Pair<DependencyHandler, VersionCatalog>.lintChecks(dependency: String) {
     first.add("lintChecks", second.findLibrary(dependency).get())
+}
+
+internal fun Pair<DependencyHandler, VersionCatalog>.detektPlugins(dependency: String) {
+    first.add("detektPlugins", second.findLibrary(dependency).get())
 }
