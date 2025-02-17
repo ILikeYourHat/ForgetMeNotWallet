@@ -24,7 +24,7 @@ jobs:
         uses: android-actions/setup-android@v3
 
       - name: Build project
-        run: ./gradlew :build-logic:build build
+        run: ./gradlew build
 
   ui-tests:
     needs: build
