@@ -25,6 +25,10 @@ gradlePlugin {
             id = "io.github.ilikeyourhat.fmnw.convention.compose-convention-plugin"
             implementationClass = "io.github.ilikeyourhat.fmnw.convention.ComposeConventionPlugin"
         }
+        register("jvm") {
+            id = "io.github.ilikeyourhat.fmnw.convention.jvm-convention-plugin"
+            implementationClass = "io.github.ilikeyourhat.fmnw.convention.JvmConventionPlugin"
+        }
         register("room") {
             id = "io.github.ilikeyourhat.fmnw.convention.room-convention-plugin"
             implementationClass = "io.github.ilikeyourhat.fmnw.convention.RoomConventionPlugin"

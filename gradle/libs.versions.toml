@@ -78,6 +78,7 @@ android-junit5 = { id = "de.mannodermaus.android-junit5", version = "1.11.3.0" }
 convention-codestyle = { id = "io.github.ilikeyourhat.fmnw.convention.code-style-convention-plugin", version = "unknown" }
 convention-compose = { id = "io.github.ilikeyourhat.fmnw.convention.compose-convention-plugin", version = "unknown" }
 convention-hilt = { id = "io.github.ilikeyourhat.fmnw.convention.hilt-convention-plugin", version = "unknown" }
+convention-jvm = { id = "io.github.ilikeyourhat.fmnw.convention.jvm-convention-plugin", version = "unknown" }
 convention-robolectric = { id = "io.github.ilikeyourhat.fmnw.convention.robolectric-convention-plugin", version = "unknown" }
 convention-room = { id = "io.github.ilikeyourhat.fmnw.convention.room-convention-plugin", version = "unknown" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }

@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.convention.codestyle)
     alias(libs.plugins.convention.compose)
     alias(libs.plugins.convention.hilt)
+    alias(libs.plugins.convention.jvm)
     alias(libs.plugins.convention.robolectric)
     alias(libs.plugins.convention.room)
 }
@@ -33,21 +34,12 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
     packaging {
         resources.excludes += "DebugProbesKt.bin" // Required by Kotlin Coroutines
-    }
-    kotlinOptions {
-        jvmTarget = "11"
     }
 }
 
 dependencies {
-    coreLibraryDesugaring(libs.desugaring)
-
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.camera.view)
     implementation(libs.androidx.camera.camera2)

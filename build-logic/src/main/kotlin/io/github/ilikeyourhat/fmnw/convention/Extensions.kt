@@ -75,3 +75,7 @@ internal fun Pair<DependencyHandler, VersionCatalog>.lintChecks(dependency: Stri
 internal fun Pair<DependencyHandler, VersionCatalog>.detektPlugins(dependency: String) {
     first.add("detektPlugins", second.findLibrary(dependency).get())
 }
+
+internal fun Pair<DependencyHandler, VersionCatalog>.coreLibraryDesugaring(dependency: String) {
+    first.add("coreLibraryDesugaring", second.findLibrary(dependency).get())
+}
