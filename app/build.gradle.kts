@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.android.junit5)
     alias(libs.plugins.convention.codestyle)
     alias(libs.plugins.convention.compose)
+    alias(libs.plugins.convention.coroutines)
     alias(libs.plugins.convention.hilt)
     alias(libs.plugins.convention.jvm)
     alias(libs.plugins.convention.robolectric)
@@ -34,13 +35,9 @@ android {
             )
         }
     }
-    packaging {
-        resources.excludes += "DebugProbesKt.bin" // Required by Kotlin Coroutines
-    }
 }
 
 dependencies {
-    implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.camera.view)
     implementation(libs.androidx.camera.camera2)
     implementation(libs.androidx.camera.lifecycle)
@@ -63,9 +60,7 @@ dependencies {
     testImplementation(libs.junit.jupiter.api)
     testImplementation(libs.junit.jupiter.params)
     testImplementation(libs.mockk)
-    testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.kotest.assertions.core)
-    testImplementation(libs.turbine)
 
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
