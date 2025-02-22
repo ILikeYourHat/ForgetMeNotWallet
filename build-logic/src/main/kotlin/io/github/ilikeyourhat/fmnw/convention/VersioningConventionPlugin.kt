@@ -29,7 +29,7 @@ class VersioningConventionPlugin : Plugin<Project> {
 
     @Suppress("MagicNumber")
     private fun String.toVersionCode(): Int {
-        val semVerRegex = """(\d{1,2})\.(\d{1,2})\.(\d{1,2})(\D.*)?""".toRegex()
+        val semVerRegex = """(\d+)\.(\d{1,2})\.(\d{1,2})(\D.*)?""".toRegex()
         val groups = semVerRegex.matchEntire(this)?.destructured?.toList()
             ?: throw GradleException("Version must be in SemVer format, but was $this")
         val (major, minor, patch) = groups.take(3).map { it.toInt() }
