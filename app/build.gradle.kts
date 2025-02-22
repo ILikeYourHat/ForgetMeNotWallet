@@ -10,6 +10,7 @@ plugins {
     alias(libs.plugins.convention.jvm)
     alias(libs.plugins.convention.robolectric)
     alias(libs.plugins.convention.room)
+    alias(libs.plugins.convention.versioning)
 }
 
 android {
@@ -20,9 +21,6 @@ android {
         applicationId = "com.github.ilikeyourhat.fmnw"
         minSdk = 26
         targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 

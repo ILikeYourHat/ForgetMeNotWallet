@@ -41,6 +41,10 @@ gradlePlugin {
             id = "io.github.ilikeyourhat.fmnw.convention.hilt-convention-plugin"
             implementationClass = "io.github.ilikeyourhat.fmnw.convention.HiltConventionPlugin"
         }
+        register("versioning") {
+            id = "io.github.ilikeyourhat.fmnw.convention.versioning-convention-plugin"
+            implementationClass = "io.github.ilikeyourhat.fmnw.convention.VersioningConventionPlugin"
+        }
         register("robolectric") {
             id = "io.github.ilikeyourhat.fmnw.convention.robolectric-convention-plugin"
             implementationClass = "io.github.ilikeyourhat.fmnw.convention.RobolectricConventionPlugin"
@@ -52,6 +56,7 @@ dependencies {
     detektPlugins(libs.detekt.formatting)
 
     implementation(libs.android.application.plugin)
+    implementation(libs.axion.release.plugin)
     implementation(libs.detekt.plugin)
     implementation(libs.hilt.plugin)
     implementation(libs.kotlin.compose.plugin)
