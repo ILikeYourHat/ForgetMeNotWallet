@@ -30,7 +30,7 @@ androidx-camera-camera2 = { module = "androidx.camera:camera-camera2", version.r
 androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
 axion-release-plugin = { module = "pl.allegro.tech.build.axion-release:pl.allegro.tech.build.axion-release.gradle.plugin", version = "1.18.17" }
 compose-lint-checks = { module = "com.slack.lint.compose:compose-lint-checks", version.ref = "composeLintChecks" }
-desugaring = { module = "com.android.tools:desugar_jdk_libs", version = "2.1.4" }
+desugaring = { module = "com.android.tools:desugar_jdk_libs", version = "2.1.5" }
 composed-barcodes = { module = "com.simonsickle:composed-barcodes", version.ref = "composedBarcodes" }
 detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
 detekt-plugin = { module = "io.gitlab.arturbosch.detekt:io.gitlab.arturbosch.detekt.gradle.plugin", version.ref = "detekt" }
