@@ -15,6 +15,7 @@ class CodeStyleConventionPlugin : Plugin<Project> {
             with(androidCommon) {
                 lint {
                     warningsAsErrors = true
+                    lintConfig = file("$rootDir/config/lint.xml")
                 }
             }
             with(kotlin) {
