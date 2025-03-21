@@ -8,8 +8,17 @@
   ],
   "packageRules": [
     {
-      "packagePatterns": ["^io\\.github\\.ilikeyourhat\\.fmnw\\..*"],
+      "matchPackageNames": [
+        "io.github.ilikeyourhat.fmnw.**"
+      ],
       "enabled": false
+    },
+    {
+      "matchPackagePatterns": [
+        "org.jetbrains.kotlin.*",
+        "com.google.devtools.ksp"
+      ],
+      "groupName": "kotlin"
     }
   ],
   "automerge": true
