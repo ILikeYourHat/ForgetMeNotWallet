@@ -18,7 +18,7 @@
         "org.jetbrains.kotlin.*",
         "com.google.devtools.ksp"
       ],
-      "groupName": "kotlin"
+      "groupName": "Kotlin & friends"
     }
   ],
   "automerge": true
