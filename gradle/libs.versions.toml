@@ -57,7 +57,7 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 androidx-lifecycle = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
 androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
-androidx-compose-camera-viewfinder = { module = "androidx.camera.viewfinder:viewfinder-compose", version = "1.4.0-alpha13" }
+androidx-compose-camera-viewfinder = { module = "androidx.camera.viewfinder:viewfinder-compose", version = "1.5.0" }
 androidx-junit = { module = "androidx.test.ext:junit" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
