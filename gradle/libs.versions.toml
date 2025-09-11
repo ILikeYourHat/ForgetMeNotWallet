@@ -2,7 +2,7 @@
 activityCompose = "1.10.1"
 agp = "8.13.0"
 androidxCamera = "1.5.0"
-composeBom = "2025.08.01"
+composeBom = "2025.09.00"
 composedBarcodes = "1.3.0"
 composeLintChecks = "1.4.2"
 detekt = "1.23.8"
