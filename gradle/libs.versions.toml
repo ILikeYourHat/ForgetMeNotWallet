@@ -20,7 +20,7 @@ robolectric = "4.16"
 room = "2.8.1"
 ksp = "2.1.21-2.0.2"
 lifecycle = "2.9.4"
-hilt = "2.57.1"
+hilt = "2.57.2"
 speeddialBottomappbarMaterial3 = "1.3.0"
 turbine = "1.2.1"
 
