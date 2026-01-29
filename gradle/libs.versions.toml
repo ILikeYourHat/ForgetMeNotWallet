@@ -75,7 +75,7 @@ turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
-android-junit5 = { id = "de.mannodermaus.android-junit5", version = "1.14.0.0" }
+android-junit5 = { id = "de.mannodermaus.android-junit5", version = "2.0.1" }
 convention-codestyle = { id = "io.github.ilikeyourhat.fmnw.convention.code-style-convention-plugin", version = "unknown" }
 convention-compose = { id = "io.github.ilikeyourhat.fmnw.convention.compose-convention-plugin", version = "unknown" }
 convention-coroutines = { id = "io.github.ilikeyourhat.fmnw.convention.coroutines-convention-plugin", version = "unknown" }
