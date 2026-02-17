@@ -15,12 +15,12 @@ plugins {
 
 android {
     namespace = "io.github.ilikeyourhat.fmnw"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.github.ilikeyourhat.fmnw"
         minSdk = 26
-        targetSdk = 35
+        targetSdk = 36
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
